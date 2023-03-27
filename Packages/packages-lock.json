@@ -6,17 +6,32 @@
       "source": "embedded",
       "dependencies": {}
     },
-    "com.gwiazdorrr.betterstreamingassets": {
-      "version": "file:com.gwiazdorrr.betterstreamingassets",
+    "com.focus-creative-games.hybridclr_unity": {
+      "version": "https://gitee.com/focus-creative-games/hybridclr_unity.git",
       "depth": 0,
-      "source": "embedded",
-      "dependencies": {}
+      "source": "git",
+      "dependencies": {},
+      "hash": "75cb53cb19f11782fbbf02447900578ad9563567"
     },
     "com.sharelib.logviewer": {
       "version": "file:Unity-Logs-Viewer",
       "depth": 0,
       "source": "embedded",
       "dependencies": {}
+    },
+    "com.unity.addressables": {
+      "version": "1.19.19",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.scriptablebuildpipeline": "1.19.6",
+        "com.unity.modules.assetbundle": "1.0.0",
+        "com.unity.modules.imageconversion": "1.0.0",
+        "com.unity.modules.jsonserialize": "1.0.0",
+        "com.unity.modules.unitywebrequest": "1.0.0",
+        "com.unity.modules.unitywebrequestassetbundle": "1.0.0"
+      },
+      "url": "https://packages.unity.cn"
     },
     "com.unity.burst": {
       "version": "1.8.2",
@@ -93,6 +108,13 @@
         "com.unity.render-pipelines.core": "12.1.10",
         "com.unity.shadergraph": "12.1.10"
       }
+    },
+    "com.unity.scriptablebuildpipeline": {
+      "version": "1.20.1",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.cn"
     },
     "com.unity.searcher": {
       "version": "4.9.1",

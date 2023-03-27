@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Remote_Hotfix
+  m_EditorClassIdentifier: 
+  m_GroupName: Remote_Hotfix
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 670f3f3fc3e4e124b94c3f3c9fb6f74e
+  m_SerializeEntries:
+  - m_GUID: 99a285c59770c4243a57bc0dabedd7c8
+    m_Address: HotUpdatePrefab.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8c13e8aaeaa17ce43a80fedf9b9f7122
+    m_Address: System.Core.dll.bytes
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 837ab57d8fb8caa44926816d99ad6bb3
+    m_Address: Hotfix.Develop.dll.bytes
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f050ca298cf459149b2ec31aa7b0cd86
+    m_Address: System.dll.bytes
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: eb92b18bb94199542a16667f53c5c4d8
+    m_Address: mscorlib.dll.bytes
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: f764d9e74e1e5504c9a86fa4549fc1a1, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 108f7198c4a304641b69de45706e8f16, type: 2}
+    - {fileID: 11400000, guid: be37998fbdd22384db7a3d88bdd32ab3, type: 2}
