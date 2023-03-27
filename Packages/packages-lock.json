@@ -1,5 +1,11 @@
 {
   "dependencies": {
+    "com.cysharp.unitask": {
+      "version": "file:UniTask",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
     "com.sharelib.logviewer": {
       "version": "file:Unity-Logs-Viewer",
       "depth": 0,
