@@ -6,6 +6,12 @@
       "source": "embedded",
       "dependencies": {}
     },
+    "com.gwiazdorrr.betterstreamingassets": {
+      "version": "file:com.gwiazdorrr.betterstreamingassets",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
     "com.sharelib.logviewer": {
       "version": "file:Unity-Logs-Viewer",
       "depth": 0,
