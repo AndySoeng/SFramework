@@ -2,7 +2,7 @@
   "name": "com.sharelib.standalonefilebrowser",
   "version": "0.2.0",
   "displayName": "Standalone File Browser",
-  "description": "Unity package for check unity runtime log .",
+  "description": "Standalone File Browser .",
   "category": "Runtime",
   "keywords": [
     "log viewer"
@@ -11,7 +11,7 @@
     {
       "displayName": "Standalone File Browser",
       "description": "",
-      "path": "Samples"
+      "path": "Samples~"
     }
   ],
   "author": {
