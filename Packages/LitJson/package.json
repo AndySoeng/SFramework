@@ -1,0 +1,22 @@
+{
+  "name": "com.sharelib.litjson",
+  "version": "0.1.0",
+  "displayName": "LitJson",
+  "description": "LitJson .",
+  "category": "Runtime",
+  "keywords": [
+    ""
+  ],
+  "samples": [
+    {
+      "displayName": "LitJson",
+      "description": "",
+      "path": ""
+    }
+  ],
+  "author": {
+    "name": "",
+    "email": "",
+    "url": ""
+  }
+}

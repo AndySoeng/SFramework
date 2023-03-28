@@ -1,11 +1,11 @@
 {
   "name": "com.sharelib.standalonefilebrowser",
-  "version": "0.2.0",
+  "version": "0.1.0",
   "displayName": "Standalone File Browser",
   "description": "Standalone File Browser .",
   "category": "Runtime",
   "keywords": [
-    "log viewer"
+    ""
   ],
   "samples": [
     {

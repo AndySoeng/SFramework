@@ -1,0 +1,22 @@
+{
+  "name": "com.sharelib.webglexpinterface",
+  "version": "0.1.0",
+  "displayName": "WebGLExpInterface",
+  "description": "WebGLExpInterface .",
+  "category": "Runtime",
+  "keywords": [
+    ""
+  ],
+  "samples": [
+    {
+      "displayName": "WebGLExpInterface",
+      "description": "",
+      "path": ""
+    }
+  ],
+  "author": {
+    "name": "",
+    "email": "",
+    "url": ""
+  }
+}

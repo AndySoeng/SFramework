@@ -1,0 +1,22 @@
+{
+  "name": "com.sharelib.chineseinputwebgl",
+  "version": "0.1.0",
+  "displayName": "ChineseInputWebGL",
+  "description": "ChineseInputWebGL .",
+  "category": "Runtime",
+  "keywords": [
+    ""
+  ],
+  "samples": [
+    {
+      "displayName": "ChineseInputWebGL",
+      "description": "",
+      "path": ""
+    }
+  ],
+  "author": {
+    "name": "",
+    "email": "",
+    "url": ""
+  }
+}
