@@ -12,7 +12,7 @@ public class LoadDll : MonoBehaviour
     }
 
 
-    async void StartGame()
+    async UniTask StartGame()
     {
          await LoadMetadataForAOTAssemblies();
 #if !UNITY_EDITOR
