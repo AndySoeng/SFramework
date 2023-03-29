@@ -3,13 +3,14 @@ using System.Runtime.InteropServices;
 using System.Text;
 using UnityEngine;
 
-namespace ExpInterface
+namespace WebGLExpInterface
 {
     public class SimtopInterfaceManager
     {
+#if UNITY_WEBGL && !UNITY_EDITOR
         [DllImport("__Internal")]
         private static extern string LoadParams();
-
+#endif
 
         public static string[] userInfo;
 
@@ -17,14 +18,14 @@ namespace ExpInterface
         // Start is called before the first frame update
         public static void GetParams(Action failureCallBack, Action successCallBack)
         {
-#if UNITY_EDITOR
+
             userInfo = new string[]
             {
                 "",
                 "",
                 ""
             };
-#else
+#if UNITY_WEBGL && !UNITY_EDITOR
       userInfo = LoadParams().Split('~');
 #endif
 

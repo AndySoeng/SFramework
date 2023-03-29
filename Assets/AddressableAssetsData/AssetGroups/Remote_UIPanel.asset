@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Remote_UIPanel
+  m_EditorClassIdentifier: 
+  m_GroupName: Remote_UIPanel
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 16068d98b59ec47488f396993723845f
+  m_SerializeEntries:
+  - m_GUID: 7b0a12a229dd38249a32756c88cee969
+    m_Address: UIDemoPanel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2b300ba86f3a4834da2d9a4f7af4b676
+    m_Address: UIEndPanel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7035188958c6c6748bf4284e921f4886
+    m_Address: UIExercisePanel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3c540bd4b43b5dc4c9630a58a7fc83e8
+    m_Address: UIHttpRequestPanel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 590e47afe64c50142a4f8eda92a38a05
+    m_Address: UILoadScenePanel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 29791892556f8f3489ec98f0052aa1a6
+    m_Address: UIModalWindowPanel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: eefd1b9cd630d3b4e9da017cef5acf22
+    m_Address: UIMultiContentTipsPanel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 224629d4a4ae3e04e828d4d15bec8cbf
+    m_Address: UINotificationsPanel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 762a2291c991ed44b8b71832451c1648
+    m_Address: UIReportPanel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f10112a5727363b4090a54b304abd7d0
+    m_Address: UISchedulePanel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 653c2870483296b4081b6acdb4ee38ea
+    m_Address: UITopToolbarPanel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: bec70b4bacec3f74da992a1b98295c2e
+    m_Address: UIWelcomePanel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: f764d9e74e1e5504c9a86fa4549fc1a1, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: b803e96cf0f0fb24dbc2bcd99d688179, type: 2}
+    - {fileID: 11400000, guid: cc3d2dc65d8ebd2438b1abedefa46a72, type: 2}

@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Networking;
 
-namespace ExpInterface
+namespace WebGLExpInterface
 {
     public class ExpInterfaceBase
     {

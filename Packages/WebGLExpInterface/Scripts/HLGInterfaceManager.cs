@@ -7,20 +7,22 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Networking;
 
-namespace ExpInterface
+namespace WebGLExpInterface
 {
     public static class HLGInterfaceManager
     {
+#if UNITY_WEBGL && !UNITY_EDITOR
         [DllImport("__Internal")]
         private static extern string getUrlParams(string name);
+#endif
 
         public static UserInfo userInfo;
 
         /// <summary>
         /// 测试平台标记
         /// </summary>
-        private  static bool IsTestingPlatform = false;
-        
+        private static bool IsTestingPlatform = false;
+
         private static string host
         {
             get => IsTestingPlatform ? "http://dj.owvlab.net/virexp/" : "https://xfpt.sues.edu.cn/virexp/";
@@ -36,7 +38,10 @@ namespace ExpInterface
         public static void HLGInterface_GetUserInfo(this MonoBehaviour mono, Action failureCallBack,
             Action<UserInfo> successCallBack)
         {
-            string token = getUrlParams("token");
+            string token = String.Empty;
+#if UNITY_WEBGL && !UNITY_EDITOR
+            token = getUrlParams("token");
+#endif
 
             if (string.IsNullOrEmpty(token))
             {
@@ -49,20 +54,18 @@ namespace ExpInterface
             tokenData.token = token;
             string jsonData = LitJson.JsonMapper.ToJson(tokenData);
             string url = host + "outer/getMessageByToken";
-            mono.StartCoroutine(ExpInterfaceBase.WebRequestFrom(url, new[] {"param"}, new[] {jsonData},
-                true, true, () =>
-                {
-                    failureCallBack?.Invoke();
-                }, (result) =>
+            mono.StartCoroutine(ExpInterfaceBase.WebRequestFrom(url, new[] { "param" }, new[] { jsonData },
+                true, true, () => { failureCallBack?.Invoke(); }, (result) =>
                 {
                     userInfo = LitJson.JsonMapper.ToObject<UserInfo>(result);
-                    
+
                     if (userInfo.status == "909")
                     {
                         Debug.LogWarning("token失效");
                         failureCallBack?.Invoke();
                         return;
                     }
+
                     successCallBack?.Invoke(userInfo);
                 }));
         }
@@ -77,14 +80,11 @@ namespace ExpInterface
         public static void HLGInterface_SendExpScore(this MonoBehaviour mono, string score, Action failureCallBack,
             Action<StatusInfo> successCallBack)
         {
-            SendExpScore send = new SendExpScore() {eid = userInfo.eId, expScore = score};
+            SendExpScore send = new SendExpScore() { eid = userInfo.eId, expScore = score };
             string scoreData = LitJson.JsonMapper.ToJson(send);
             string url = host + "outer/intelligent/!expScoreSave";
-            mono.StartCoroutine(ExpInterfaceBase.WebRequestFrom(url, new[] {"param"},
-                new[] {scoreData}, false, false, () =>
-                {
-                    failureCallBack?.Invoke();
-                }, (result) =>
+            mono.StartCoroutine(ExpInterfaceBase.WebRequestFrom(url, new[] { "param" },
+                new[] { scoreData }, false, false, () => { failureCallBack?.Invoke(); }, (result) =>
                 {
                     StatusInfo statusInfo = LitJson.JsonMapper.ToObject<StatusInfo>(result);
                     successCallBack?.Invoke(statusInfo);
@@ -99,10 +99,10 @@ namespace ExpInterface
         /// <param name="mono"></param>
         /// <param name="failureCallBack"></param>
         /// <param name="successCallBack"></param>
-        public static void HLGInterface_SendReportInfo(this MonoBehaviour mono,Action<ReportInfo> InitReportInfo, Action failureCallBack,
+        public static void HLGInterface_SendReportInfo(this MonoBehaviour mono, Action<ReportInfo> InitReportInfo, Action failureCallBack,
             Action<StatusInfo> successCallBack)
         {
-            ReportInfo report = new ReportInfo() {eid = userInfo.eId};
+            ReportInfo report = new ReportInfo() { eid = userInfo.eId };
             InitReportInfo.Invoke(report);
             // report.text1 = new List<Text_chan>(); //
             // Text_chan text = new Text_chan();
@@ -124,23 +124,15 @@ namespace ExpInterface
             // report.text3.Add(text);
             string reportData = LitJson.JsonMapper.ToJson(report);
             string url = host + "outer/report/!reportEdit";
-            mono.StartCoroutine(ExpInterfaceBase.WebRequestFrom(url, new[] {"param"}, new[] {reportData},
-                false, false, () =>
-                {
-                    failureCallBack?.Invoke();
-                }, (result) =>
+            mono.StartCoroutine(ExpInterfaceBase.WebRequestFrom(url, new[] { "param" }, new[] { reportData },
+                false, false, () => { failureCallBack?.Invoke(); }, (result) =>
                 {
                     StatusInfo statusInfo = LitJson.JsonMapper.ToObject<StatusInfo>(result);
                     successCallBack?.Invoke(statusInfo);
                 }));
         }
-
-
-
     }
 
-
-   
 
     public class UserInfo
     {
@@ -154,10 +146,11 @@ namespace ExpInterface
         public string role { get; set; }
 
         public string statusMessage { get; set; }
+
         public override string ToString()
         {
             return status + "\t" + eId + "\t" + userId + "\t" + numberId + "\t" + name + "\t" + groupName + "\t" +
-                   host + "\t" + role+ "\t" + statusMessage;
+                   host + "\t" + role + "\t" + statusMessage;
         }
     }
 

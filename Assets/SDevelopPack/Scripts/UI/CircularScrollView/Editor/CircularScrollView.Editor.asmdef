@@ -1,0 +1,18 @@
+{
+    "name": "CircularScrollView.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:e3f5f41145c03d448a85c099c9a972f8"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

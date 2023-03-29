@@ -3,13 +3,14 @@ using System.Runtime.InteropServices;
 using LitJson;
 using UnityEngine;
 
-namespace ExpInterface
+namespace WebGLExpInterface
 {
     public static class CXSYInterfaceManager
     {
+#if UNITY_WEBGL && !UNITY_EDITOR
         [DllImport("__Internal")]
         private static extern string getUrlParams(string name);
-
+#endif
 
         /// <summary>
         /// 是否为老师布置的实验
