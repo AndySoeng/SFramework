@@ -20,12 +20,6 @@
       "dependencies": {},
       "hash": "75cb53cb19f11782fbbf02447900578ad9563567"
     },
-    "com.sharelib.chineseinputwebgl": {
-      "version": "file:ChineseInputWebGL",
-      "depth": 0,
-      "source": "embedded",
-      "dependencies": {}
-    },
     "com.sharelib.litjson": {
       "version": "file:LitJson",
       "depth": 0,
@@ -46,6 +40,12 @@
     },
     "com.sharelib.webglexpinterface": {
       "version": "file:WebGLExpInterface",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
+    "com.sharelib.webglsupport": {
+      "version": "file:WebGLSupport",
       "depth": 0,
       "source": "embedded",
       "dependencies": {}

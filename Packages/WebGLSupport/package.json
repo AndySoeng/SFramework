@@ -1,0 +1,22 @@
+{
+  "name": "com.sharelib.webglsupport",
+  "version": "0.1.0",
+  "displayName": "WebGLSupport",
+  "description": "WebGLSupport .",
+  "category": "Runtime",
+  "keywords": [
+    ""
+  ],
+  "samples": [
+    {
+      "displayName": "WebGLSupport",
+      "description": "",
+      "path": ""
+    }
+  ],
+  "author": {
+    "name": "",
+    "email": "",
+    "url": ""
+  }
+}

@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 1726182683, guid: a4865f1ab4504ed8a368670db22f409c, type: 3}
   m_Name: AOTGenerationConfig
   m_EditorClassIdentifier: 
-  automateBeforeBuilds: 1
+  automateBeforeBuilds: 0
   deleteDllAfterBuilds: 1
-  AutomateForAllAOTPlatforms: 0
+  AutomateForAllAOTPlatforms: 1
   automateForPlatforms: 0900000014000000
-  lastScan: 638156825707217112
+  lastScan: 638156841003431552
   supportSerializedTypes:
   - TypeName: UnityEngine.AudioSource, UnityEngine.AudioModule
     IsCustom: 0

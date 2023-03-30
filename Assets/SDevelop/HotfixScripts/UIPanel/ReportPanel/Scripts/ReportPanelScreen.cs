@@ -1,5 +1,4 @@
 ﻿using Ex;
-using WebGLExpInterface;
 using LitJson;
 
 namespace SFramework.UI
@@ -215,9 +214,9 @@ namespace SFramework.UI
 
                 //可以提交后打开遮挡
                 SUIManager.Ins.OpenUI<HttpRequestPanelScreen>(new HttpRequestPanelScreenParam()
-                    {content = "提交实验报告提交中……"});
+                    { content = "提交实验报告提交中……" });
 
-                monoBehaviour.StartCoroutine(ExpInterfaceBase.WebRequest(UnityWebRequestType.POST, userInfos[3],
+                monoBehaviour.StartCoroutine(WebGLExpInterface.ExpInterfaceBase.WebRequest(WebGLExpInterface.UnityWebRequestType.POST, userInfos[3],
                     JsonMapper.ToJson(scoreList), false, false,
                     () =>
                     {
@@ -228,8 +227,8 @@ namespace SFramework.UI
                         //提交成功的回调
                         SUIManager.Ins.CloseUI<HttpRequestPanelScreen>();
                         SUIManager.Ins.OpenUI<EndPanelScreen>(new EndPanelScreenParam()
-                            {content = "实验报告已提交，实验结束。", isTransparent = false});
-                    }, new[] {"Authorization"}, new[] {"Bearer " + userInfos[1]}));
+                            { content = "实验报告已提交，实验结束。", isTransparent = false });
+                    }, new[] { "Authorization" }, new[] { "Bearer " + userInfos[1] }));
             }
         }
 
