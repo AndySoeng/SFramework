@@ -125,7 +125,7 @@ body{
 
 /* When aspect-ratio is smaller than 4/3*/
 
-/*@media (max-aspect-ratio: 4/3){
+@media (max-aspect-ratio: 4/3){
 	
 	.webgl-content{
 		-webkit-transform: translate(0%, 0%); transform: translate(0%, 0%);
@@ -194,12 +194,12 @@ body{
 	.browserIcons a img{
 		width:8vw;
 	}
-}*/
+}
 
 
 /* When aspect-ratio is bigger than 16/9*/
 
-/*@media (min-aspect-ratio: 16/9){
+@media (min-aspect-ratio: 16/9){
 	body{
 		display:flex;
 		flex-wrap:wrap;
@@ -225,4 +225,4 @@ body{
 	.subtitle,#progressBar,#warningBrowserBlock,#warningMobileBlock,#errorContent{
 		width:100vh;
 	}
-}*/
+}
