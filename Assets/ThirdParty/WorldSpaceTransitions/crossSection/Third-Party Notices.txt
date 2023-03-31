@@ -1,0 +1,6 @@
+Asset is governed by the Asset Store EULA; however, the following components are governed by the licenses indicated below:
+
+1.	name: phuongfi91/unity-threading 
+	containing folder: Threading
+	name of license: MIT License
+	https://github.com/phuongfi91/unity-threading
