@@ -26,14 +26,16 @@ body{
 }
 
 #fullScreenButton{
-	height:30px;
-	width:30px;
+	height:50px;
+	width:50px;
 	position:absolute;
 	z-index:1;
 	bottom:5px;
 	right:5px;
 	background-color:transparent;
 	background-image:url("../img/fullScreen_on.png");
+	background-repeat: no-repeat;
+	background-position: center;
 	background-size:30px 30px;
 	border:none;
 	cursor: pointer;
@@ -41,11 +43,11 @@ body{
 
 .subtitle{
 	color:#1896a7;
-	font-size:2.5vh;
-	padding-bottom:3vh;
-	padding-top: 3vh;
+	font-size:2.3vh;
+	padding-bottom:2.3vh;
+	padding-top:2.5vh;
 	display: block;
-	height:15vh;
+	height:20vh;
 	width:40vw;
 	margin:auto;
 	text-align: center;
@@ -120,10 +122,25 @@ body{
 	margin-right:auto;
 }
 
+.botCenter{
+	width:100%;
+	/* height:350px;  */
+	/* line-height:350px;  */
+	position:fixed;
+	bottom:0px;
+	left:0px;
+	padding-top:20px;
+	padding-bottom:20px;
+
+	font-size:14px;
+	color:#ffffff;
+	text-align:center;
+}
+
 
 /* When aspect-ratio is smaller than 4/3*/
 
-/*@media (max-aspect-ratio: 4/3){
+@media (max-aspect-ratio: 4/3){
 	
 	.webgl-content{
 		-webkit-transform: translate(0%, 0%); transform: translate(0%, 0%);
@@ -146,6 +163,7 @@ body{
 		left: 0;
 		bottom: 0;
 		right: 0;
+		height:100%;
 	}
 
 	.logo{
@@ -191,18 +209,12 @@ body{
 	.browserIcons a img{
 		width:8vw;
 	}
-	
-	.webgl-content,#loadingBlock,#errorBrowserBlock{
-		border:1px solid #c6c9ca;
-		width:calc(100% - 2px);
-		height:auto;
-	}
-}*/
+}
 
 
 /* When aspect-ratio is bigger than 16/9*/
 
-/*@media (min-aspect-ratio: 16/9){
+@media (min-aspect-ratio: 16/9){
 	body{
 		display:flex;
 		flex-wrap:wrap;
@@ -228,9 +240,4 @@ body{
 	.subtitle,#progressBar,#warningBrowserBlock,#warningMobileBlock,#errorContent{
 		width:100vh;
 	}
-	
-	.webgl-content,#loadingBlock,#errorBrowserBlock{
-		border:1px solid #c6c9ca;
-		height:calc(100% - 2px);
-	}
-}*/
+}
