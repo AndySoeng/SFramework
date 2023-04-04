@@ -13,7 +13,7 @@ namespace SFramework
         [MenuItem("Tools/Addressable Cache/Clear ServerData")]
         public static void ClearServerData()
         {
-            if (Directory.Exists(cache_CatalogPath))
+            if (Directory.Exists(cache_ServerDataPath))
             {
                 Directory.Delete(cache_ServerDataPath, true);
                 Debug.Log("ServerData Cleaned .");
