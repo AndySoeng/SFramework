@@ -17,10 +17,6 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 670f3f3fc3e4e124b94c3f3c9fb6f74e
   m_SerializeEntries:
-  - m_GUID: 99a285c59770c4243a57bc0dabedd7c8
-    m_Address: HotUpdatePrefab.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: 8c13e8aaeaa17ce43a80fedf9b9f7122
     m_Address: System.Core.dll.bytes
     m_ReadOnly: 0

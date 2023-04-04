@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Remote_Framework
+  m_EditorClassIdentifier: 
+  m_GroupName: Remote_Framework
+  m_Data:
+    m_SerializedData: []
+  m_GUID: b5d8cb0a5278d5043a6177acc6abbefa
+  m_SerializeEntries:
+  - m_GUID: ac7930610fd43d647840b4f3f10ef063
+    m_Address: BuildFramework.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: da0c6cb7b5c8c77438b99f06981817d6
+    m_Address: UIRoot.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6db361439ff9a624698b7e504754d128
+    m_Address: AudioClick.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 819cbb39f9357cc4597e0749f7ba7d33
+    m_Address: AudioMixer.mixer
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 782a908f99862514ab003fe7aa0ba26a
+    m_Address: AudioRoot.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: f764d9e74e1e5504c9a86fa4549fc1a1, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 9864f49c9ff351e4b8c479ad7f69f9e4, type: 2}
+    - {fileID: 11400000, guid: 760f1580abeb25d4b80c8b468099f3f1, type: 2}

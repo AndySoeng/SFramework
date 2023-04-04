@@ -168,7 +168,6 @@ namespace WorldSpaceTransitions
             Vector3 sectionpoint = new Vector3(sectionX, sectionY, sectionZ);
             if ((boundsMode == BoundsOrientation.worldOriented)) sectionpoint = bounds.center;
             Vector3 sectionpointLocal = model.transform.InverseTransformPoint(sectionpoint);
-            Vector3 sectionpointWorld;
             //Debug.Log(bounds.ToString());
             Debug.Log(selectedAxis.ToString());
             Vector3 Min = (boundsMode == BoundsOrientation.worldOriented) ? bounds.min : -bounds.extents - model.transform.InverseTransformDirection(model.transform.position - bounds.center); 
