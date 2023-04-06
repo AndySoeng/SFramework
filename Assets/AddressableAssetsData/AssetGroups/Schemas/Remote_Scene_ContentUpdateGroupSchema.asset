@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5834b5087d578d24c926ce20cd31e6d6, type: 3}
   m_Name: Remote_Scene_ContentUpdateGroupSchema
   m_EditorClassIdentifier: 
-  m_Group: {fileID: 11400000, guid: 42e4f21d05ff1cf46a14a8e10eba8afe, type: 2}
+  m_Group: {fileID: 11400000, guid: bf79c8af7b903ef4aa76b513af8cefa1, type: 2}
   m_StaticContent: 0

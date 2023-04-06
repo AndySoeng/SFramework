@@ -1,4 +1,5 @@
-﻿using Cysharp.Threading.Tasks;
+﻿
+using System.Threading.Tasks;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
@@ -48,10 +49,10 @@ namespace SFramework
         }
 
 
-        protected override async UniTask OnInit()
+        protected override async Task OnInit()
         {
             // 初始化UI根节点
-            uiRoot= await Addressables.InstantiateAsync("UIRoot.prefab", transform);
+            uiRoot= await Addressables.InstantiateAsync("UIRoot.prefab", transform).Task;
 
             uiRoot.transform.position = Vector3.zero;
 

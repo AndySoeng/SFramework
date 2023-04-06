@@ -43,11 +43,11 @@ MonoBehaviour:
   m_GroupAssets:
   - {fileID: 11400000, guid: f62897920dfb95942a7576bd65c60cba, type: 2}
   - {fileID: 11400000, guid: e40824cd7b8edb049b5f0bd659438602, type: 2}
-  - {fileID: 11400000, guid: 0572036fb35986f4ab1faa0cba6565aa, type: 2}
-  - {fileID: 11400000, guid: 0828a3a6945ad584aaa69f92a705f843, type: 2}
-  - {fileID: 11400000, guid: e08e7fe72e0c18146a2526455f48f05b, type: 2}
-  - {fileID: 11400000, guid: a2eee44578948c44b9a78b42abab0745, type: 2}
-  - {fileID: 11400000, guid: 42e4f21d05ff1cf46a14a8e10eba8afe, type: 2}
+  - {fileID: 11400000, guid: a44e904e7944f9c48bdefa8247237d2a, type: 2}
+  - {fileID: 11400000, guid: 0984ea81537d08446b41431e8fbcd165, type: 2}
+  - {fileID: 11400000, guid: 70eaa9f9b388cb344aa6b7853dfca6d4, type: 2}
+  - {fileID: 11400000, guid: bf79c8af7b903ef4aa76b513af8cefa1, type: 2}
+  - {fileID: 11400000, guid: 2bc3eb6eb5f3a854699cb0c2ac1cc126, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -111,7 +111,7 @@ MonoBehaviour:
         m_SerializedData:
         - m_AssemblyName: mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
           m_ClassName: System.Int32
-          m_Data: 12313
+          m_Data: 12363
           m_Key: HostingServicePort
         - m_AssemblyName: mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
           m_ClassName: System.Int32
@@ -123,17 +123,17 @@ MonoBehaviour:
           m_Key: ContentRoot
         - m_AssemblyName: mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
           m_ClassName: System.Boolean
-          m_Data: False
+          m_Data: True
           m_Key: IsEnabled
         - m_AssemblyName: mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
           m_ClassName: System.String
-          m_Data: Local Hosting 0
+          m_Data: Local Hosting 1
           m_Key: DescriptiveName
         - m_AssemblyName: mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
           m_ClassName: System.Int32
-          m_Data: 0
+          m_Data: 1
           m_Key: InstanceId
     m_Settings: {fileID: 11400000}
-    m_NextInstanceId: 1
+    m_NextInstanceId: 2
     m_RegisteredServiceTypeRefs:
     - UnityEditor.AddressableAssets.HostingServices.HttpHostingService, Unity.Addressables.Editor

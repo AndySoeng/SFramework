@@ -10,20 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Local_Framework
+  m_Name: Remote_Default
   m_EditorClassIdentifier: 
-  m_GroupName: Local_Framework
+  m_GroupName: Packed Assets
   m_Data:
     m_SerializedData: []
-  m_GUID: b5031089831ef1e48a070383669c5850
-  m_SerializeEntries:
-  - m_GUID: c5128d3d4e2c47f43b20a3c4d7fe4135
-    m_Address: SAAUpdateRes.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
+  m_GUID: 66bb7e75edf3e9e49b26c0d6a1138805
+  m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: f764d9e74e1e5504c9a86fa4549fc1a1, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 9445aedcd3ce5754d90f2ec0e3c32260, type: 2}
-    - {fileID: 11400000, guid: bb4501daae2020f4595e3a26f84ef5ad, type: 2}
+    - {fileID: 11400000, guid: 1e08bb5b83b41b0418a874782f32e279, type: 2}
+    - {fileID: 11400000, guid: a9c2ca7121d7a714e8dd888ed6a8b86a, type: 2}

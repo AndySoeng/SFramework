@@ -20,7 +20,10 @@ namespace SFramework
             WebglExpData.firstEnterTime = DateTime.Now;
             LoadScenePanelScreen.LoadSingleScene(LoadSceneName.Scene_Main, () =>
             {
-                ModalWindowPanelScreen.OpenModalWindowNoTabs("提示", "场景加载完成", true, null, false);
+                ModalWindowPanelScreen.OpenModalWindowNoTabs("提示", "场景加载完成", true, () =>
+                {
+                    //SUIManager.Ins.OpenUI<DemoPanelScreen>();
+                }, false);
             });
         }
     }

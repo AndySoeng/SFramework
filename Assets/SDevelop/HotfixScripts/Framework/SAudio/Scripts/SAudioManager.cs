@@ -1,4 +1,4 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using UnityEngine.AddressableAssets;
 
 namespace SFramework
@@ -9,12 +9,12 @@ namespace SFramework
     {
         private AudioRoot audioRoot;
 
-        protected override async UniTask OnInit()
+        protected override async Task OnInit()
         {
             // 初始化UI根节点
-            var goAudioRoot= await  Addressables.InstantiateAsync("AudioRoot.prefab", transform);
+            var goAudioRoot= await  Addressables.InstantiateAsync("AudioRoot.prefab", transform).Task;
             audioRoot = goAudioRoot.GetComponent<AudioRoot>();
-            clickSoundClip  = await  Addressables.LoadAssetAsync<AudioClip>("AudioClick.mp3");
+            clickSoundClip  = await  Addressables.LoadAssetAsync<AudioClip>("AudioClick.mp3").Task;
         }
 
         private AudioClip clickSoundClip;

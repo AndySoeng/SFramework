@@ -15,7 +15,7 @@ MonoBehaviour:
   m_GroupName: Remote_Scene
   m_Data:
     m_SerializedData: []
-  m_GUID: 2a4f1887204eb8c46a16d4ad7e3228f0
+  m_GUID: 6a8d9427ad038d841ac2b6cf559c5ecd
   m_SerializeEntries:
   - m_GUID: 39ea3831b5867754198b10bac4f9b6df
     m_Address: Scene_Main
@@ -25,5 +25,5 @@ MonoBehaviour:
   m_Settings: {fileID: 11400000, guid: f764d9e74e1e5504c9a86fa4549fc1a1, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 2fa82aab7999274488d4560aba8d9730, type: 2}
-    - {fileID: 11400000, guid: df2c1cf27aa6f794b85b7d481139403d, type: 2}
+    - {fileID: 11400000, guid: 6ac5b6c7348376848b74cfabc8be546d, type: 2}
+    - {fileID: 11400000, guid: b94fd9137d0346b4e9f35b8cd6203733, type: 2}

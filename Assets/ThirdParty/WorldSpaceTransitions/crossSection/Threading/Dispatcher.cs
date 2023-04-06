@@ -99,9 +99,7 @@ namespace Threading
         {
             BackgroundTasks.Add(taskName, asyncTask);
         }
-
-        private static bool applicationIsQuitting = false;
-
+        
         public void OnApplicationQuit()
         {
             Reset();

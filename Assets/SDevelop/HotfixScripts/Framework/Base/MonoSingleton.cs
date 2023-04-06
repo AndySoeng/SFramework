@@ -1,6 +1,4 @@
-﻿using Cysharp.Threading.Tasks;
-
-namespace SFramework
+﻿namespace SFramework
 {
     using System;
     using System.Threading.Tasks;
@@ -24,7 +22,7 @@ namespace SFramework
             }
         }
         
-        public static async   UniTask<T> Init()
+        public static async   Task<T> Init()
         {
             if (_instance == null)
             {
@@ -65,9 +63,9 @@ namespace SFramework
             return _instance;
         }
 
-        protected virtual async UniTask OnInit()
+        protected virtual async Task OnInit()
         {
-            await UniTask.Yield();
+            await Task.Yield();
         }
 
 

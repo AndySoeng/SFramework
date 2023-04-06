@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.AddressableAssets.ResourceLocators;
@@ -21,7 +20,7 @@ namespace SFramework
         private AsyncOperationHandle _downloadHandle;
 
 
-        public async UniTask UpdateRes(Action completeAction)
+        public async Task UpdateRes(Action completeAction)
         {
             List<object> needUpdateKeys = new List<object>();
 
@@ -70,7 +69,7 @@ namespace SFramework
             //开始获取大小及更新流程
             Debug.Log("AllKeys Count : " + needUpdateKeys.Count);
 
-            _downloadSize = Addressables.GetDownloadSizeAsync(needUpdateKeys);
+            _downloadSize = Addressables.GetDownloadSizeAsync((IEnumerable)needUpdateKeys);
             await _downloadSize.Task;
             if (_downloadSize.Status == AsyncOperationStatus.Failed)
             {
@@ -83,7 +82,7 @@ namespace SFramework
 
             if (needDownloadSize > 0)
             {
-                _downloadHandle = Addressables.DownloadDependenciesAsync(needUpdateKeys, Addressables.MergeMode.Union, false);
+                _downloadHandle = Addressables.DownloadDependenciesAsync((IEnumerable)needUpdateKeys, Addressables.MergeMode.Union, false);
                 while (!_downloadHandle.IsDone)
                 {
                     //此循环是一定会等待到_downloadHandle.PercentComplete为1的，因为PercentComplete为所有子操作的加权进度
@@ -108,6 +107,7 @@ namespace SFramework
             {
                 m_SAAUpdateResUI.SetProgress(1);
             }
+            
 
             ReleaseAllHandle();
             Debug.Log("SAAUpdateRes UpdateRes End . ");
@@ -124,7 +124,8 @@ namespace SFramework
             if (_initializeAsync.IsValid()) Addressables.Release(_initializeAsync);
         }
 
-        private async UniTask UpdateResSucceeded(Action completeAction)
+
+        private async Task UpdateResSucceeded(Action completeAction)
         {
             await Task.Delay(TimeSpan.FromSeconds(Time.deltaTime));
             completeAction?.Invoke();

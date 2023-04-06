@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5d17a21594effb4e9591490b009e7aa, type: 3}
   m_Name: Remote_Scene_BundledAssetGroupSchema
   m_EditorClassIdentifier: 
-  m_Group: {fileID: 11400000, guid: 42e4f21d05ff1cf46a14a8e10eba8afe, type: 2}
+  m_Group: {fileID: 11400000, guid: bf79c8af7b903ef4aa76b513af8cefa1, type: 2}
   m_InternalBundleIdMode: 1
   m_Compression: 1
   m_IncludeAddressInCatalog: 1
@@ -37,7 +37,7 @@ MonoBehaviour:
     m_Id: ad171828752c96441a58a3bf2d56c30c
   m_LoadPath:
     m_Id: 02ab9f1e9b09302488610e4c914743ce
-  m_BundleMode: 1
+  m_BundleMode: 0
   m_DataStreamProcessorType:
     m_AssemblyName: 
     m_ClassName: 
