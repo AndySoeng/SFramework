@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace SFramework
 {
-    public static class SAAUpdateCacheClean
+    public static class SUpdateCacheClean
     {
         static string cache_ServerDataPath = Directory.GetParent(Application.dataPath)?.ToString() + "/ServerData";
 

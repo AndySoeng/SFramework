@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 namespace SFramework
 {
-public class SAAUpdateResUI : MonoBehaviour
+public class SUpdateUI : MonoBehaviour
 {
     [Title("ProgressUI")] [SerializeField] private TMP_Text txt_Tip;
     [SerializeField] private Image img_ProgressFill;

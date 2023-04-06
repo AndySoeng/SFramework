@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4424588130347339047}
   - component: {fileID: 5514897669558897913}
   m_Layer: 0
-  m_Name: SAAUpdateResUI
+  m_Name: SUpdateResUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -270,7 +270,7 @@ GameObject:
   - component: {fileID: 6507334350358698501}
   - component: {fileID: -361331026497194906}
   m_Layer: 0
-  m_Name: SAAUpdateRes
+  m_Name: SUpdateUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -304,7 +304,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c92d09718d8b824da2d8eaa6e39e581, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SAAUpdateResUI: {fileID: 5514897669558897913}
+  mSUpdateUI: {fileID: 5514897669558897913}
 --- !u!1 &3177693789345682713
 GameObject:
   m_ObjectHideFlags: 0
