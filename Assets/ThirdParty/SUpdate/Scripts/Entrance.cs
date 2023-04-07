@@ -10,21 +10,12 @@ namespace SFramework
 {
     public class Entrance : MonoBehaviour
     {
-        
-        
-        private async void Awake()
+        private void Awake()
         {
-
-         Instantiate(Resources.Load<GameObject>("SUpdateUI"), transform).GetComponent<SUpdate>().UpdateRes( () =>
+            Instantiate(Resources.Load<GameObject>("SUpdateUI"), transform).GetComponent<SUpdate>().UpdateRes(() =>
             {
-                Addressables.InstantiateAsync("BuildFramework.prefab").Completed+= (obj) =>
-                {
-                    Destroy(gameObject);
-                };
+                Addressables.InstantiateAsync("BuildFramework.prefab");
             });
         }
-
-
-        
     }
 }

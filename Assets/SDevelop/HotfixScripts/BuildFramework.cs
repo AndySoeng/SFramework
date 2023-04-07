@@ -22,9 +22,10 @@ namespace SFramework
             {
                 ModalWindowPanelScreen.OpenModalWindowNoTabs("提示", "场景加载完成", true, () =>
                 {
-                    //SUIManager.Ins.OpenUI<DemoPanelScreen>();
                 }, false);
+               
             });
+            
         }
     }
 }

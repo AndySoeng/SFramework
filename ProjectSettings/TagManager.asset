@@ -41,3 +41,27 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: PriorityLobby
+    uniqueID: 10
+    locked: 0
+  - name: PriorityLobbyFace
+    uniqueID: 15
+    locked: 0
+  - name: PriorityLobbyForSystem
+    uniqueID: 20
+    locked: 0
+  - name: PriorityLobbyForMatchingSystem
+    uniqueID: 40
+    locked: 0
+  - name: PriorityLowLoadingCommonMessageBoxTips
+    uniqueID: 50
+    locked: 0
+  - name: PriorityLobbyForLoading
+    uniqueID: 60
+    locked: 0
+  - name: PriorityUpLoadingCommonMessageBoxTips
+    uniqueID: 70
+    locked: 0
+  - name: PriorityLobbyForNewPlayerGuide
+    uniqueID: 80
+    locked: 0

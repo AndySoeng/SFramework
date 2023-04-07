@@ -27,11 +27,11 @@ namespace SFramework
             mPanelRoot.name = mPanelRoot.name.Replace("(Clone)", "");
             
             mCtrlBase.ctrlCanvas = mPanelRoot.GetComponent<Canvas>();
+            mCtrlBase.ctrlCanvas.worldCamera = uiCamera;
             mCtrlBase.ctrlCanvas.pixelPerfect = true;
             mCtrlBase.ctrlCanvas.overrideSorting = true;
             mCtrlBase.ctrlCanvas.sortingLayerID = (int) mCtrlBase.sceenPriority;
             mCtrlBase.ctrlCanvas.sortingOrder = openOrder;
-            mCtrlBase.ctrlCanvas.worldCamera = uiCamera;
 
             // 调用加载成功方法
             OnLoadSuccess();

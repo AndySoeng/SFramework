@@ -42,7 +42,6 @@ MonoBehaviour:
   m_overridePlayerVersion: 
   m_GroupAssets:
   - {fileID: 11400000, guid: f62897920dfb95942a7576bd65c60cba, type: 2}
-  - {fileID: 11400000, guid: e40824cd7b8edb049b5f0bd659438602, type: 2}
   - {fileID: 11400000, guid: aeb5b5f12ef4e1e499855e49879e4b64, type: 2}
   - {fileID: 11400000, guid: a44e904e7944f9c48bdefa8247237d2a, type: 2}
   - {fileID: 11400000, guid: 0984ea81537d08446b41431e8fbcd165, type: 2}
@@ -116,7 +115,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cfbe8521abc124443984fb4d09aad4d4, type: 2}
   - {fileID: 11400000, guid: 92450a194c0dc5145a951af20c9ae5b3, type: 2}
   - {fileID: 11400000, guid: 19d5986e859d60d4fb818b4110d2d3c0, type: 2}
-  m_ActiveProfileId: d4a84cfe6e6ab8f489d6568fb488bd00
+  m_ActiveProfileId: 44eac2972bb4d674698b06297e3e8b49
   m_HostingServicesManager:
     m_HostingServiceInfos:
     - classRef: UnityEditor.AddressableAssets.HostingServices.HttpHostingService,
@@ -133,7 +132,7 @@ MonoBehaviour:
           m_Key: HostingServiceUploadSpeed
         - m_AssemblyName: mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
           m_ClassName: System.String
-          m_Data: ServerData/StandaloneWindows64
+          m_Data: Library/com.unity.addressables/aa/WebGL/WebGL/Remote
           m_Key: ContentRoot
         - m_AssemblyName: mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
           m_ClassName: System.Boolean
