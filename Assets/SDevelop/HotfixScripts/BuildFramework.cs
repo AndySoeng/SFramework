@@ -1,4 +1,5 @@
 using System;
+using Cysharp.Threading.Tasks;
 
 namespace SFramework
 {
@@ -11,21 +12,19 @@ namespace SFramework
     {
         private async void Awake()
         {
-            
             //await SDebugger.Init();
-            
+
             await SAudioManager.Init();
             await SUIManager.Init();
 
             WebglExpData.firstEnterTime = DateTime.Now;
-            LoadScenePanelScreen.LoadSingleScene(LoadSceneName.Scene_Main, () =>
-            {
-                ModalWindowPanelScreen.OpenModalWindowNoTabs("提示", "场景加载完成", true, () =>
-                {
-                }, false);
-               
-            });
-            
+            await LoadScenePanelScreen.LoadSingleScene(LoadSceneName.Scene_Main,
+                OnMainSceneComplete);
+        }
+
+        private async void OnMainSceneComplete()
+        {
+            await ModalWindowPanelScreen.OpenModalWindowNoTabs("提示", "场景加载完成", true, () => { }, false);
         }
     }
 }

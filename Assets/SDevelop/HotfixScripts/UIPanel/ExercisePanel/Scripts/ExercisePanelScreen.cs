@@ -1,4 +1,5 @@
-﻿using DG.Tweening;
+﻿using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using Ex;
 using Michsky.UI.ModernUIPack;
 using TMPro;
@@ -46,10 +47,10 @@ namespace SFramework.UI
             mCtrl.panel.DOFade(1, 0.5f);
         }
 
-        public static void ShowExercise(string exerciseName, Action<string, int,int> commitCallBack, bool cacheResult = true, bool canRefresh = true, bool canClose = true,
+        public static async UniTask<ExercisePanelScreen > ShowExercise(string exerciseName, Action<string, int,int> commitCallBack, bool cacheResult = true, bool canRefresh = true, bool canClose = true,
             bool strictMode = false,Action closeCallBack=null,bool showIndex=true,string panelTitle = "",string commitBtnTxt="")
         {
-             SUIManager.Ins.OpenUI<ExercisePanelScreen>(new ExercisePanelScreenParam()
+            UIScreenBase sb=  await SUIManager.Ins.OpenUI<ExercisePanelScreen>(new ExercisePanelScreenParam()
             {
                 exerciseName = exerciseName,
                 commitCallBack = commitCallBack,
@@ -62,6 +63,7 @@ namespace SFramework.UI
                 panelTitle = panelTitle,
                 commitBtnTxt = commitBtnTxt,
             });
+            return sb as ExercisePanelScreen;
         }
 
         #region 实验习题

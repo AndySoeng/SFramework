@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using Cysharp.Threading.Tasks;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceProviders;
@@ -37,7 +38,7 @@ namespace SFramework.UI
 
         private IEnumerator AsyncLoadScene()
         {
-           AsyncOperationHandle<SceneInstance> handle_LoadScene= Addressables.LoadSceneAsync(mParam.mLoadSceneName.ToString(), mParam.mode);
+            AsyncOperationHandle<SceneInstance> handle_LoadScene = Addressables.LoadSceneAsync(mParam.mLoadSceneName.ToString(), mParam.mode);
             //AsyncOperation ao = SceneManager.LoadSceneAsync(mParam.mLoadSceneName.ToString(), mParam.mode);
             while (handle_LoadScene.IsDone != true)
             {
@@ -59,7 +60,6 @@ namespace SFramework.UI
             mParam.OnComplete?.Invoke();
             SUIManager.Ins.CloseUI<LoadScenePanelScreen>();
         }
-        
 
 
         /// <summary>
@@ -67,14 +67,14 @@ namespace SFramework.UI
         /// </summary>
         /// <param name="nextSceneName"></param>
         /// <param name="mode"></param>
-        public static void LoadSingleScene(LoadSceneName nextSceneName, UnityAction OnComplete = null)
+        public static async UniTask<LoadScenePanelScreen> LoadSingleScene(LoadSceneName nextSceneName, UnityAction OnComplete = null)
         {
-            
-            SUIManager.Ins.OpenUI<LoadScenePanelScreen>(new LoadScenePanelScreenParam()
+            UIScreenBase sb = await SUIManager.Ins.OpenUI<LoadScenePanelScreen>(new LoadScenePanelScreenParam()
             {
                 mLoadSceneName = nextSceneName, mode = LoadSceneMode.Single,
-                OnComplete=OnComplete,
+                OnComplete = OnComplete,
             });
+            return sb as LoadScenePanelScreen;
         }
     }
 }

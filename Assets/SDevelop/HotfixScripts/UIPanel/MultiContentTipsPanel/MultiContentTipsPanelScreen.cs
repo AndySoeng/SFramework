@@ -1,4 +1,5 @@
 ﻿using System;
+using Cysharp.Threading.Tasks;
 using Ex;
 using TMPro;
 
@@ -163,55 +164,60 @@ namespace SFramework.UI
             }
         }
 
-        public static void ShowSpriteContent(Sprite content,Action closeCallBack=null)
+        public static async UniTask<MultiContentTipsPanelScreen> ShowSpriteContent(Sprite content,Action closeCallBack=null)
         {
-             SUIManager.Ins.OpenUI<MultiContentTipsPanelScreen>(new MultiContentTipsPanelScreenParam()
+            UIScreenBase sb= await  SUIManager.Ins.OpenUI<MultiContentTipsPanelScreen>(new MultiContentTipsPanelScreenParam()
             {
                 tipType = MultiContentTipsType.SpriteContent,
                 spriteContent = content,
                 closeCallBack = closeCallBack,
             });
+            return sb as MultiContentTipsPanelScreen ;
         }
 
-        public static void ShowTxtContent(string content,Action closeCallBack=null)
+        public static  async UniTask<MultiContentTipsPanelScreen> ShowTxtContent(string content,Action closeCallBack=null)
         {
-             SUIManager.Ins.OpenUI<MultiContentTipsPanelScreen>(new MultiContentTipsPanelScreenParam()
+            UIScreenBase sb= await SUIManager.Ins.OpenUI<MultiContentTipsPanelScreen>(new MultiContentTipsPanelScreenParam()
             {
                 tipType = MultiContentTipsType.TxtContent,
                 txtContent = content,
                 closeCallBack = closeCallBack,
             });
+             return sb as MultiContentTipsPanelScreen ;
         }
 
-        public static void ShowVideoContent(string videoName,Action closeCallBack=null)
+        public static  async UniTask<MultiContentTipsPanelScreen> ShowVideoContent(string videoName,Action closeCallBack=null)
         {
-             SUIManager.Ins.OpenUI<MultiContentTipsPanelScreen>(new MultiContentTipsPanelScreenParam()
+            UIScreenBase sb= await   SUIManager.Ins.OpenUI<MultiContentTipsPanelScreen>(new MultiContentTipsPanelScreenParam()
             {
                 tipType = MultiContentTipsType.VideoContent,
                 txtVideoName = videoName,
                 closeCallBack = closeCallBack,
             });
+             return sb as MultiContentTipsPanelScreen ;
         }
 
-        public static void ShowSpriteListViewContent(Sprite content,Action closeCallBack=null)
+        public static  async UniTask<MultiContentTipsPanelScreen> ShowSpriteListViewContent(Sprite content,Action closeCallBack=null)
         {
-             SUIManager.Ins.OpenUI<MultiContentTipsPanelScreen>(new MultiContentTipsPanelScreenParam()
+            UIScreenBase sb= await SUIManager.Ins.OpenUI<MultiContentTipsPanelScreen>(new MultiContentTipsPanelScreenParam()
             {
                 tipType = MultiContentTipsType.SpriteListView,
                 spriteListViewContent = content,
                 closeCallBack = closeCallBack,
             });
+             return sb as MultiContentTipsPanelScreen ;
         }
 
-        public static void ShowPageWindowContent(List<PageContent> content,string closeBtnName="",Action closeCallBack=null)
+        public static  async UniTask<MultiContentTipsPanelScreen> ShowPageWindowContent(List<PageContent> content,string closeBtnName="",Action closeCallBack=null)
         {
-             SUIManager.Ins.OpenUI<MultiContentTipsPanelScreen>(new MultiContentTipsPanelScreenParam()
+            UIScreenBase sb= await SUIManager.Ins.OpenUI<MultiContentTipsPanelScreen>(new MultiContentTipsPanelScreenParam()
             {
                 tipType = MultiContentTipsType.PageWindow,
                 pageContents = content,
                 pageContentsCloseBtnName = closeBtnName,
                 closeCallBack = closeCallBack,
             });
+             return sb as MultiContentTipsPanelScreen ;
         }
         
         public void InitPageWindow(List<PageContent> content)
@@ -281,20 +287,21 @@ namespace SFramework.UI
             }
         }
         
-        public static void ShowFullScreenSpriteContent(Sprite content,string closeBtnName,Action closeCallBack=null)
+        public static  async UniTask<MultiContentTipsPanelScreen>  ShowFullScreenSpriteContent(Sprite content,string closeBtnName,Action closeCallBack=null)
         {
-             SUIManager.Ins.OpenUI<MultiContentTipsPanelScreen>(new MultiContentTipsPanelScreenParam()
+            UIScreenBase sb= await SUIManager.Ins.OpenUI<MultiContentTipsPanelScreen>(new MultiContentTipsPanelScreenParam()
             {
                 tipType = MultiContentTipsType.FullScreenSpriteContent,
                 fullScreenSpriteContent = content,
                 str_FullScreenSpriteContentCloseButtonName = closeBtnName,
                 closeCallBack = closeCallBack,
             });
+            return sb as MultiContentTipsPanelScreen ;
         }
         
-        public static void ShowFullScreenSpriteContent(Sprite content,string openurl,string closeBtnName,Action closeCallBack=null)
+        public static  async UniTask<MultiContentTipsPanelScreen>  ShowFullScreenSpriteContent(Sprite content,string openurl,string closeBtnName,Action closeCallBack=null)
         {
-             SUIManager.Ins.OpenUI<MultiContentTipsPanelScreen>(new MultiContentTipsPanelScreenParam()
+            UIScreenBase sb= await SUIManager.Ins.OpenUI<MultiContentTipsPanelScreen>(new MultiContentTipsPanelScreenParam()
             {
                 tipType = MultiContentTipsType.FullScreenSpriteContent,
                 fullScreenSpriteContent = content,
@@ -302,12 +309,13 @@ namespace SFramework.UI
                 str_OpenUrl = openurl,
                 closeCallBack = closeCallBack,
             });
+            return sb as MultiContentTipsPanelScreen ;
         }
 
         
-        public static void ShowStringTableList(string titleName,List<List<string >> datas,string closeBtnName=null,Action closeCallBack=null)
+        public static  async UniTask<MultiContentTipsPanelScreen>  ShowStringTableList(string titleName,List<List<string >> datas,string closeBtnName=null,Action closeCallBack=null)
         {
-             SUIManager.Ins.OpenUI<MultiContentTipsPanelScreen>(new MultiContentTipsPanelScreenParam()
+            UIScreenBase sb= await  SUIManager.Ins.OpenUI<MultiContentTipsPanelScreen>(new MultiContentTipsPanelScreenParam()
             {
                 tipType = MultiContentTipsType.StringTableList,
                 stringTableListTitleName = titleName,
@@ -315,6 +323,7 @@ namespace SFramework.UI
                 stringTableListCloseBtnName = closeBtnName,
                 closeCallBack = closeCallBack,
             });
+            return sb as MultiContentTipsPanelScreen ;
         }
 
         private void InitStringTableList()

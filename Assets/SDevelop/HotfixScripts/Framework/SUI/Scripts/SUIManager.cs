@@ -1,5 +1,4 @@
-﻿
-using System.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
@@ -49,10 +48,10 @@ namespace SFramework
         }
 
 
-        protected override async Task OnInit()
+        protected override async UniTask OnInit()
         {
             // 初始化UI根节点
-            uiRoot= await Addressables.InstantiateAsync("UIRoot.prefab", transform).Task;
+            uiRoot = await Addressables.InstantiateAsync("UIRoot.prefab", transform);
 
             uiRoot.transform.position = Vector3.zero;
 
@@ -65,7 +64,7 @@ namespace SFramework
         /// <summary>
         ///  UI打开入口没有判断条件直接打开
         /// </summary>
-        private void OpenUI(Type type, UIOpenScreenParameterBase param = null, Action<UIScreenBase> onOpen = null)
+        private async UniTask<UIScreenBase> OpenUI(Type type, UIOpenScreenParameterBase param = null)
         {
             UIScreenBase sb = GetUI(type);
             mUIOpenOrder++;
@@ -73,7 +72,7 @@ namespace SFramework
             // 如果已有界面,则不执行任何操作
             if (sb != null)
             {
-                onOpen?.Invoke(sb);
+                return sb;
             }
 
             //sb = (ScreenBase) Activator.CreateInstance(type, param);
@@ -81,23 +80,22 @@ namespace SFramework
 
             sb = (UIScreenBase)Activator.CreateInstance(type);
 
-            string prefabName = "UI"+type.Name.Substring(0, type.Name.Length - "Screen".Length);
-            Addressables.InstantiateAsync(prefabName, transform).Completed += (obj) =>
-            {
-                sb.PanelLoadComplete(transform, uiCamera, param, obj.Result, mUIOpenOrder);
-                m_TypeScreens.Add(type, sb);
-                m_CtrlHandle.Add(type,obj);
-                onOpen?.Invoke(sb);
-            };
+            string prefabName = "UI" + type.Name.Substring(0, type.Name.Length - "Screen".Length);
+
+            GameObject obj = await Addressables.InstantiateAsync(prefabName, transform);
+
+            sb.PanelLoadComplete(transform, uiCamera, param, obj, mUIOpenOrder);
+            m_TypeScreens.Add(type, sb);
+            return sb;
         }
 
         /// <summary>
         ///  UI打开入口没有判断条件直接打开
         /// </summary>
-        public void OpenUI<TScreen>(UIOpenScreenParameterBase param = null, Action<UIScreenBase> onOpen = null) where TScreen : UIScreenBase
+        public async UniTask<UIScreenBase> OpenUI<TScreen>(UIOpenScreenParameterBase param = null) where TScreen : UIScreenBase
         {
             Type type = typeof(TScreen);
-            OpenUI(type, param, sb => { onOpen?.Invoke((TScreen)sb); });
+            return await OpenUI(type, param);
         }
 
         /// <summary>
@@ -174,14 +172,10 @@ namespace SFramework
         {
             Type type = sBase.GetType();
             if (m_TypeScreens.ContainsKey(type)) // 根据具体需求决定到底是直接销毁还是缓存
-                m_TypeScreens.Remove(type);
-            
-            if (m_CtrlHandle.ContainsKey(type))
             {
-                Addressables.ReleaseInstance(m_CtrlHandle[type]);
-                m_CtrlHandle.Remove(type);
+                Addressables.ReleaseInstance(m_TypeScreens[type].mPanelRoot);
+                m_TypeScreens.Remove(type);
             }
-            
         }
     }
 }

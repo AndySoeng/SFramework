@@ -33,6 +33,10 @@ MonoBehaviour:
     m_Address: Hotfix.Develop.dll.bytes
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 34d0d02bad345a5429c0019b225b5d55
+    m_Address: UniTask.dll.bytes
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: f764d9e74e1e5504c9a86fa4549fc1a1, type: 2}
   m_SchemaSet:

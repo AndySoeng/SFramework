@@ -1,4 +1,6 @@
-﻿namespace SFramework.UI
+﻿using Cysharp.Threading.Tasks;
+
+namespace SFramework.UI
 {
     using SFramework;
     using Michsky.UI.ModernUIPack;
@@ -27,77 +29,78 @@
         /// <param name="confirm"></param>
         /// <param name="cancel"></param>
         /// <param name="style"></param>
-        public static void OpenModalWindowNoTabs(string title, string description, bool showConfirmButton = true, UnityAction confirm = null, bool showCancelButton = true,
+        public static async UniTask<ModalWindowPanelScreen> OpenModalWindowNoTabs(string title, string description, bool showConfirmButton = true, UnityAction confirm = null,
+            bool showCancelButton = true,
             UnityAction cancel = null,
             ModalWindowStyle style = ModalWindowStyle.Style2,
             bool needCountdown = false,
             int countdownLength = 3)
         {
-            SUIManager.Ins.OpenUI<ModalWindowPanelScreen>(null, screen =>
+            UIScreenBase sb = await SUIManager.Ins.OpenUI<ModalWindowPanelScreen>();
+
+            ModalWindowPanelScreen modalWindowPanelScreen = sb as ModalWindowPanelScreen;
+
+            ModalWindowManager modalWindowManager = modalWindowPanelScreen.mCtrl.ModalWindowManagerDic[style + "" + ModalWindowType.Standard];
+            //参数设置
+            modalWindowManager.titleText = title;
+            modalWindowManager.descriptionText = description;
+            modalWindowManager.UpdateUI();
+            modalWindowManager.onConfirm.RemoveAllListeners();
+            modalWindowManager.onCancel.RemoveAllListeners();
+
+
+            modalWindowManager.confirmButton.gameObject.SetActive(false);
+            if (showConfirmButton)
             {
-                ModalWindowPanelScreen modalWindowPanelScreen = screen as ModalWindowPanelScreen;
-
-                ModalWindowManager modalWindowManager = modalWindowPanelScreen.mCtrl.ModalWindowManagerDic[style + "" + ModalWindowType.Standard];
-                //参数设置
-                modalWindowManager.titleText = title;
-                modalWindowManager.descriptionText = description;
-                modalWindowManager.UpdateUI();
-                modalWindowManager.onConfirm.RemoveAllListeners();
-                modalWindowManager.onCancel.RemoveAllListeners();
-
-
-                modalWindowManager.confirmButton.gameObject.SetActive(false);
-                if (showConfirmButton)
+                if (needCountdown)
                 {
-                    if (needCountdown)
-                    {
-                        modalWindowPanelScreen.mCtrl.StartCoroutine(modalWindowPanelScreen.mCtrl.CountdownActive(modalWindowManager.confirmButton.gameObject, countdownLength));
-                    }
-                    else
-                    {
-                        modalWindowManager.confirmButton.gameObject.SetActive(true);
-                    }
+                    modalWindowPanelScreen.mCtrl.StartCoroutine(modalWindowPanelScreen.mCtrl.CountdownActive(modalWindowManager.confirmButton.gameObject, countdownLength));
                 }
-
-
-                if (confirm != null)
-                    modalWindowManager.onConfirm.AddListener(confirm);
-
-
-                modalWindowManager.cancelButton.gameObject.SetActive(false);
-                if (showCancelButton)
+                else
                 {
-                    if (needCountdown)
-                    {
-                        modalWindowPanelScreen.mCtrl.StartCoroutine(modalWindowPanelScreen.mCtrl.CountdownActive(modalWindowManager.cancelButton.gameObject, countdownLength));
-                    }
-                    else
-                    {
-                        modalWindowManager.cancelButton.gameObject.SetActive(true);
-                    }
+                    modalWindowManager.confirmButton.gameObject.SetActive(true);
                 }
+            }
 
-                if (cancel != null)
-                    modalWindowManager.onCancel.AddListener(cancel);
-                //-------
-                modalWindowManager.OpenWindow();
-            });
+
+            if (confirm != null)
+                modalWindowManager.onConfirm.AddListener(confirm);
+
+
+            modalWindowManager.cancelButton.gameObject.SetActive(false);
+            if (showCancelButton)
+            {
+                if (needCountdown)
+                {
+                    modalWindowPanelScreen.mCtrl.StartCoroutine(modalWindowPanelScreen.mCtrl.CountdownActive(modalWindowManager.cancelButton.gameObject, countdownLength));
+                }
+                else
+                {
+                    modalWindowManager.cancelButton.gameObject.SetActive(true);
+                }
+            }
+
+            if (cancel != null)
+                modalWindowManager.onCancel.AddListener(cancel);
+            //-------
+            modalWindowManager.OpenWindow();
+
+            return modalWindowPanelScreen;
         }
 
         /// <summary>
         /// 未完善
         /// </summary>
         /// <param name="style"></param>
-        private static void OpenModalWindowWithTabs(ModalWindowStyle style = ModalWindowStyle.Style2)
+        private static async UniTask<ModalWindowPanelScreen> OpenModalWindowWithTabs(ModalWindowStyle style = ModalWindowStyle.Style2)
         {
-            SUIManager.Ins.OpenUI<ModalWindowPanelScreen>(null, screen =>
-            {
-                ModalWindowPanelScreen modalWindowPanelScreen = screen as ModalWindowPanelScreen;
-                ModalWindowManager modalWindowManager = modalWindowPanelScreen.mCtrl.ModalWindowManagerDic[style + "" + ModalWindowType.WithTabs];
-                //参数设置
-                //-------
-                modalWindowManager.OpenWindow();
-            });
+            UIScreenBase sb = await SUIManager.Ins.OpenUI<ModalWindowPanelScreen>();
+            ModalWindowPanelScreen modalWindowPanelScreen = sb as ModalWindowPanelScreen;
+            ModalWindowManager modalWindowManager = modalWindowPanelScreen.mCtrl.ModalWindowManagerDic[style + "" + ModalWindowType.WithTabs];
+            //参数设置
+            //-------
+            modalWindowManager.OpenWindow();
+            return modalWindowPanelScreen;
         }
     }
 

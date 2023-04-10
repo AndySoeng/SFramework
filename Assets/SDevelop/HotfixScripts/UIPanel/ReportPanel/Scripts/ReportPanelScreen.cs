@@ -1,4 +1,5 @@
-﻿using Ex;
+﻿using Cysharp.Threading.Tasks;
+using Ex;
 using LitJson;
 
 namespace SFramework.UI
@@ -121,7 +122,7 @@ namespace SFramework.UI
         }
 
 
-        public static void ReportCommitting(MonoBehaviour monoBehaviour)
+        public static async UniTask ReportCommitting(MonoBehaviour monoBehaviour)
         {
 #if UNITY_EDITOR
             string[] userInfos = new string[]
@@ -171,11 +172,11 @@ namespace SFramework.UI
 
             if (finshedAll == false) //判断是否已经完成所有实验
             {
-                NotificationsPanelScreen.ShowNotifications("提示", "当前未完成所有实验,请完成后进行提交。");
+               await  NotificationsPanelScreen.ShowNotifications("提示", "当前未完成所有实验,请完成后进行提交。");
             }
             else if (string.IsNullOrEmpty(userInfos[3]) || string.IsNullOrEmpty(userInfos[1]))
             {
-                NotificationsPanelScreen.ShowNotifications("提示", "未获取到成绩接口或token，请联系管理员。");
+                await   NotificationsPanelScreen.ShowNotifications("提示", "未获取到成绩接口或token，请联系管理员。");
             }
             else
             {
@@ -213,20 +214,20 @@ namespace SFramework.UI
 
 
                 //可以提交后打开遮挡
-                SUIManager.Ins.OpenUI<HttpRequestPanelScreen>(new HttpRequestPanelScreenParam()
+                await   SUIManager.Ins.OpenUI<HttpRequestPanelScreen>(new HttpRequestPanelScreenParam()
                     { content = "提交实验报告提交中……" });
 
                 monoBehaviour.StartCoroutine(WebGLExpInterface.ExpInterfaceBase.WebRequest(WebGLExpInterface.UnityWebRequestType.POST, userInfos[3],
                     JsonMapper.ToJson(scoreList), false, false,
-                    () =>
+                     async () =>
                     {
                         SUIManager.Ins.CloseUI<HttpRequestPanelScreen>();
-                        ModalWindowPanelScreen.OpenModalWindowNoTabs("提示", "实验报告提提交失败，请重新提交。", true, null, false);
-                    }, (str) =>
+                        await   ModalWindowPanelScreen.OpenModalWindowNoTabs("提示", "实验报告提提交失败，请重新提交。", true, null, false);
+                    }, async (str) =>
                     {
                         //提交成功的回调
                         SUIManager.Ins.CloseUI<HttpRequestPanelScreen>();
-                        SUIManager.Ins.OpenUI<EndPanelScreen>(new EndPanelScreenParam()
+                        await  SUIManager.Ins.OpenUI<EndPanelScreen>(new EndPanelScreenParam()
                             { content = "实验报告已提交，实验结束。", isTransparent = false });
                     }, new[] { "Authorization" }, new[] { "Bearer " + userInfos[1] }));
             }

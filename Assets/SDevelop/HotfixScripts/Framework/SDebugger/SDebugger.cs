@@ -1,4 +1,4 @@
-﻿using System.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
 
 namespace SFramework
 {
@@ -48,7 +48,7 @@ namespace SFramework
         private int _frameNumber;
         private float _lastShowFPSTime;
 
-        protected override async Task OnInit()
+        protected override async UniTask OnInit()
         {
             await base.OnInit();
             Application.logMessageReceived += LogHandler;

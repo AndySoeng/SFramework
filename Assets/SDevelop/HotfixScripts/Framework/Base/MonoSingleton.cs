@@ -1,7 +1,8 @@
-﻿namespace SFramework
+﻿using Cysharp.Threading.Tasks;
+
+namespace SFramework
 {
     using System;
-    using System.Threading.Tasks;
     using UnityEngine;
 
     public class MonoSingleton<T> : MonoBehaviour where T : Component
@@ -22,7 +23,7 @@
             }
         }
         
-        public static async   Task<T> Init()
+        public static async   UniTask<T> Init()
         {
             if (_instance == null)
             {
@@ -63,9 +64,9 @@
             return _instance;
         }
 
-        protected virtual async Task OnInit()
+        protected virtual async UniTask OnInit()
         {
-            await Task.Yield();
+            await UniTask.Yield();
         }
 
 
