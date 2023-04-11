@@ -69,8 +69,9 @@ namespace SFramework.UI
         MultiContentTipsPanelCtrl mCtrl;
         public  MultiContentTipsPanelScreenParam mParam;
 
-        protected override void OnLoadSuccess()
+        protected override async UniTask OnLoadSuccess()
         {
+            await base.OnLoadSuccess();
             mCtrl = mCtrlBase as MultiContentTipsPanelCtrl;
             mParam = mOpenParam as MultiContentTipsPanelScreenParam;
 

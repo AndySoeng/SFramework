@@ -20,6 +20,12 @@
       "dependencies": {},
       "hash": "75cb53cb19f11782fbbf02447900578ad9563567"
     },
+    "com.sharelib.google.protobuf": {
+      "version": "file:Google.Protobuf",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
     "com.sharelib.litjson": {
       "version": "file:LitJson",
       "depth": 0,

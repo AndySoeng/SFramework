@@ -1,5 +1,7 @@
 ﻿
 
+using Cysharp.Threading.Tasks;
+
 namespace SFramework.UI
 {
     using SFramework;
@@ -13,8 +15,9 @@ namespace SFramework.UI
     {
         WelcomePanelCtrl mCtrl;
         WelcomePanelScreenParam mParam;
-        protected override void OnLoadSuccess()
+        protected override async UniTask OnLoadSuccess()
         {
+            await base.OnLoadSuccess();
             mCtrl = mCtrlBase as WelcomePanelCtrl;
             mParam = mOpenParam as WelcomePanelScreenParam;
             mCtrl.MainBtn.onClick.AddListener(OpenMainPanel);

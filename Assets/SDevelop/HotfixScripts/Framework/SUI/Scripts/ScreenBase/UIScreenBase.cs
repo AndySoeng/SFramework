@@ -1,5 +1,7 @@
 ﻿
 
+using Cysharp.Threading.Tasks;
+
 namespace SFramework
 {
     using UnityEngine;
@@ -17,7 +19,7 @@ namespace SFramework
             get => mCtrlBase;
         }
 
-        public void PanelLoadComplete(Transform uiRoot,Camera uiCamera   ,UIOpenScreenParameterBase param ,GameObject ctrl,int openOrder)
+        public async UniTask PanelLoaded(Transform uiRoot,Camera uiCamera   ,UIOpenScreenParameterBase param ,GameObject ctrl,int openOrder)
         {
             mOpenParam = param;
             mPanelRoot = ctrl;
@@ -34,16 +36,15 @@ namespace SFramework
             mCtrlBase.ctrlCanvas.sortingOrder = openOrder;
 
             // 调用加载成功方法
-            OnLoadSuccess();
+            await OnLoadSuccess();
         }
         
 
         // 脚本处理完成
-        protected virtual  void OnLoadSuccess()
+        protected virtual  async UniTask OnLoadSuccess()
         {
-            
+            await UniTask.Yield();
         }
-        
         public virtual void OnClose()
         {
             SUIManager.Ins.RemoveUI(this);

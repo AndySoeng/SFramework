@@ -16,8 +16,9 @@ namespace SFramework.UI
         NotificationsPanelCtrl mCtrl;
         NotificationsPanelScreenParam mParam;
 
-        protected override void OnLoadSuccess()
+        protected override async UniTask OnLoadSuccess()
         {
+            await base.OnLoadSuccess();
             mCtrl = mCtrlBase as NotificationsPanelCtrl;
             mParam = mOpenParam as NotificationsPanelScreenParam;
         }

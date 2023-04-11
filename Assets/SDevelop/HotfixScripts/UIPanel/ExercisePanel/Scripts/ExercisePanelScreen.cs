@@ -15,14 +15,16 @@ namespace SFramework.UI
     public class ExercisePanelScreenParam : UIOpenScreenParameterBase
     {
         public string exerciseName;
-        public Action<string,int, int> commitCallBack;
+        public Action<string, int, int> commitCallBack;
         public bool cacheResult = true;
         public bool canRefresh = true;
         public bool canClose = true;
+
         /// <summary>
         /// 严格模式下，必须全部答对所有答案，才会提交
         /// </summary>
-        public bool strictMode = false; 
+        public bool strictMode = false;
+
         public Action closeCallBack;
         public bool showIndex = true;
         public string panelTitle = "";
@@ -33,12 +35,12 @@ namespace SFramework.UI
     {
         ExercisePanelCtrl mCtrl;
         ExercisePanelScreenParam mParam;
-        
+
         private LabQuestData currentLabQuestData = null;
 
-        protected override void OnLoadSuccess()
+        protected override async UniTask OnLoadSuccess()
         {
-            base.OnLoadSuccess();
+            await base.OnLoadSuccess();
             mCtrl = mCtrlBase as ExercisePanelCtrl;
             mParam = mOpenParam as ExercisePanelScreenParam;
             currentLabQuestData = Resources.Load<LabQuestData>("Configs/Exercise/" + mParam.exerciseName);
@@ -47,18 +49,19 @@ namespace SFramework.UI
             mCtrl.panel.DOFade(1, 0.5f);
         }
 
-        public static async UniTask<ExercisePanelScreen > ShowExercise(string exerciseName, Action<string, int,int> commitCallBack, bool cacheResult = true, bool canRefresh = true, bool canClose = true,
-            bool strictMode = false,Action closeCallBack=null,bool showIndex=true,string panelTitle = "",string commitBtnTxt="")
+        public static async UniTask<ExercisePanelScreen> ShowExercise(string exerciseName, Action<string, int, int> commitCallBack, bool cacheResult = true, bool canRefresh = true,
+            bool canClose = true,
+            bool strictMode = false, Action closeCallBack = null, bool showIndex = true, string panelTitle = "", string commitBtnTxt = "")
         {
-            UIScreenBase sb=  await SUIManager.Ins.OpenUI<ExercisePanelScreen>(new ExercisePanelScreenParam()
+            UIScreenBase sb = await SUIManager.Ins.OpenUI<ExercisePanelScreen>(new ExercisePanelScreenParam()
             {
                 exerciseName = exerciseName,
                 commitCallBack = commitCallBack,
                 cacheResult = cacheResult,
                 canRefresh = canRefresh,
                 canClose = canClose,
-                strictMode=strictMode,
-                closeCallBack=closeCallBack,
+                strictMode = strictMode,
+                closeCallBack = closeCallBack,
                 showIndex = showIndex,
                 panelTitle = panelTitle,
                 commitBtnTxt = commitBtnTxt,
@@ -78,6 +81,7 @@ namespace SFramework.UI
                 mCtrl.go_Title.SetActive(true);
                 mCtrl.go_Title.GetComponent<TMP_Text>().text = mParam.panelTitle;
             }
+
             if (mParam.cacheResult && !LabQuestIsCommit.ContainsKey(mParam.exerciseName))
                 LabQuestIsCommit.Add(mParam.exerciseName, false);
             if (mParam.cacheResult && !UserChoice.ContainsKey(mParam.exerciseName))
@@ -85,12 +89,12 @@ namespace SFramework.UI
             InitLabQuest();
             InitLabQuestCommit();
             mCtrl.btn_LabQuestRefresh.gameObject.SetActive(mParam.canRefresh);
-            mCtrl.btn_LabQuestRefresh.onClick.AddListener(LabQuestRefresh);
+            mCtrl.btn_LabQuestRefresh.onClick.AddListener(async () => { await LabQuestRefresh(); });
             mCtrl.btn_LabQuestClose.gameObject.SetActive(mParam.canClose);
-            mCtrl.btn_LabQuestClose.onClick.AddListener(CloseExersise);
+            mCtrl.btn_LabQuestClose.onClick.AddListener(async () => { await CloseExersise(); });
         }
 
-        private void CloseExersise()
+        private async UniTask CloseExersise()
         {
             if (!mParam.cacheResult || LabQuestIsCommit[mParam.exerciseName])
             {
@@ -98,7 +102,7 @@ namespace SFramework.UI
                 mParam.closeCallBack?.Invoke();
             }
             else
-                ModalWindowPanelScreen.OpenModalWindowNoTabs("系统提示", "未提交前退出不会保存已选择结果哦~", true, () => { SUIManager.Ins.CloseUI<ExercisePanelScreen>(); });
+                await ModalWindowPanelScreen.OpenModalWindowNoTabs("系统提示", "未提交前退出不会保存已选择结果哦~", true, () => { SUIManager.Ins.CloseUI<ExercisePanelScreen>(); });
         }
 
         public List<LabQuestDataItem> labQuestDataItems = new List<LabQuestDataItem>();
@@ -117,7 +121,7 @@ namespace SFramework.UI
             for (int i = 0; i < quests.Count; i++)
             {
                 labQuestDataItems.Add(spawnPool.Spawn(labQuestItem, mCtrl.trans_LabQuestParent).ExUIResetZ()
-                    .GetComponent<LabQuestDataItem>().Init(quests[i], i + 1,mParam.showIndex));
+                    .GetComponent<LabQuestDataItem>().Init(quests[i], i + 1, mParam.showIndex));
             }
         }
 
@@ -131,6 +135,7 @@ namespace SFramework.UI
                 mCtrl.btn_LabQuestCommit.GetComponent<ButtonManager>().buttonText = mParam.commitBtnTxt;
                 mCtrl.btn_LabQuestCommit.GetComponent<ButtonManager>().UpdateUI();
             }
+
             if (LabQuestIsCommit.ContainsKey(mParam.exerciseName) && LabQuestIsCommit[mParam.exerciseName])
             {
                 ReloadLabQuestChoice();
@@ -138,7 +143,7 @@ namespace SFramework.UI
             }
             else
             {
-                mCtrl.btn_LabQuestCommit.onClick.AddListener(VerificationLabQuest);
+                mCtrl.btn_LabQuestCommit.onClick.AddListener(async () => { await VerificationLabQuest(); });
             }
         }
 
@@ -173,27 +178,26 @@ namespace SFramework.UI
         }
 
 
-        protected void VerificationLabQuest()
+        protected async UniTask VerificationLabQuest()
         {
             if (CheckUserIsChoice())
             {
-                ModalWindowPanelScreen.OpenModalWindowNoTabs("提示", "已作答完，是否确认？", true, CommitLabQuest,true);
+                await ModalWindowPanelScreen.OpenModalWindowNoTabs("提示", "已作答完，是否确认？", true, async () => { await CommitLabQuest(); }, true);
             }
-            else if (!CheckUserIsChoice()&&mParam.strictMode)
+            else if (!CheckUserIsChoice() && mParam.strictMode)
             {
-                ModalWindowPanelScreen.OpenModalWindowNoTabs("提示", "作答未完成，请先完成作答。", true,null ,false);
-
+                await ModalWindowPanelScreen.OpenModalWindowNoTabs("提示", "作答未完成，请先完成作答。", true, null, false);
             }
-            else if (!CheckUserIsChoice()&&!mParam.strictMode)
+            else if (!CheckUserIsChoice() && !mParam.strictMode)
             {
-                ModalWindowPanelScreen.OpenModalWindowNoTabs("提示", "作答未完成，是否确认？", true, CommitLabQuest,true);
+                await ModalWindowPanelScreen.OpenModalWindowNoTabs("提示", "作答未完成，是否确认？", true, async () => { await CommitLabQuest(); }, true);
             }
         }
 
         /// <summary>
         /// 提交实验习题
         /// </summary>
-        protected void CommitLabQuest()
+        protected async UniTask CommitLabQuest()
         {
             int rightNum = 0;
             List<List<ChoiceIndexStr>> userChoices = new List<List<ChoiceIndexStr>>();
@@ -212,7 +216,7 @@ namespace SFramework.UI
             {
                 if (rightNum != currentLabQuestData.questions.Count)
                 {
-                    NotificationsPanelScreen.ShowNotifications("提示", "当前习题需全答对才可提交,回答存在错误，请重新作答。");
+                    await NotificationsPanelScreen.ShowNotifications("提示", "当前习题需全答对才可提交,回答存在错误，请重新作答。");
                     return;
                 }
             }
@@ -231,7 +235,7 @@ namespace SFramework.UI
                 LabQuestIsCommit[mParam.exerciseName] = true;
             }
 
-            mParam.commitCallBack?.Invoke(mParam.exerciseName,currentLabQuestData.questions.Count, rightNum);
+            mParam.commitCallBack?.Invoke(mParam.exerciseName, currentLabQuestData.questions.Count, rightNum);
 
             //如果没有关闭按钮，提交后应打开关闭按钮
             if (!mParam.canClose)
@@ -241,14 +245,14 @@ namespace SFramework.UI
             }
         }
 
-        protected void LabQuestRefresh()
+        protected async UniTask LabQuestRefresh()
         {
             if (mParam.cacheResult)
-                ModalWindowPanelScreen.OpenModalWindowNoTabs("提示",
+                await ModalWindowPanelScreen.OpenModalWindowNoTabs("提示",
                     LabQuestIsCommit[mParam.exerciseName] ? "重置后当前所选项将被重置并且已得分将清零，继续重置么？" : "重置后当前所选项将被重置，继续重置么？", true,
                     ResetAllLabQuest);
             else
-                ModalWindowPanelScreen.OpenModalWindowNoTabs("提示",
+                await ModalWindowPanelScreen.OpenModalWindowNoTabs("提示",
                     "重置后当前所选项将被重置，继续重置么？", true,
                     ResetAllLabQuest);
         }

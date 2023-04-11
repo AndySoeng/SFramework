@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 
 namespace SFramework.UI
@@ -20,8 +21,9 @@ namespace SFramework.UI
         SchedulePanelCtrl mCtrl;
         SchedulePanelScreenParam mParam;
 
-        protected override void OnLoadSuccess()
+        protected override async UniTask OnLoadSuccess()
         {
+            await base.OnLoadSuccess();
             mCtrl = mCtrlBase as SchedulePanelCtrl;
             mParam = mOpenParam as SchedulePanelScreenParam;
 

@@ -2,7 +2,8 @@
     "name": "HybridCLR.Framework.Editor",
     "rootNamespace": "",
     "references": [
-        "HybridCLR.Editor"
+        "HybridCLR.Editor",
+        "SAAUpdateRes"
     ],
     "includePlatforms": [
         "Editor"

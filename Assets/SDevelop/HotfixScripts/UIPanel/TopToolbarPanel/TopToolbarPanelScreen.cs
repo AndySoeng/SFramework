@@ -1,4 +1,6 @@
-﻿namespace SFramework.UI
+﻿using Cysharp.Threading.Tasks;
+
+namespace SFramework.UI
 {
     using SFramework;
 
@@ -11,22 +13,13 @@
         TopToolbarPanelCtrl mCtrl;
         TopToolbarPanelScreenParam mParam;
 
-        protected override void  OnLoadSuccess()
+        protected override async UniTask OnLoadSuccess()
         {
+            await base.OnLoadSuccess();
             mCtrl = mCtrlBase as TopToolbarPanelCtrl;
             mParam = mOpenParam as TopToolbarPanelScreenParam;
 
-            mCtrl.btn_Back.onClick.AddListener(() =>
-            {
-                SUIManager.Ins.CloseAllUI();
-                LoadScenePanelScreen.LoadSingleScene(LoadSceneName.Scene_Main, () =>
-                {
-                    
-                });
-            });
-            
+            mCtrl.btn_Back.onClick.AddListener(() => { });
         }
-
-       
     }
 }

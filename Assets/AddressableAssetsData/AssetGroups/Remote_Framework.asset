@@ -37,6 +37,10 @@ MonoBehaviour:
     m_Address: AudioClick.mp3
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 4f1672cec912b134993557f9f9b5fd50
+    m_Address: SFrameworkConfig.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: f764d9e74e1e5504c9a86fa4549fc1a1, type: 2}
   m_SchemaSet:

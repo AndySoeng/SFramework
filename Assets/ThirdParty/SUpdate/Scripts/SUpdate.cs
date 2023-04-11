@@ -12,7 +12,8 @@ namespace SFramework
 {
     public class SUpdate : MonoBehaviour
     {
-        [FormerlySerializedAs("m_SUpdateResUI")] [SerializeField] private SUpdateUI mSUpdateUI;
+        [FormerlySerializedAs("m_SUpdateResUI")] [SerializeField]
+        private SUpdateUI mSUpdateUI;
 
         private AsyncOperationHandle<IResourceLocator> _initializeAsync;
         private AsyncOperationHandle<List<string>> _checkForCatalogUpdates;
@@ -168,16 +169,18 @@ namespace SFramework
         {
             ReleaseAllHandle();
         }
-        
-        
+
+
         private static IEnumerator LoadDll()
         {
-            yield return LoadMetadataForAOTAssemblies();
- #if !UNITY_EDITOR
-            var dll_Hotfix =  Addressables.LoadAssetAsync<TextAsset>("Hotfix.Develop.dll.bytes");
-            yield return dll_Hotfix;
-            System.Reflection.Assembly.Load(dll_Hotfix.Result.bytes);
+#if !UNITY_EDITOR
+            var updateConfig = Addressables.LoadAssetAsync<SUpdateConfig>("SFrameworkConfig.asset");
+            yield return updateConfig;
+            yield return LoadMetadataForAOTAssemblies(updateConfig.Result.aotAndHotFixAssembliesDstDir, updateConfig.Result.aotMetaAssemblyFiles);
+            yield return LoadHotfixAssemblies(updateConfig.Result.aotAndHotFixAssembliesDstDir, updateConfig.Result.hotfixAssemblyFiles);
             Debug.Log("Load Hotfix DLL End . ");
+#else
+            yield return null;
 #endif
         }
 
@@ -186,26 +189,31 @@ namespace SFramework
         /// 为aot assembly加载原始metadata， 这个代码放aot或者热更新都行。
         /// 一旦加载后，如果AOT泛型函数对应native实现不存在，则自动替换为解释模式执行
         /// </summary>
-        private static IEnumerator LoadMetadataForAOTAssemblies()
+        private static IEnumerator LoadMetadataForAOTAssemblies(string path, List<string> aotMetaAssemblyFiles)
         {
-            List<string> aotMetaAssemblyFiles = new List<string>()
-            {
-                "mscorlib.dll",
-                "System.dll",
-                "System.Core.dll",
-                "UniTask.dll",
-            };
             // 注意，补充元数据是给AOT dll补充元数据，而不是给热更新dll补充元数据。
             // 热更新dll不缺元数据，不需要补充，如果调用LoadMetadataForAOTAssembly会返回错误
             HomologousImageMode mode = HomologousImageMode.SuperSet;
             foreach (var aotDllName in aotMetaAssemblyFiles)
             {
-                var dll =  Addressables.LoadAssetAsync<TextAsset>(aotDllName + ".bytes");
+                var dll = Addressables.LoadAssetAsync<TextAsset>($"{path}/{aotDllName}.bytes");
                 yield return dll;
                 byte[] dllBytes = dll.Result.bytes;
                 // 加载assembly对应的dll，会自动为它hook。一旦aot泛型函数的native函数不存在，用解释器版本代码
                 LoadImageErrorCode err = RuntimeApi.LoadMetadataForAOTAssembly(dllBytes, mode);
                 Debug.Log($"LoadMetadataForAOTAssembly:{aotDllName}. mode:{mode} ret:{err}");
+            }
+        }
+
+
+        private static IEnumerator LoadHotfixAssemblies(string path, List<string> hotfixAssemblies)
+        {
+            foreach (var hotfixDllName in hotfixAssemblies)
+            {
+                var dll = Addressables.LoadAssetAsync<TextAsset>($"{path}/{hotfixDllName}.bytes");
+                yield return dll;
+                System.Reflection.Assembly.Load(dll.Result.bytes);
+                Debug.Log($"LoadHotfixAssemblies:{hotfixDllName}. ");
             }
         }
     }

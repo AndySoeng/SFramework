@@ -19,8 +19,6 @@ namespace SFramework
         // UI列表缓存
         Dictionary<Type, UIScreenBase> m_TypeScreens = new Dictionary<Type, UIScreenBase>();
 
-        private Dictionary<Type, AsyncOperationHandle<GameObject>> m_CtrlHandle = new Dictionary<Type, AsyncOperationHandle<GameObject>>();
-
         private int mUIOpenOrder = 0; // UI打开时的Order值 用来标识界面层级顺序
 
         // uicamera
@@ -83,9 +81,9 @@ namespace SFramework
             string prefabName = "UI" + type.Name.Substring(0, type.Name.Length - "Screen".Length);
 
             GameObject obj = await Addressables.InstantiateAsync(prefabName, transform);
-
-            sb.PanelLoadComplete(transform, uiCamera, param, obj, mUIOpenOrder);
             m_TypeScreens.Add(type, sb);
+            await sb.PanelLoaded(transform, uiCamera, param, obj, mUIOpenOrder);
+
             return sb;
         }
 

@@ -28,6 +28,8 @@ MonoBehaviour:
   - System
   - System.Core
   - UniTask
+  - Google.Protobuf
+  - LitJson
   outputLinkFile: ThirdParty/HybridCLR/HybridCLRData/Generated/link.xml
   outputAOTGenericReferenceFile: ThirdParty/HybridCLR/HybridCLRData/Generated/AOTGenericReferences.cs
   maxGenericReferenceIteration: 10

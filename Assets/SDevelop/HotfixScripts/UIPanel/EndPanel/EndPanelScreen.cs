@@ -1,4 +1,6 @@
-﻿namespace SFramework.UI
+﻿using Cysharp.Threading.Tasks;
+
+namespace SFramework.UI
 {
     using SFramework;
     using UnityEngine;
@@ -21,8 +23,9 @@
         EndPanelCtrl mCtrl;
         EndPanelScreenParam mParam;
 
-        protected override void OnLoadSuccess()
+        protected override async UniTask OnLoadSuccess()
         {
+            await base.OnLoadSuccess();
             mCtrl = mCtrlBase as EndPanelCtrl;
             mParam = mOpenParam as EndPanelScreenParam;
             mCtrl.txt_EndPanelTXTContent.text = mParam.content;

@@ -26,8 +26,9 @@ namespace SFramework.UI
         LoadScenePanelScreenParam mParam;
 
 
-        protected override void OnLoadSuccess()
+        protected override async UniTask OnLoadSuccess()
         {
+            await base.OnLoadSuccess();
             mCtrl = mCtrlBase as LoadScenePanelCtrl;
             mParam = mOpenParam as LoadScenePanelScreenParam;
 

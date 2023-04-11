@@ -1,0 +1,22 @@
+{
+  "name": "com.sharelib.google.protobuf",
+  "version": "0.1.0",
+  "displayName": "Google.Protobuf",
+  "description": "Google.Protobuf .",
+  "category": "Runtime",
+  "keywords": [
+    ""
+  ],
+  "samples": [
+    {
+      "displayName": "Google.Protobuf",
+      "description": "",
+      "path": ""
+    }
+  ],
+  "author": {
+    "name": "",
+    "email": "",
+    "url": ""
+  }
+}

@@ -1,10 +1,7 @@
 using System;
-using Cysharp.Threading.Tasks;
-
 namespace SFramework
 {
     using UnityEngine;
-    using SFramework;
     using UI;
 
     [DisallowMultipleComponent]
@@ -20,6 +17,7 @@ namespace SFramework
             WebglExpData.firstEnterTime = DateTime.Now;
             await LoadScenePanelScreen.LoadSingleScene(LoadSceneName.Scene_Main,
                 OnMainSceneComplete);
+
         }
 
         private async void OnMainSceneComplete()

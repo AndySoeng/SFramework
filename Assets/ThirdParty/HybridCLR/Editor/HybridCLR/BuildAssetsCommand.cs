@@ -1,10 +1,6 @@
 ﻿using HybridCLR.Editor.Commands;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using SFramework;
 using UnityEditor;
 using UnityEngine;
 
@@ -25,8 +21,8 @@ namespace HybridCLR.Editor
             CopyAOTAssembliesToHotfixDllFloder();
             CopyHotUpdateAssembliesToHotfixDllFloder();
         }
-        
-        public static string aotAndHotFixAssembliesDstDir = Application.dataPath + "/SDevelop/Dll/";
+
+        public static string aotAndHotFixAssembliesDstDir = Directory.GetParent(Application.dataPath) + "/" + SUpdateConfig.GetConfig().aotAndHotFixAssembliesDstDir;
 
         public static void CopyAOTAssembliesToHotfixDllFloder()
         {

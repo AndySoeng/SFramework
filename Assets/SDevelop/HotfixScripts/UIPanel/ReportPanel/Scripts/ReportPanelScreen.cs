@@ -22,9 +22,9 @@ namespace SFramework.UI
         ReportPanelCtrl mCtrl;
         ReportPanelScreenParam mParam;
 
-        protected override void OnLoadSuccess()
+        protected override async UniTask OnLoadSuccess()
         {
-            base.OnLoadSuccess();
+            await base.OnLoadSuccess();
             mCtrl = mCtrlBase as ReportPanelCtrl;
 
             //初始化实验报告
@@ -42,18 +42,18 @@ namespace SFramework.UI
         private void InitReport()
         {
             mCtrl.txt_Date.text = DateTime.Now.ToString("yyyy-MM-dd");
-            mCtrl.btn_Close.onClick.AddListener(() =>
+            mCtrl.btn_Close.onClick.AddListener(async () =>
             {
                 if (!ReportIsCommit)
-                    NotificationsPanelScreen.ShowNotifications("实验报告提示", "完成试验后不要忘记提交实验报告哦~");
+                    await NotificationsPanelScreen.ShowNotifications("实验报告提示", "完成试验后不要忘记提交实验报告哦~");
                 SUIManager.Ins.CloseUI<ReportPanelScreen>();
             });
 
             mCtrl.input_Conclusion.text = Conclusion;
-            mCtrl.input_Conclusion.onEndEdit.AddListener((arg0) =>
+            mCtrl.input_Conclusion.onEndEdit.AddListener(async (arg0) =>
             {
                 if (arg0.Length > 200)
-                    NotificationsPanelScreen.ShowNotifications("实验报告提示", "心得体会不可超过200字,请进行修改！");
+                    await NotificationsPanelScreen.ShowNotifications("实验报告提示", "心得体会不可超过200字,请进行修改！");
                 Conclusion = arg0;
             });
 
@@ -65,7 +65,10 @@ namespace SFramework.UI
             }
 
             StartsIndex = mCtrl.StarRating.defaultIndex;
-            mCtrl.btn_ReportCommit.onClick.AddListener(ReportCommit);
+            mCtrl.btn_ReportCommit.onClick.AddListener(async () =>
+            {
+                await ReportCommit();
+            });
 
 
             if (ReportIsCommit)
@@ -110,14 +113,17 @@ namespace SFramework.UI
         [DllImport("__Internal")]
         private static extern string LoadParams();
 
-        protected void ReportCommit()
+        protected async UniTask ReportCommit()
         {
             if (Conclusion.Length < 200)
-                ModalWindowPanelScreen.OpenModalWindowNoTabs("实验报告提示", "实验报告提交后不可以进行任何操作，是否确认提交？", true,
-                    () => { ReportCommitting(mCtrl); });
+                await ModalWindowPanelScreen.OpenModalWindowNoTabs("实验报告提示", "实验报告提交后不可以进行任何操作，是否确认提交？", true,
+                    async () =>
+                    {
+                        await ReportCommitting(mCtrl);
+                    });
             else
             {
-                NotificationsPanelScreen.ShowNotifications("实验报告提示", "心得体会不可超过200字！");
+                await  NotificationsPanelScreen.ShowNotifications("实验报告提示", "心得体会不可超过200字！");
             }
         }
 
@@ -172,11 +178,11 @@ namespace SFramework.UI
 
             if (finshedAll == false) //判断是否已经完成所有实验
             {
-               await  NotificationsPanelScreen.ShowNotifications("提示", "当前未完成所有实验,请完成后进行提交。");
+                await NotificationsPanelScreen.ShowNotifications("提示", "当前未完成所有实验,请完成后进行提交。");
             }
             else if (string.IsNullOrEmpty(userInfos[3]) || string.IsNullOrEmpty(userInfos[1]))
             {
-                await   NotificationsPanelScreen.ShowNotifications("提示", "未获取到成绩接口或token，请联系管理员。");
+                await NotificationsPanelScreen.ShowNotifications("提示", "未获取到成绩接口或token，请联系管理员。");
             }
             else
             {
@@ -214,20 +220,20 @@ namespace SFramework.UI
 
 
                 //可以提交后打开遮挡
-                await   SUIManager.Ins.OpenUI<HttpRequestPanelScreen>(new HttpRequestPanelScreenParam()
+                await SUIManager.Ins.OpenUI<HttpRequestPanelScreen>(new HttpRequestPanelScreenParam()
                     { content = "提交实验报告提交中……" });
 
                 monoBehaviour.StartCoroutine(WebGLExpInterface.ExpInterfaceBase.WebRequest(WebGLExpInterface.UnityWebRequestType.POST, userInfos[3],
                     JsonMapper.ToJson(scoreList), false, false,
-                     async () =>
+                    async () =>
                     {
                         SUIManager.Ins.CloseUI<HttpRequestPanelScreen>();
-                        await   ModalWindowPanelScreen.OpenModalWindowNoTabs("提示", "实验报告提提交失败，请重新提交。", true, null, false);
+                        await ModalWindowPanelScreen.OpenModalWindowNoTabs("提示", "实验报告提提交失败，请重新提交。", true, null, false);
                     }, async (str) =>
                     {
                         //提交成功的回调
                         SUIManager.Ins.CloseUI<HttpRequestPanelScreen>();
-                        await  SUIManager.Ins.OpenUI<EndPanelScreen>(new EndPanelScreenParam()
+                        await SUIManager.Ins.OpenUI<EndPanelScreen>(new EndPanelScreenParam()
                             { content = "实验报告已提交，实验结束。", isTransparent = false });
                     }, new[] { "Authorization" }, new[] { "Bearer " + userInfos[1] }));
             }

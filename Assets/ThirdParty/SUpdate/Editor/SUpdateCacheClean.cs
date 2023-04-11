@@ -10,7 +10,7 @@ namespace SFramework
     {
         static string cache_ServerDataPath = Directory.GetParent(Application.dataPath)?.ToString() + "/ServerData";
 
-        [MenuItem("Tools/Addressable Cache/Clear ServerData")]
+        [MenuItem("Tools/STools/Addressable Cache/Clear ServerData")]
         public static void ClearServerData()
         {
             if (Directory.Exists(cache_ServerDataPath))
@@ -26,7 +26,7 @@ namespace SFramework
                                            $"Unity/{Application.companyName}_{Application.productName}";
 
 
-        [MenuItem("Tools/Addressable Cache/Clear All Cache")]
+        [MenuItem("Tools/STools/Addressable Cache/Clear All Cache")]
         public static void ClearAllCache()
         {
             ClearCatalogCache();
@@ -34,7 +34,7 @@ namespace SFramework
             Debug.Log("All Cache Cleaned .");
         }
 
-        [MenuItem("Tools/Addressable Cache/Clean Catalog Cache")]
+        [MenuItem("Tools/STools/Addressable Cache/Clean Catalog Cache")]
         public static void ClearCatalogCache()
         {
             if (Directory.Exists(cache_CatalogPath))
@@ -45,7 +45,7 @@ namespace SFramework
         }
 
 
-        [MenuItem("Tools/Addressable Cache/Clean AABundle Cache")]
+        [MenuItem("Tools/STools/Addressable Cache/Clean AABundle Cache")]
         public static void CleanAABundleCache()
         {
             if (Directory.Exists(cache_AABundlePath))

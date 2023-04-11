@@ -15,8 +15,9 @@ namespace SFramework.UI
         ModalWindowPanelCtrl mCtrl;
         ModalWindowScreenParam mParam;
 
-        protected override void OnLoadSuccess()
+        protected override async UniTask OnLoadSuccess()
         {
+            await base.OnLoadSuccess();
             mCtrl = mCtrlBase as ModalWindowPanelCtrl;
             mParam = mOpenParam as ModalWindowScreenParam;
         }

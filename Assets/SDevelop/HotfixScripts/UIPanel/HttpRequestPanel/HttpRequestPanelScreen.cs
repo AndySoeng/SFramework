@@ -1,4 +1,6 @@
-﻿namespace SFramework.UI
+﻿using Cysharp.Threading.Tasks;
+
+namespace SFramework.UI
 {
     using SFramework;
 
@@ -12,8 +14,9 @@
         HttpRequestPanelCtrl mCtrl;
         HttpRequestPanelScreenParam mParam;
 
-        protected override void OnLoadSuccess()
+        protected override async UniTask OnLoadSuccess()
         {
+            await base.OnLoadSuccess();
             mCtrl = mCtrlBase as HttpRequestPanelCtrl;
             mParam = mOpenParam as HttpRequestPanelScreenParam;
             mCtrl.content.text = mParam.content;
