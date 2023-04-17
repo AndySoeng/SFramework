@@ -28,6 +28,8 @@ namespace SFramework
 
         private IEnumerator AAUpdateRes(Action completeAction)
         {
+            mSUpdateUI.ResetProgress();
+            
             List<object> needUpdateKeys = new List<object>();
 
             _initializeAsync = Addressables.InitializeAsync(false);
