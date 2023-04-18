@@ -22,12 +22,12 @@ public class SUpdateUI : MonoBehaviour
 
     private List<string> list_Tips = new List<string>()
     {
-        "资料准备中……",
-        "UI设计中……",
-        "模型制作人员加班加点中……",
-        "场景正在编辑中……",
-        "程序员疯狂码代码中……",
-        "资源加载完成！",
+        "supdate0",
+        "supdate1",
+        "supdate2",
+        "supdate3",
+        "supdate4",
+        "supdate5",
     };
     
     public void SetProgress(float progress, long? needDownloadSize = null, long? downloadedSize = null)
@@ -42,7 +42,7 @@ public class SUpdateUI : MonoBehaviour
 
     public void ResetProgress()
     {
-        txt_Tip.text = list_Tips[0];
+        txt_Tip.text = I2.Loc.LocalizationManager.GetTranslation(list_Tips[0]);
         img_ProgressFill.fillAmount = 0;
         txt_Progress.text = "0%";
     }
@@ -50,7 +50,7 @@ public class SUpdateUI : MonoBehaviour
     private void UpdateTip(float progress, string jointStr = null)
     {
         int tipIndex = (int)(progress * (list_Tips.Count - 1));
-        txt_Tip.text = list_Tips[tipIndex] + (String.IsNullOrEmpty(jointStr) ? String.Empty : ("  " + jointStr));
+        txt_Tip.text = I2.Loc.LocalizationManager.GetTranslation(list_Tips[tipIndex])+ (String.IsNullOrEmpty(jointStr) ? String.Empty : ("  " + jointStr));
     }
 
     public void ShowModalWindow(string title, string content, Action confirm = null, Action cancel = null)

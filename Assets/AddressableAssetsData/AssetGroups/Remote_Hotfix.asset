@@ -45,6 +45,10 @@ MonoBehaviour:
     m_Address: Assets/SDevelop/Dll/System.dll.bytes
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 71d9b8e428a0b9f4e81fcb2e9d426155
+    m_Address: Assets/SDevelop/Localization/Remote I2Languages.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: f764d9e74e1e5504c9a86fa4549fc1a1, type: 2}
   m_SchemaSet:

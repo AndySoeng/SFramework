@@ -1,0 +1,159 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f0b0c553be8edd4682e9180fdd13e37, type: 3}
+  m_Name: I2Languages
+  m_EditorClassIdentifier: 
+  mSource:
+    UserAgreesToHaveItOnTheScene: 0
+    UserAgreesToHaveItInsideThePluginsFolder: 0
+    GoogleLiveSyncIsUptoDate: 1
+    mTerms:
+    - Term: confirm
+      TermType: 0
+      Description: 
+      Languages:
+      - Confirm
+      - "\u786E\u8BA4"
+      - "\u78BA\u8A8D"
+      Flags: 000000
+      Languages_Touch: []
+    - Term: cancel
+      TermType: 0
+      Description: 
+      Languages:
+      - Cancel
+      - "\u53D6\u6D88"
+      - "\u53D6\u6D88"
+      Flags: 000000
+      Languages_Touch: []
+    - Term: prompt
+      TermType: 0
+      Description: 
+      Languages:
+      - Prompt
+      - "\u63D0\u793A"
+      - "\u63D0\u793A"
+      Flags: 000000
+      Languages_Touch: []
+    - Term: supdate0
+      TermType: 0
+      Description: 
+      Languages:
+      - The data is being prepared...
+      - "\u8D44\u6599\u51C6\u5907\u4E2D\u2026\u2026"
+      - "\u8CC7\u6599\u6E96\u5099\u4E2D......"
+      Flags: 000000
+      Languages_Touch: []
+    - Term: supdate1
+      TermType: 0
+      Description: 
+      Languages:
+      - "UI\u8A2D\u8A08\u4E2D......"
+      - "UI\u8BBE\u8BA1\u4E2D\u2026\u2026"
+      - UI design...
+      Flags: 000000
+      Languages_Touch: []
+    - Term: supdate2
+      TermType: 0
+      Description: 
+      Languages:
+      - Model makers working overtime...
+      - "\u6A21\u578B\u5236\u4F5C\u4EBA\u5458\u52A0\u73ED\u52A0\u70B9\u4E2D\u2026\u2026"
+      - "\u6A21\u578B\u88FD\u4F5C\u4EBA\u54E1\u52A0\u73ED\u52A0\u9EDE\u4E2D......"
+      Flags: 000000
+      Languages_Touch: []
+    - Term: supdate3
+      TermType: 0
+      Description: 
+      Languages:
+      - The scene is being edited...
+      - "\u573A\u666F\u6B63\u5728\u7F16\u8F91\u4E2D\u2026\u2026"
+      - "\u5834\u666F\u6B63\u5728\u7DE8\u8F2F\u4E2D....."
+      Flags: 000000
+      Languages_Touch: []
+    - Term: supdate4
+      TermType: 0
+      Description: 
+      Languages:
+      - Programmer crazy code code...
+      - "\u7A0B\u5E8F\u5458\u75AF\u72C2\u7801\u4EE3\u7801\u4E2D\u2026\u2026"
+      - "\u7A0B\u5F0F\u5E2B\u760B\u72C2\u78BC\u4EE3\u78BC\u4E2D......"
+      Flags: 000000
+      Languages_Touch: []
+    - Term: supdate5
+      TermType: 0
+      Description: 
+      Languages:
+      - The resource load is complete!
+      - "\u8D44\u6E90\u52A0\u8F7D\u5B8C\u6210\uFF01"
+      - "\u8CC7\u6E90\u8F09\u5165\u5B8C\u6210\uFF01"
+      Flags: 000000
+      Languages_Touch: []
+    - Term: sceneloaded
+      TermType: 0
+      Description: 
+      Languages:
+      - The scene is loaded
+      - "\u573A\u666F\u52A0\u8F7D\u5B8C\u6210"
+      - "\u5834\u666F\u8F09\u5165\u5B8C\u6210"
+      Flags: 000000
+      Languages_Touch: []
+    - Term: sceneloading
+      TermType: 0
+      Description: 
+      Languages:
+      - 'The scene is loading
+
+        <size=40%> (this process does not require
+        downloading resources from the network).</size>'
+      - "\u573A\u666F\u52A0\u8F7D\u4E2D\n<size=40%>(\u6B64\u8FC7\u7A0B\u4E0D\u9700\u8981\u4ECE\u7F51\u7EDC\u4E0B\u8F7D\u8D44\u6E90)</size>"
+      - "\u5834\u666F\u8F09\u5165\u4E2D\r\n<size=40%>\uFF08\u6B64\u904E\u7A0B\u4E0D\u9700\u8981\u5F9E\u7DB2\u8DEF\u4E0B\u8F09\u8CC7\u6E90\uFF09</size>"
+      Flags: 000000
+      Languages_Touch: []
+    - Term: supdatefailed
+      TermType: 0
+      Description: 
+      Languages:
+      - The resource download failed, please check the network and try again.
+      - "\u8D44\u6E90\u4E0B\u8F7D\u5931\u8D25\uFF0C\u8BF7\u68C0\u67E5\u7F51\u7EDC\u540E\u91CD\u65B0\u5C1D\u8BD5\u3002"
+      - "\u8CC7\u6E90\u4E0B\u8F09\u5931\u6557\uFF0C\u8ACB\u6AA2\u67E5\u7DB2\u8DEF\u540E\u91CD\u65B0\u5617\u8A66\u3002"
+      Flags: 000000
+      Languages_Touch: []
+    CaseInsensitiveTerms: 0
+    OnMissingTranslation: 1
+    mTerm_AppName: 
+    mLanguages:
+    - Name: English (United States)
+      Code: en-US
+      Flags: 0
+    - Name: Chinese (Simplified)
+      Code: zh-CN
+      Flags: 0
+    - Name: Chinese (Taiwan)
+      Code: zh-TW
+      Flags: 0
+    IgnoreDeviceLanguage: 1
+    _AllowUnloadingLanguages: 0
+    Google_WebServiceURL: 
+    Google_SpreadsheetKey: 
+    Google_SpreadsheetName: 
+    Google_LastUpdatedVersion: 
+    Google_Password: change_this
+    GoogleUpdateFrequency: 3
+    GoogleInEditorCheckFrequency: 2
+    GoogleUpdateSynchronization: 1
+    GoogleUpdateDelay: 0
+    Assets: []
+    Spreadsheet_LocalFileName: 
+    Spreadsheet_LocalCSVSeparator: ','
+    Spreadsheet_LocalCSVEncoding: utf-8
+    Spreadsheet_SpecializationAsRows: 1

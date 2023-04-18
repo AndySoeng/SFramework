@@ -31,7 +31,7 @@ namespace SFramework.UI
             await base.OnLoadSuccess();
             mCtrl = mCtrlBase as LoadScenePanelCtrl;
             mParam = mOpenParam as LoadScenePanelScreenParam;
-
+            mCtrl.txt_Label.text = I2.Loc.LocalizationManager.GetTranslation("sceneloading");
 
             mCtrl.StartCoroutine(AsyncLoadScene());
         }
@@ -51,7 +51,7 @@ namespace SFramework.UI
                 yield return new WaitForEndOfFrame();
             }
 
-            mCtrl.txt_Label.text = "场景加载完成";
+            mCtrl.txt_Label.text = I2.Loc.LocalizationManager.GetTranslation("sceneloaded");
             mCtrl.slider_Loop.GetComponent<Animator>().enabled = false;
             mCtrl.slider_processBar.currentPercent = 100;
             mCtrl.slider_Loop.bar.fillAmount = 1;

@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f0b0c553be8edd4682e9180fdd13e37, type: 3}
+  m_Name: Remote I2Languages
+  m_EditorClassIdentifier: 
+  mSource:
+    UserAgreesToHaveItOnTheScene: 0
+    UserAgreesToHaveItInsideThePluginsFolder: 0
+    GoogleLiveSyncIsUptoDate: 1
+    mTerms:
+    - Term: Common/Test
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u6D4B\u8BD5"
+      - "\u6D4B\u8BD5"
+      - Test
+      Flags: 000000
+      Languages_Touch: []
+    CaseInsensitiveTerms: 0
+    OnMissingTranslation: 1
+    mTerm_AppName: App_Name
+    mLanguages:
+    - Name: Chinese (Simplified)
+      Code: zh-CN
+      Flags: 0
+    - Name: Chinese (Taiwan)
+      Code: zh-TW
+      Flags: 0
+    - Name: English (United States)
+      Code: en-US
+      Flags: 0
+    IgnoreDeviceLanguage: 0
+    _AllowUnloadingLanguages: 0
+    Google_WebServiceURL: https://script.google.com/macros/s/AKfycbyXOyYTy0gcNthHlTp46UQunbY7gLlE3TrDB_ZaD9puLxkcO-uZTl6wZvddT0G7k880eA/exec
+    Google_SpreadsheetKey: 1M0sdBai54geSKOwFsjwyy1M8S_JAqXPargLIe7FweFM
+    Google_SpreadsheetName: I2Loc SFrameWork Localization
+    Google_LastUpdatedVersion: 1681807106952
+    Google_Password: SFramework
+    GoogleUpdateFrequency: 1
+    GoogleInEditorCheckFrequency: 0
+    GoogleUpdateSynchronization: 1
+    GoogleUpdateDelay: 0
+    Assets: []
+    Spreadsheet_LocalFileName: 
+    Spreadsheet_LocalCSVSeparator: ','
+    Spreadsheet_LocalCSVEncoding: utf-8
+    Spreadsheet_SpecializationAsRows: 1

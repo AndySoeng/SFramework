@@ -148,7 +148,9 @@ namespace SFramework
         private void UpdateResFailed(Action completeAction)
         {
             ReleaseAllHandle();
-            mSUpdateUI.ShowModalWindow("提示", "资源下载失败，请检查网络后重新尝试。", () =>
+            mSUpdateUI.ShowModalWindow(
+                I2.Loc.LocalizationManager.GetTranslation("prompt"), 
+                I2.Loc.LocalizationManager.GetTranslation("supdatefailed"), () =>
             {
                 mSUpdateUI.ResetProgress();
                 UpdateRes(completeAction);
