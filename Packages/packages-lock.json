@@ -44,6 +44,12 @@
       "source": "embedded",
       "dependencies": {}
     },
+    "com.sharelib.unity.io.compression": {
+      "version": "file:Unity.IO.Compression",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
     "com.sharelib.webglexpinterface": {
       "version": "file:WebGLExpInterface",
       "depth": 0,

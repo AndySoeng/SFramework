@@ -1,0 +1,22 @@
+{
+  "name": "com.sharelib.unity.io.compression",
+  "version": "0.1.0",
+  "displayName": "Unity.IO.Compression",
+  "description": "Unity.IO.Compression .",
+  "category": "Runtime",
+  "keywords": [
+    ""
+  ],
+  "samples": [
+    {
+      "displayName": "Unity.IO.Compression",
+      "description": "",
+      "path": ""
+    }
+  ],
+  "author": {
+    "name": "",
+    "email": "",
+    "url": ""
+  }
+}
