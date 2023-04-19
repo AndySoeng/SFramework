@@ -1,0 +1,44 @@
+﻿/*
+*	Copyright (c) 2017-2019. RainyRizzle. All rights reserved
+*	Contact to : https://www.rainyrizzle.com/ , contactrainyrizzle@gmail.com
+*
+*	This file is part of [AnyPortrait].
+*
+*	AnyPortrait can not be copied and/or distributed without
+*	the express perission of [Seungjik Lee].
+*
+*	Unless this file is downloaded from the Unity Asset Store or RainyRizzle homepage,
+*	this file and its users are illegal.
+*	In that case, the act may be subject to legal penalties.
+*/
+
+// Each #kernel tells which function to compile; you can have many kernels
+#pragma kernel CSMain
+
+// Create a RenderTexture with enableRandomWrite flag and set it
+// with cs.SetTexture
+Texture2D<float4> SrcColorTex;
+Texture2D<float4> SrcAlphaTex;
+Texture2D<float4> SrcBlurTex;
+RWTexture2D<float4> Result;
+
+[numthreads(8,8,1)]
+void CSMain (uint3 id : SV_DispatchThreadID)
+{
+	// TODO: insert actual code here!
+	float4 color = SrcColorTex[id.xy];
+	float alpha = SrcAlphaTex[id.xy].r;
+	float4 blur = SrcBlurTex[id.xy];
+	float4 resultColor = float4(0, 0, 0, 0);
+	if (alpha > 0.0f && alpha < 1.0f)
+	{
+		resultColor = blur * (1.0f - alpha) + color * alpha;
+	}
+	else
+	{
+		resultColor = color;
+	}
+	resultColor.a = alpha;
+
+	Result[id.xy] = resultColor;
+}

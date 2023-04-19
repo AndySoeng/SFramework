@@ -1,0 +1,65 @@
+﻿/*
+*	Copyright (c) 2017-2019. RainyRizzle. All rights reserved
+*	Contact to : https://www.rainyrizzle.com/ , contactrainyrizzle@gmail.com
+*
+*	This file is part of [AnyPortrait].
+*
+*	AnyPortrait can not be copied and/or distributed without
+*	the express perission of [Seungjik Lee].
+*
+*	Unless this file is downloaded from the Unity Asset Store or RainyRizzle homepage,
+*	this file and its users are illegal.
+*	In that case, the act may be subject to legal penalties.
+*/
+
+
+// Each #kernel tells which function to compile; you can have many kernels
+#pragma kernel CSMain
+
+// Create a RenderTexture with enableRandomWrite flag and set it
+// with cs.SetTexture
+RWTexture2D<float4> Result;
+Texture2D<float4> SrcColorTex;
+Texture2D<float4> SrcAlphaTex;
+int blurSize;
+int srcWidth;
+int srcHeight;
+
+[numthreads(8,8,1)]
+void CSMain (uint3 id : SV_DispatchThreadID)
+{
+	int xMin = max(id.x - blurSize, 0);
+	int xMax = min(id.x + blurSize, srcWidth - 1);
+	int yMin = max(id.y - blurSize, 0);
+	int yMax = min(id.y + blurSize, srcHeight - 1);
+
+	float4 curColor = float4(0, 0, 0, 0);
+	float curAlpha = 0.0f;
+
+	float4 resultColor = float4(0, 0, 0, 0);
+	float totalWeight = 0.0f;
+
+	float2 curDiff = float2(0, 0);
+	float curWeight = 0.0f;
+	
+
+	for (int iX = xMin; iX <= xMax; iX++)
+	{
+		for (int iY = yMin; iY <= yMax; iY++)
+		{
+			curColor = SrcColorTex[int2(iX, iY)];
+			curAlpha = SrcAlphaTex[int2(iX, iY)].r;
+
+			curDiff.x = abs((float)iX - (float)id.x);
+			curDiff.y = abs((float)iY - (float)id.y);
+
+			curWeight = ((blurSize - curDiff.x) + 0.1f) * ((blurSize - curDiff.y) + 0.1f) * (curAlpha + 0.1f);
+
+			resultColor += curColor * curWeight;
+			totalWeight += curWeight;
+		}
+	}
+	//Result[id.xy] = float4(id.x & id.y, (id.x & 15)/15.0, (id.y & 15)/15.0, 0.0);
+
+	Result[id.xy] = resultColor / totalWeight;
+}

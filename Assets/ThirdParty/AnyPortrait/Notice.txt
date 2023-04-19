@@ -1,0 +1,45 @@
+
+< Notice >
+
+Asset is governed by the Asset Store EULA;
+however, the following components are governed by the licenses indicated below:
+
+
+1. Ntreev Photoshop Document Parser for .Net
+https://github.com/NtreevSoft/psd-parser
+
+Copyright (c) 2015 Ntreev Soft co., Ltd.
+Released under the MIT License.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+(This license information is also written in "AnyPortrait/Editor/Scripts/PSDLoadWizard/PSDParser_License.txt".)
+
+
+
+2. NGif, Animated GIF Encoder for .NET
+https://www.codeproject.com/Articles/11505/NGif-Animated-GIF-Encoder-for-NET
+
+Released under the CPOL 1.02.
+
+The Code Project Open License (CPOL) is intended to provide developers who choose to share their code with a license that protects them and provides users of their code with a clear statement regarding how the code can be used.
+The CPOL is our gift to the community. We encourage everyone to use this license if they wish regardless of whether the code is posted on CodeProject.com.
+> Detailed License Information : https://www.codeproject.com/info/cpol10.aspx
+
+(This license information is also written in "AnyPortrait/Assets/Scripts/NGIF_License.txt".)
+
+
+
+3. Font : Spoqa Han Sans
+https://spoqa.github.io/spoqa-han-sans/en-US/
+(Used as image font in demo)
+
+Spoqa Han Sans fonts are open source.
+All Spoqa Han Sans fonts are published under the SIL Open Font License, Version 1.1.
+
+SIL Open Font License (OFL) 1.1
+> Detailed License Information : http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL
+
+(This license information is also written in "AnyPortrait/Demo/Font_License.txt".)

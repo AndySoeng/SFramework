@@ -1,0 +1,9 @@
+[ NGif, Animated GIF Encoder for .NET ]
+https://www.codeproject.com/Articles/11505/NGif-Animated-GIF-Encoder-for-NET
+
+Released under the CPOL 1.02.
+
+The Code Project Open License (CPOL) is intended to provide developers who choose to share their code with a license that protects them and provides users of their code with a clear statement regarding how the code can be used.
+The CPOL is our gift to the community. We encourage everyone to use this license if they wish regardless of whether the code is posted on CodeProject.com.
+
+> Detailed License Information : https://www.codeproject.com/info/cpol10.aspx

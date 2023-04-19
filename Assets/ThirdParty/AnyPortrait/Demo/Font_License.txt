@@ -1,0 +1,9 @@
+[ Font : Spoqa Han Sans ]
+https://spoqa.github.io/spoqa-han-sans/en-US/
+(Used as image font in demo)
+
+Spoqa Han Sans fonts are open source.
+All Spoqa Han Sans fonts are published under the SIL Open Font License, Version 1.1.
+
+SIL Open Font License (OFL) 1.1
+> Detailed License Information : http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL

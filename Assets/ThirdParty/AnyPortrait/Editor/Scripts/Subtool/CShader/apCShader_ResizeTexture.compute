@@ -1,0 +1,115 @@
+﻿/*
+*	Copyright (c) 2017-2019. RainyRizzle. All rights reserved
+*	Contact to : https://www.rainyrizzle.com/ , contactrainyrizzle@gmail.com
+*
+*	This file is part of [AnyPortrait].
+*
+*	AnyPortrait can not be copied and/or distributed without
+*	the express perission of [Seungjik Lee].
+*
+*	Unless this file is downloaded from the Unity Asset Store or RainyRizzle homepage,
+*	this file and its users are illegal.
+*	In that case, the act may be subject to legal penalties.
+*/
+
+
+// Each #kernel tells which function to compile; you can have many kernels
+#pragma kernel CSMain
+
+// Create a RenderTexture with enableRandomWrite flag and set it
+// with cs.SetTexture
+
+Texture2D<float4> SrcColorTex;
+Texture2D<float4> SrcAlphaTex;
+Texture2D<float4> SrcBlurTex;
+int srcWidth;
+int srcHeight;
+int dstWidth;
+int dstHeight;
+int srcOffsetX;
+int srcOffsetY;
+int dstOffsetX;
+int dstOffsetY;
+RWTexture2D<float4> Result;
+
+[numthreads(8,8,1)]
+void CSMain (uint3 id : SV_DispatchThreadID)
+{
+	// TODO: insert actual code here!
+
+	//Result[id.xy] = float4(id.x & id.y, (id.x & 15)/15.0, (id.y & 15)/15.0, 0.0);
+	float u = (float)id.x / (float)dstWidth;
+	float v = (float)id.y / (float)dstHeight;
+	
+	int srcX = (int)(u * (float)srcWidth);
+	int srcY = (int)(v * (float)srcHeight);
+
+	int srcX_Min = max(srcX - srcOffsetX, 0);
+	int srcX_Max = min(srcX + srcOffsetX, srcWidth - 1);
+	int srcY_Min = max(srcY - srcOffsetY, 0);
+	int srcY_Max = min(srcY + srcOffsetY, srcHeight - 1);
+
+	float4 resultColor = float4(0, 0, 0, 0);
+	float totalWeight = 0.0f;
+
+	float4 srcColor = SrcColorTex[int2(srcX, srcY)];
+	float srcAlpha = SrcAlphaTex[int2(srcX, srcY)].r;
+
+	float4 curColor = float4(0, 0, 0, 0);
+	float4 curBlur = float4(0, 0, 0, 0);
+	float curAlpha = 0.0f;
+	float4 curResultColor = float4(0, 0, 0, 0);
+
+	float2 srcPosEx = float2(u * (float)srcWidth, v * (float)srcHeight);
+	float2 dstPosEx = float2(0, 0);
+
+	float2 diff2Src = float2(0, 0);
+	float2 diff2Dst = float2(0, 0);
+	float srcWeight = 0.0f;
+	float dstWeight = 0.0f;
+	float curWeight = 0.0f;
+
+	for (int iSrcX = srcX_Min; iSrcX <= srcX_Max; iSrcX++)
+	{
+		for (int iSrcY = srcY_Min; iSrcY <= srcY_Max; iSrcY++)
+		{
+			curColor = SrcColorTex[int2(iSrcX, iSrcY)];
+			curBlur = SrcBlurTex[int2(iSrcX, iSrcY)];
+			curAlpha = SrcAlphaTex[int2(iSrcX, iSrcY)].r;
+
+			dstPosEx.x = ((float)iSrcX * (float)dstWidth) / (float)srcWidth;
+			dstPosEx.y = ((float)iSrcY * (float)dstHeight) / (float)srcHeight;
+
+			diff2Src.x = abs(srcPosEx.x - iSrcX);
+			diff2Src.y = abs(srcPosEx.y - iSrcY);
+			diff2Dst.x = abs(dstPosEx.x - id.x);
+			diff2Dst.y = abs(dstPosEx.y - id.y);
+
+			srcWeight = pow(1.0f - min(diff2Src.x / (srcOffsetX + 0.5f), 1.0f), 2.0f) * pow(1.0f - min(diff2Src.y / (srcOffsetY + 0.5f), 1.0f), 2.0f);
+			dstWeight = pow(1.0f - min(diff2Dst.x / (dstOffsetX + 0.5f), 1.0f), 2.0f) * pow(1.0f - min(diff2Dst.y / (dstOffsetY + 0.5f), 1.0f), 2.0f);
+
+			curWeight = srcWeight * dstWeight * (curAlpha + 0.1f);
+
+			if (curAlpha > 0.0f && curAlpha < 1.0f)
+			{
+				curResultColor = curBlur * (1.0f - curAlpha) + curColor * curAlpha;
+			}
+			else
+			{
+				curResultColor = curColor;
+			}
+			curResultColor.a = curAlpha;
+			resultColor += curResultColor * curWeight;
+			
+			totalWeight += curWeight;
+		}
+	}
+
+	
+	
+	//Result[id.xy] = float4(1, 1, 0, 1);
+	//Result[id.xy] = float4(srcColor.r, srcColor.g, srcColor.b, 1);
+	//Result[id.xy] = float4(srcX, srcY, 1.0f, 1);
+	//Result[id.xy] = float4(u, v, 0, 1);
+	Result[id.xy] = (resultColor / totalWeight) * (srcAlpha) + float4(srcColor.r, srcColor.g, srcColor.b, srcAlpha) * (1.0f - srcAlpha);
+}
