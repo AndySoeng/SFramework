@@ -1,0 +1,296 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7785670509200738463
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97c23e3b12dc18c42a140437e53d3951, type: 3}
+  m_Name: Tonemapping
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  mode:
+    m_OverrideState: 1
+    m_Value: 2
+--- !u!114 &-4625637949267979723
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48c981ee17d53ea42b3cb31ca0b891a4, type: 3}
+  m_Name: MKGlow
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  showEditorMainBehavior:
+    m_OverrideState: 0
+    m_Value: 1
+  showEditorBloomBehavior:
+    m_OverrideState: 0
+    m_Value: 1
+  showEditorLensSurfaceBehavior:
+    m_OverrideState: 0
+    m_Value: 1
+  showEditorLensFlareBehavior:
+    m_OverrideState: 0
+    m_Value: 0
+  showEditorGlareBehavior:
+    m_OverrideState: 0
+    m_Value: 1
+  isInitialized:
+    m_OverrideState: 1
+    m_Value: 1
+  allowGeometryShaders:
+    m_OverrideState: 0
+    m_Value: 0
+  allowComputeShaders:
+    m_OverrideState: 0
+    m_Value: 0
+  renderPriority:
+    m_OverrideState: 0
+    m_Value: 1
+  debugView:
+    m_OverrideState: 0
+    m_Value: 0
+  quality:
+    m_OverrideState: 0
+    m_Value: 2
+  antiFlickerMode:
+    m_OverrideState: 0
+    m_Value: 0
+  workflow:
+    m_OverrideState: 1
+    m_Value: 0
+  selectiveRenderLayerMask:
+    m_OverrideState: 0
+    m_Value:
+      serializedVersion: 2
+      m_Bits: 4294967295
+  anamorphicRatio:
+    m_OverrideState: 0
+    m_Value: 0
+    min: -1
+    max: 1
+  lumaScale:
+    m_OverrideState: 0
+    m_Value: 0.5
+    min: 0
+    max: 1
+  blooming:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 1
+  bloomThreshold:
+    m_OverrideState: 1
+    m_Value:
+      minValue: 1
+      maxValue: 10
+  bloomScattering:
+    m_OverrideState: 1
+    m_Value: 8.5
+    min: 1
+    max: 10
+  bloomIntensity:
+    m_OverrideState: 1
+    m_Value: 3
+  allowLensSurface:
+    m_OverrideState: 1
+    m_Value: 1
+  lensSurfaceDirtTexture:
+    m_OverrideState: 0
+    m_Value: {fileID: 0}
+  lensSurfaceDirtIntensity:
+    m_OverrideState: 1
+    m_Value: 2.5
+  lensSurfaceDiffractionTexture:
+    m_OverrideState: 0
+    m_Value: {fileID: 0}
+  lensSurfaceDiffractionIntensity:
+    m_OverrideState: 1
+    m_Value: 1.75
+  allowLensFlare:
+    m_OverrideState: 1
+    m_Value: 0
+  lensFlareStyle:
+    m_OverrideState: 0
+    m_Value: 1
+  lensFlareGhostFade:
+    m_OverrideState: 0
+    m_Value: 10
+    min: 0
+    max: 25
+  lensFlareGhostIntensity:
+    m_OverrideState: 1
+    m_Value: 1
+  lensFlareThreshold:
+    m_OverrideState: 0
+    m_Value:
+      minValue: 1.3
+      maxValue: 10
+  lensFlareScattering:
+    m_OverrideState: 0
+    m_Value: 5
+    min: 0
+    max: 8
+  lensFlareColorRamp:
+    m_OverrideState: 0
+    m_Value: {fileID: 0}
+  lensFlareChromaticAberration:
+    m_OverrideState: 0
+    m_Value: 53
+    min: -100
+    max: 100
+  lensFlareGhostCount:
+    m_OverrideState: 0
+    m_Value: 3
+    min: 0
+    max: 5
+  lensFlareGhostDispersal:
+    m_OverrideState: 0
+    m_Value: 0.6
+    min: -1
+    max: 1
+  lensFlareHaloFade:
+    m_OverrideState: 0
+    m_Value: 2
+    min: 0
+    max: 25
+  lensFlareHaloIntensity:
+    m_OverrideState: 1
+    m_Value: 0.5
+  lensFlareHaloSize:
+    m_OverrideState: 0
+    m_Value: 0.4
+    min: 0
+    max: 1
+  allowGlare:
+    m_OverrideState: 1
+    m_Value: 0
+  glareBlend:
+    m_OverrideState: 0
+    m_Value: 0.33
+    min: 0
+    max: 1
+  glareIntensity:
+    m_OverrideState: 0
+    m_Value: 1
+  glareAngle:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 360
+  glareThreshold:
+    m_OverrideState: 0
+    m_Value:
+      minValue: 1.25
+      maxValue: 10
+  glareStreaks:
+    m_OverrideState: 0
+    m_Value: 4
+    min: 1
+    max: 4
+  glareScattering:
+    m_OverrideState: 1
+    m_Value: 2.15
+    min: 0
+    max: 4
+  glareStyle:
+    m_OverrideState: 0
+    m_Value: 4
+  glareSample0Scattering:
+    m_OverrideState: 0
+    m_Value: 5
+    min: 0
+    max: 10
+  glareSample0Angle:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 360
+  glareSample0Intensity:
+    m_OverrideState: 1
+    m_Value: 1
+  glareSample0Offset:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 10
+  glareSample1Scattering:
+    m_OverrideState: 0
+    m_Value: 5
+    min: 0
+    max: 10
+  glareSample1Angle:
+    m_OverrideState: 0
+    m_Value: 45
+    min: 0
+    max: 360
+  glareSample1Intensity:
+    m_OverrideState: 1
+    m_Value: 1
+  glareSample1Offset:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 10
+  glareSample2Scattering:
+    m_OverrideState: 0
+    m_Value: 5
+    min: 0
+    max: 10
+  glareSample2Angle:
+    m_OverrideState: 0
+    m_Value: 90
+    min: 0
+    max: 360
+  glareSample2Intensity:
+    m_OverrideState: 1
+    m_Value: 1
+  glareSample2Offset:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 10
+  glareSample3Scattering:
+    m_OverrideState: 0
+    m_Value: 5
+    min: 0
+    max: 10
+  glareSample3Angle:
+    m_OverrideState: 0
+    m_Value: 135
+    min: 0
+    max: 360
+  glareSample3Intensity:
+    m_OverrideState: 1
+    m_Value: 1
+  glareSample3Offset:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 10
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
+  m_Name: Space
+  m_EditorClassIdentifier: 
+  components:
+  - {fileID: -4625637949267979723}
+  - {fileID: -7785670509200738463}
