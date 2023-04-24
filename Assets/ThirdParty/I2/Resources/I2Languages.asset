@@ -143,13 +143,13 @@ MonoBehaviour:
       Flags: 0
     IgnoreDeviceLanguage: 1
     _AllowUnloadingLanguages: 0
-    Google_WebServiceURL: 
-    Google_SpreadsheetKey: 
-    Google_SpreadsheetName: 
+    Google_WebServiceURL: https://script.google.com/macros/s/AKfycbyXOyYTy0gcNthHlTp46UQunbY7gLlE3TrDB_ZaD9puLxkcO-uZTl6wZvddT0G7k880eA/exec
+    Google_SpreadsheetKey: 1M0sdBai54geSKOwFsjwyy1M8S_JAqXPargLIe7FweFM
+    Google_SpreadsheetName: I2Loc SFrameWork Localization
     Google_LastUpdatedVersion: 
-    Google_Password: change_this
-    GoogleUpdateFrequency: 3
-    GoogleInEditorCheckFrequency: 2
+    Google_Password: SFramework
+    GoogleUpdateFrequency: 1
+    GoogleInEditorCheckFrequency: 0
     GoogleUpdateSynchronization: 1
     GoogleUpdateDelay: 0
     Assets: []

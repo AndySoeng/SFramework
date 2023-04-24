@@ -33,6 +33,11 @@
   <assembly fullname="HighlightPlus">
     <type fullname="HighlightPlus.HighlightEffect" preserve="all" />
   </assembly>
+  <assembly fullname="I2.Localization">
+    <type fullname="I2.Loc.LanguageSourceAsset" preserve="all" />
+    <type fullname="I2.Loc.LanguageSourceData" preserve="all" />
+    <type fullname="I2.Loc.LocalizationManager" preserve="all" />
+  </assembly>
   <assembly fullname="LitJson">
     <type fullname="LitJson.JsonMapper" preserve="all" />
   </assembly>
@@ -57,10 +62,13 @@
     <type fullname="System.Action`3" preserve="all" />
     <type fullname="System.Action`4" preserve="all" />
     <type fullname="System.Activator" preserve="all" />
+    <type fullname="System.ArgumentException" preserve="all" />
     <type fullname="System.ArgumentOutOfRangeException" preserve="all" />
     <type fullname="System.Array" preserve="all" />
     <type fullname="System.Boolean" preserve="all" />
+    <type fullname="System.Buffer" preserve="all" />
     <type fullname="System.Byte" preserve="all" />
+    <type fullname="System.Char" preserve="all" />
     <type fullname="System.Collections.Generic.Dictionary`2" preserve="all" />
     <type fullname="System.Collections.Generic.Dictionary`2/Enumerator" preserve="all" />
     <type fullname="System.Collections.Generic.Dictionary`2/KeyCollection" preserve="all" />
@@ -69,9 +77,7 @@
     <type fullname="System.Collections.Generic.KeyValuePair`2" preserve="all" />
     <type fullname="System.Collections.Generic.List`1" preserve="all" />
     <type fullname="System.Collections.Generic.List`1/Enumerator" preserve="all" />
-    <type fullname="System.Collections.IEnumerable" preserve="all" />
     <type fullname="System.Collections.IEnumerator" preserve="all" />
-    <type fullname="System.Collections.IList" preserve="all" />
     <type fullname="System.Convert" preserve="all" />
     <type fullname="System.DateTime" preserve="all" />
     <type fullname="System.Delegate" preserve="all" />
@@ -86,6 +92,7 @@
     <type fullname="System.Func`3" preserve="all" />
     <type fullname="System.GC" preserve="all" />
     <type fullname="System.IDisposable" preserve="all" />
+    <type fullname="System.Index" preserve="all" />
     <type fullname="System.Int32" preserve="all" />
     <type fullname="System.Int64" preserve="all" />
     <type fullname="System.IO.Directory" preserve="all" />
@@ -95,19 +102,19 @@
     <type fullname="System.IO.FileMode" preserve="all" />
     <type fullname="System.IO.FileShare" preserve="all" />
     <type fullname="System.IO.FileStream" preserve="all" />
+    <type fullname="System.IO.IOException" preserve="all" />
     <type fullname="System.IO.MemoryStream" preserve="all" />
     <type fullname="System.IO.Stream" preserve="all" />
+    <type fullname="System.IO.StreamReader" preserve="all" />
     <type fullname="System.IO.StreamWriter" preserve="all" />
+    <type fullname="System.IO.TextReader" preserve="all" />
     <type fullname="System.IO.TextWriter" preserve="all" />
     <type fullname="System.NotSupportedException" preserve="all" />
     <type fullname="System.Object" preserve="all" />
     <type fullname="System.Predicate`1" preserve="all" />
     <type fullname="System.Random" preserve="all" />
-    <type fullname="System.Reflection.BindingFlags" preserve="all" />
+    <type fullname="System.Range" preserve="all" />
     <type fullname="System.Reflection.MemberInfo" preserve="all" />
-    <type fullname="System.Reflection.MethodBase" preserve="all" />
-    <type fullname="System.Reflection.MethodInfo" preserve="all" />
-    <type fullname="System.Reflection.PropertyInfo" preserve="all" />
     <type fullname="System.Runtime.CompilerServices.AsyncStateMachineAttribute" preserve="all" />
     <type fullname="System.Runtime.CompilerServices.AsyncVoidMethodBuilder" preserve="all" />
     <type fullname="System.Runtime.CompilerServices.CompilationRelaxationsAttribute" preserve="all" />
@@ -120,6 +127,19 @@
     <type fullname="System.Runtime.Serialization.Formatters.Binary.BinaryFormatter" preserve="all" />
     <type fullname="System.RuntimeFieldHandle" preserve="all" />
     <type fullname="System.RuntimeTypeHandle" preserve="all" />
+    <type fullname="System.Security.Cryptography.Aes" preserve="all" />
+    <type fullname="System.Security.Cryptography.CipherMode" preserve="all" />
+    <type fullname="System.Security.Cryptography.CryptographicException" preserve="all" />
+    <type fullname="System.Security.Cryptography.CryptoStream" preserve="all" />
+    <type fullname="System.Security.Cryptography.CryptoStreamMode" preserve="all" />
+    <type fullname="System.Security.Cryptography.DeriveBytes" preserve="all" />
+    <type fullname="System.Security.Cryptography.HashAlgorithm" preserve="all" />
+    <type fullname="System.Security.Cryptography.ICryptoTransform" preserve="all" />
+    <type fullname="System.Security.Cryptography.MD5" preserve="all" />
+    <type fullname="System.Security.Cryptography.PaddingMode" preserve="all" />
+    <type fullname="System.Security.Cryptography.PasswordDeriveBytes" preserve="all" />
+    <type fullname="System.Security.Cryptography.Rijndael" preserve="all" />
+    <type fullname="System.Security.Cryptography.SymmetricAlgorithm" preserve="all" />
     <type fullname="System.Security.Permissions.SecurityAction" preserve="all" />
     <type fullname="System.Security.Permissions.SecurityPermissionAttribute" preserve="all" />
     <type fullname="System.Security.UnverifiableCodeAttribute" preserve="all" />
@@ -170,6 +190,11 @@
   </assembly>
   <assembly fullname="Unity.Addressables">
     <type fullname="UnityEngine.AddressableAssets.Addressables" preserve="all" />
+  </assembly>
+  <assembly fullname="Unity.IO.Compression">
+    <type fullname="Unity.IO.Compression.CompressionMode" preserve="all" />
+    <type fullname="Unity.IO.Compression.DeflateStream" preserve="all" />
+    <type fullname="Unity.IO.Compression.GZipStream" preserve="all" />
   </assembly>
   <assembly fullname="Unity.RenderPipelines.Universal.Runtime">
     <type fullname="UnityEngine.Rendering.Universal.CameraExtensions" preserve="all" />

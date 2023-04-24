@@ -41,10 +41,10 @@ MonoBehaviour:
       Flags: 0
     IgnoreDeviceLanguage: 0
     _AllowUnloadingLanguages: 0
-    Google_WebServiceURL: https://script.google.com/macros/s/AKfycbyXOyYTy0gcNthHlTp46UQunbY7gLlE3TrDB_ZaD9puLxkcO-uZTl6wZvddT0G7k880eA/exec
+    Google_WebServiceURL: https://script.google.com/macros/s/AKfycbwEQMbejABkxQF2OZ1aXqK57MqtTXuR6qpGK-WrQqJxvJDE0HGC59N19Ukww4Q44kzfdQ/exec
     Google_SpreadsheetKey: 1M0sdBai54geSKOwFsjwyy1M8S_JAqXPargLIe7FweFM
     Google_SpreadsheetName: I2Loc SFrameWork Localization
-    Google_LastUpdatedVersion: 1681898683833
+    Google_LastUpdatedVersion: 1682307591086
     Google_Password: SFramework
     GoogleUpdateFrequency: 1
     GoogleInEditorCheckFrequency: 0
