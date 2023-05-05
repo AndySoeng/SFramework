@@ -3,6 +3,7 @@ using DG.Tweening;
 using Ex;
 using Michsky.UI.ModernUIPack;
 using TMPro;
+using UnityEngine.AddressableAssets;
 
 namespace SFramework.UI
 {
@@ -43,7 +44,8 @@ namespace SFramework.UI
             await base.OnLoadSuccess();
             mCtrl = mCtrlBase as ExercisePanelCtrl;
             mParam = mOpenParam as ExercisePanelScreenParam;
-            currentLabQuestData = Resources.Load<LabQuestData>("Configs/Exercise/" + mParam.exerciseName);
+
+            currentLabQuestData = (await Addressables.LoadAssetAsync<System.Object>(mParam.exerciseName)) as LabQuestData;
             //初始化实验习题
             InitQuestion();
             mCtrl.panel.DOFade(1, 0.5f);

@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <linker>
   <assembly fullname="Cinemachine">
-    <type fullname="Cinemachine.CinemachineVirtualCamera" preserve="all" />
+    <type fullname="Cinemachine.CinemachineCore" preserve="all" />
+    <type fullname="Cinemachine.CinemachineCore/AxisInputDelegate" preserve="all" />
     <type fullname="Cinemachine.CinemachineVirtualCameraBase" preserve="all" />
   </assembly>
   <assembly fullname="DOTween">

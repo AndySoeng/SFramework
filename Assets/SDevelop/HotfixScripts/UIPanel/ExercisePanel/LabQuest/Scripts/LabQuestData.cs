@@ -7,7 +7,7 @@
     using UnityEngine;
 
     [CreateAssetMenu(order = 1, menuName = "ELConfigs/LabQuestData")]
-    public class LabQuestData : SerializedScriptableObject
+    public class LabQuestData : ScriptableObject
     {
         [ListDrawerSettings(ShowIndexLabels = true)]
         public List<Question> questions;
