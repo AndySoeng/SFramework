@@ -1,5 +1,8 @@
 ﻿
 
+using Michsky.UI.ModernUIPack;
+using UnityEngine;
+
 namespace SFramework.UI
 {
     using Sirenix.OdinInspector;
@@ -13,8 +16,11 @@ namespace SFramework.UI
         public ChoiceIndexStr choiceIndexStr;
 
         public virtual Toggle InitOption(Choice choice)
-        {
-            return null;
+        {            
+            toggle.group = null;
+            toggle.isOn = false;
+            toggle.GetComponent<Animator>().Play("Toggle Off");
+            return toggle;
         }
     }
 

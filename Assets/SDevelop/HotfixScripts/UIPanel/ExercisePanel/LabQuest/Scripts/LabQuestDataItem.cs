@@ -101,8 +101,8 @@ namespace SFramework.UI
             {
                 ChoiceToggle.Add(spawnPool.Spawn(OptionPrefab, toggleParent.transform).ExUIResetZ().GetComponent<LabQuestDataOption>()
                     .InitOption(quest.optionIsSprite ? (Choice)quest.spriteChoices[i] : (Choice)quest.txtChoices[i]));
+                ChoiceToggle[i].onValueChanged.RemoveListener(SingleAndJudgmentChoiceToggleOnValueChanged);
                 ChoiceToggle[i].interactable = true;
-                ChoiceToggle[i].isOn = false;
             }
 
             //处理题目类型逻辑(多选不需处理)

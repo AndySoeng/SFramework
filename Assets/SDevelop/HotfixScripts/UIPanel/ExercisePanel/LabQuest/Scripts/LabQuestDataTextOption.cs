@@ -6,6 +6,7 @@
     {
         public override Toggle InitOption(Choice choice)
         {
+            base.InitOption(choice);
             TxtChoice txtChoice = choice as TxtChoice;
             optionText.text = txtChoice.option + "." + txtChoice.choiceContent;
             choiceIndexStr = txtChoice.option;

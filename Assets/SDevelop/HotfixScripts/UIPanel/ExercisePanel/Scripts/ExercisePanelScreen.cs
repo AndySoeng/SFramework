@@ -45,7 +45,7 @@ namespace SFramework.UI
             mCtrl = mCtrlBase as ExercisePanelCtrl;
             mParam = mOpenParam as ExercisePanelScreenParam;
 
-            currentLabQuestData = (await Addressables.LoadAssetAsync<System.Object>(mParam.exerciseName)) as LabQuestData;
+            currentLabQuestData = (await Addressables.LoadAssetAsync<UnityEngine.Object>(mParam.exerciseName)) as LabQuestData;
             //初始化实验习题
             InitQuestion();
             mCtrl.panel.DOFade(1, 0.5f);
