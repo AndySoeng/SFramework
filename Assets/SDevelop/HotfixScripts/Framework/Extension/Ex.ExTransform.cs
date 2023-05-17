@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Reflection;
+using UnityEngine;
 
 
 namespace Ex
@@ -47,6 +48,17 @@ namespace Ex
         {
             trans.GetComponent<RectTransform>().sizeDelta = sizeDelta;
             return trans;
+        }
+        
+        
+        public static Vector3 GetInspectorRotationValue(Transform transform)
+        {
+            System.Type transformType = transform.GetType();
+            PropertyInfo m_propertyInfo_rotationOrder = transformType.GetProperty("rotationOrder", BindingFlags.Instance | BindingFlags.NonPublic);
+            object m_OldRotationOrder = m_propertyInfo_rotationOrder.GetValue(transform, null);
+            MethodInfo m_methodInfo_GetLocalEulerAngles = transformType.GetMethod("GetLocalEulerAngles",BindingFlags.Instance | BindingFlags.NonPublic);
+            object value = m_methodInfo_GetLocalEulerAngles.Invoke(transform, new object[] {m_OldRotationOrder});
+            return (Vector3) value;
         }
     }
 }

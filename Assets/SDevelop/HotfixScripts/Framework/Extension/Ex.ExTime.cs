@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using UnityEngine;
 
 
@@ -64,6 +65,25 @@ namespace Ex
                 return "00:00:00";
             }
             return  GetTime(offset);
+        }
+        
+        /// <summary>
+        /// 获取当前的时间戳
+        /// </summary>
+        /// <returns></returns>
+        public static long GetTimeStamp()
+        {
+            return new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds();
+        }
+        
+        /// <summary>
+        /// 获取当前的时间,
+        /// 格式：yyyy-MM-dd HH:mm:ss , yyyy/MM/dd HH:mm:ss
+        /// </summary>
+        /// <returns></returns>
+        public static string CurrentTime(string format="yyyy-MM-dd HH:mm:ss")
+        {
+            return DateTime.Now.ToString(format, DateTimeFormatInfo.InvariantInfo);
         }
     }
 }
