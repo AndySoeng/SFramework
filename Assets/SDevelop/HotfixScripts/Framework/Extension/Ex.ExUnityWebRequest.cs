@@ -28,7 +28,7 @@ namespace Ex
 
             byte[] body = Encoding.UTF8.GetBytes(jsonData);
 
-            UnityWebRequest unityWeb = new UnityWebRequest(@url, type.ToString());
+            using UnityWebRequest unityWeb = new UnityWebRequest(@url, type.ToString());
 
             unityWeb.uploadHandler = new UploadHandlerRaw(body);
             unityWeb.SetRequestHeader("Content-Type", "application/json;charset=utf-8");
@@ -83,7 +83,7 @@ namespace Ex
                 }
             }
 
-            UnityWebRequest unityWeb = UnityWebRequest.Post(@url, form);
+            using  UnityWebRequest unityWeb = UnityWebRequest.Post(@url, form);
 
             unityWeb.downloadHandler = new DownloadHandlerBuffer();
             yield return unityWeb.SendWebRequest();
