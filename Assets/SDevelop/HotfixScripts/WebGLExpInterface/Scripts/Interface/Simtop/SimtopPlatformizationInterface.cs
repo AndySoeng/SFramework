@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using Ex;
 using LitJson;
 using UnityEngine;
+using WebGLExpInterface.DTO;
 
 namespace WebGLExpInterface
 {
-    public static class CXSYInterfaceManager
+    public static class SimtopPlatformizationInterface
     {
 #if UNITY_WEBGL && !UNITY_EDITOR
         [DllImport("__Internal")]
@@ -49,7 +51,7 @@ namespace WebGLExpInterface
 #endif
         }
 
-        public static void CXSYInterface_SendScore(this MonoBehaviour mono, int score, string[] keys, string[] values, Action failureCallBack,
+        public static void SendScore(this MonoBehaviour mono, int score, string[] keys, string[] values, Action failureCallBack,
             Action<string> successCallBack)
         {
             if (init == false)
@@ -57,13 +59,13 @@ namespace WebGLExpInterface
                 return;
             }
 
-            CXSYData data = new CXSYData(status, submitId, score, keys, values);
+            DTO_SimtopPlatformization.CXSYData data = new DTO_SimtopPlatformization.CXSYData(status, submitId, score, keys, values);
             string jsonData = JsonMapper.ToJson(data);
             string url = host + hostSuffix;
-            mono.StartCoroutine(ExpInterfaceBase.WebRequest(UnityWebRequestType.POST, url, jsonData, false,
+            mono.StartCoroutine(ExUnityWebRequest.WebRequest(ExUnityWebRequest.UnityWebRequestType.POST, url, jsonData, false,
                 false, () => { failureCallBack?.Invoke(); }, (str) =>
                 {
-                    CXSYDataReply reply = JsonMapper.ToObject<CXSYDataReply>(str);
+                    DTO_SimtopPlatformization.CXSYDataReply reply = JsonMapper.ToObject<DTO_SimtopPlatformization.CXSYDataReply>(str);
                     if (reply.code == 200)
                     {
                         successCallBack?.Invoke(reply.msg);
@@ -76,33 +78,6 @@ namespace WebGLExpInterface
 
         }
 
-        public class CXSYData
-        {
-            public int status;
-            public int submitId;
-            public int virtualExperimentScore;
-
-            public string[] keys;
-            public string[] values;
-
-            public CXSYData(int status, int submitId, int virtualExperimentScore, string[] keys, string[] values)
-            {
-                this.status = status;
-                this.submitId = submitId;
-                this.virtualExperimentScore = virtualExperimentScore;
-                this.keys = keys;
-                this.values = values;
-            }
-
-            public CXSYData()
-            {
-            }
-        }
-
-        public class CXSYDataReply
-        {
-            public int code;
-            public string msg;
-        }
+   
     }
 }

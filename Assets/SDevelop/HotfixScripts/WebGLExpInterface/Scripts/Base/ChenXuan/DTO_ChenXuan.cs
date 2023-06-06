@@ -1,47 +1,8 @@
-﻿using System;
-using UnityEngine;
-
-namespace WebGLExpInterface
+﻿
+namespace WebGLExpInterface.DTO
 {
-    public static class CXInterfaceManager
+    public class DTO_ChenXuan
     {
-#if UNITY_WEBGL && !UNITY_EDITOR
-        [DllImport("__Internal")]
-        private static extern string getUrlParams(string name);
-#endif
-        
-        private static string host
-        {
-            get => "http://123.60.156.121:8001/remote_java/experiment/addExperiment/";
-        }
-
-        public static void AddExperiment(this MonoBehaviour mono, string ilabJson, Action failureCallBack,
-            Action<StatusInfo> successCallBack)
-        {
-            string token = String.Empty;
-#if UNITY_WEBGL && !UNITY_EDITOR
-            token = getUrlParams("token");
-#endif
-
-            if (string.IsNullOrEmpty(token))
-            {
-                Debug.LogWarning("token不存在");
-                failureCallBack?.Invoke();
-                return;
-            }
-
-            DTO_AddExperiment addExperiment = new DTO_AddExperiment(token, ilabJson);
-            string jsonData = LitJson.JsonMapper.ToJson(addExperiment);
-            mono.StartCoroutine(ExpInterfaceBase.WebRequest(UnityWebRequestType.POST, host, jsonData, false, false, () => { }, (result) =>
-            {
-                StatusInfo statusInfo = LitJson.JsonMapper.ToObject<StatusInfo>(result);
-                successCallBack?.Invoke(statusInfo);
-            }, null, null));
-        }
-
-
-        #region DTO
-
         public class StatusInfo
         {
             public int code;
@@ -97,7 +58,5 @@ namespace WebGLExpInterface
                 this.contextJson = contextJson;
             }
         }
-
-        #endregion
     }
 }

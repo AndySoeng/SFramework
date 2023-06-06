@@ -3,20 +3,22 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Text;
+using Ex;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Networking;
+using WebGLExpInterface.DTO;
 
 namespace WebGLExpInterface
 {
-    public static class HLGInterfaceManager
+    public static class RAINERInterface
     {
 #if UNITY_WEBGL && !UNITY_EDITOR
         [DllImport("__Internal")]
         private static extern string getUrlParams(string name);
 #endif
 
-        public static UserInfo userInfo;
+        public static DTO_RAINER.UserInfo userInfo;
 
         /// <summary>
         /// 测试平台标记
@@ -35,8 +37,8 @@ namespace WebGLExpInterface
         /// <param name="mono"></param>
         /// <param name="failureCallBack"></param>
         /// <param name="successCallBack"></param>
-        public static void HLGInterface_GetUserInfo(this MonoBehaviour mono, Action failureCallBack,
-            Action<UserInfo> successCallBack)
+        public static void GetUserInfo(this MonoBehaviour mono, Action failureCallBack,
+            Action<DTO_RAINER.UserInfo> successCallBack)
         {
             string token = String.Empty;
 #if UNITY_WEBGL && !UNITY_EDITOR
@@ -50,14 +52,14 @@ namespace WebGLExpInterface
                 return;
             }
 
-            Token tokenData = new Token();
+            DTO_RAINER.Token tokenData = new DTO_RAINER.Token();
             tokenData.token = token;
             string jsonData = LitJson.JsonMapper.ToJson(tokenData);
             string url = host + "outer/getMessageByToken";
-            mono.StartCoroutine(ExpInterfaceBase.WebRequestFrom(url, new[] { "param" }, new[] { jsonData },
+            mono.StartCoroutine(ExUnityWebRequest.WebRequestFrom(url, new[] { "param" }, new[] { jsonData },
                 true, true, () => { failureCallBack?.Invoke(); }, (result) =>
                 {
-                    userInfo = LitJson.JsonMapper.ToObject<UserInfo>(result);
+                    userInfo = LitJson.JsonMapper.ToObject<DTO_RAINER.UserInfo>(result);
 
                     if (userInfo.status == "909")
                     {
@@ -77,16 +79,16 @@ namespace WebGLExpInterface
         /// <param name="score"></param>
         /// <param name="failureCallBack"></param>
         /// <param name="successCallBack"></param>
-        public static void HLGInterface_SendExpScore(this MonoBehaviour mono, string score, Action failureCallBack,
-            Action<StatusInfo> successCallBack)
+        public static void SendExpScore(this MonoBehaviour mono, string score, Action failureCallBack,
+            Action<DTO_RAINER.StatusInfo> successCallBack)
         {
-            SendExpScore send = new SendExpScore() { eid = userInfo.eId, expScore = score };
+            DTO_RAINER.SendExpScore send = new DTO_RAINER.SendExpScore() { eid = userInfo.eId, expScore = score };
             string scoreData = LitJson.JsonMapper.ToJson(send);
             string url = host + "outer/intelligent/!expScoreSave";
-            mono.StartCoroutine(ExpInterfaceBase.WebRequestFrom(url, new[] { "param" },
+            mono.StartCoroutine(ExUnityWebRequest.WebRequestFrom(url, new[] { "param" },
                 new[] { scoreData }, false, false, () => { failureCallBack?.Invoke(); }, (result) =>
                 {
-                    StatusInfo statusInfo = LitJson.JsonMapper.ToObject<StatusInfo>(result);
+                    DTO_RAINER.StatusInfo statusInfo = LitJson.JsonMapper.ToObject<DTO_RAINER.StatusInfo>(result);
                     successCallBack?.Invoke(statusInfo);
                 }));
         }
@@ -99,10 +101,10 @@ namespace WebGLExpInterface
         /// <param name="mono"></param>
         /// <param name="failureCallBack"></param>
         /// <param name="successCallBack"></param>
-        public static void HLGInterface_SendReportInfo(this MonoBehaviour mono, Action<ReportInfo> InitReportInfo, Action failureCallBack,
-            Action<StatusInfo> successCallBack)
+        public static void SendReportInfo(this MonoBehaviour mono, Action<DTO_RAINER.ReportInfo> InitReportInfo, Action failureCallBack,
+            Action<DTO_RAINER.StatusInfo> successCallBack)
         {
-            ReportInfo report = new ReportInfo() { eid = userInfo.eId };
+            DTO_RAINER.ReportInfo report = new DTO_RAINER.ReportInfo() { eid = userInfo.eId };
             InitReportInfo.Invoke(report);
             // report.text1 = new List<Text_chan>(); //
             // Text_chan text = new Text_chan();
@@ -124,97 +126,13 @@ namespace WebGLExpInterface
             // report.text3.Add(text);
             string reportData = LitJson.JsonMapper.ToJson(report);
             string url = host + "outer/report/!reportEdit";
-            mono.StartCoroutine(ExpInterfaceBase.WebRequestFrom(url, new[] { "param" }, new[] { reportData },
+            mono.StartCoroutine(ExUnityWebRequest.WebRequestFrom(url, new[] { "param" }, new[] { reportData },
                 false, false, () => { failureCallBack?.Invoke(); }, (result) =>
                 {
-                    StatusInfo statusInfo = LitJson.JsonMapper.ToObject<StatusInfo>(result);
+                    DTO_RAINER.StatusInfo statusInfo = LitJson.JsonMapper.ToObject<DTO_RAINER.StatusInfo>(result);
                     successCallBack?.Invoke(statusInfo);
                 }));
         }
     }
 
-
-    public class UserInfo
-    {
-        public string status { get; set; }
-        public string eId { get; set; }
-        public string userId { get; set; }
-        public string numberId { get; set; }
-        public string name { get; set; }
-        public string groupName { get; set; }
-        public string host { get; set; }
-        public string role { get; set; }
-
-        public string statusMessage { get; set; }
-
-        public override string ToString()
-        {
-            return status + "\t" + eId + "\t" + userId + "\t" + numberId + "\t" + name + "\t" + groupName + "\t" +
-                   host + "\t" + role + "\t" + statusMessage;
-        }
-    }
-
-//{"status":"000",
-//"eId":"8a8091397217a91a01722705b0b80fb4",
-//"userId":"ff8080817048d4830170624769800cde",
-//"numberId":"20202020",
-//"groupName":"无",
-//"name":"333",
-//"host":"http://zhang.xb.owvlab.net/virexp",
-//"role":"student"}
-
-
-    public class Token
-    {
-        public string token { get; set; }
-    }
-
-
-    public class SendExpScore
-    {
-        public string eid { get; set; }
-        public string expScore { get; set; }
-    }
-
-    public class StatusInfo
-    {
-        // 000	成功
-        // 101	数据库异常
-        // 其他	系统错误
-        public string status { get; set; }
-        public string statusMessage { get; set; }
-
-
-        public override string ToString()
-        {
-            return status + "\t" + statusMessage;
-        }
-    }
-
-
-    public class ReportInfo
-    {
-        public string eid { get; set; }
-        public List<Text_chan> text1 { get; set; }
-        public List<Text_chan> text2 { get; set; }
-        public List<Text_chan> text3 { get; set; }
-
-
-        public override string ToString()
-        {
-            return text1[0].text + "\t" + text1[0].color + "\t" + text2[0].text + "\t" + text2[0].color + "\t" +
-                   text3[0].text + "\t" + text3[0].color;
-        }
-    }
-
-    public class Text_chan
-    {
-        public string text { get; set; }
-        public string color { get; set; }
-        public bool enabled { get; internal set; }
-        public Font font { get; internal set; }
-        public int fontSize { get; internal set; }
-        public TextAnchor alignment { get; internal set; }
-        public int preferredWidth { get; internal set; }
-    }
 }

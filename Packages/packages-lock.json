@@ -50,12 +50,6 @@
       "source": "embedded",
       "dependencies": {}
     },
-    "com.sharelib.webglexpinterface": {
-      "version": "file:WebGLExpInterface",
-      "depth": 0,
-      "source": "embedded",
-      "dependencies": {}
-    },
     "com.sharelib.webglsupport": {
       "version": "file:WebGLSupport",
       "depth": 0,

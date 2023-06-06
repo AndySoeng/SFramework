@@ -5,10 +5,17 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Networking;
 
-namespace WebGLExpInterface
+
+namespace Ex
 {
-    public class ExpInterfaceBase
+    public static class ExUnityWebRequest
     {
+        public enum UnityWebRequestType
+        {
+            POST,
+            GET
+        }
+
         public static IEnumerator WebRequest(UnityWebRequestType type, string url, string jsonData, bool sendBase64,
             bool getBase64, UnityAction failureCallBack, UnityAction<string> successCallBack, string[] otherHeaderName,
             string[] otherHeaderValue)
@@ -101,11 +108,5 @@ namespace WebGLExpInterface
                 successCallBack?.Invoke(result);
             }
         }
-    }
-
-    public enum UnityWebRequestType
-    {
-        POST,
-        GET
     }
 }

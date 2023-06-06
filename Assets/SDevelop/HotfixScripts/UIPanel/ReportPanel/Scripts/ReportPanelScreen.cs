@@ -223,7 +223,7 @@ namespace SFramework.UI
                 await SUIManager.Ins.OpenUI<HttpRequestPanelScreen>(new HttpRequestPanelScreenParam()
                     { content = "提交实验报告提交中……" });
 
-                monoBehaviour.StartCoroutine(WebGLExpInterface.ExpInterfaceBase.WebRequest(WebGLExpInterface.UnityWebRequestType.POST, userInfos[3],
+                monoBehaviour.StartCoroutine(ExUnityWebRequest.WebRequest(ExUnityWebRequest.UnityWebRequestType.POST, userInfos[3],
                     JsonMapper.ToJson(scoreList), false, false,
                     async () =>
                     {
