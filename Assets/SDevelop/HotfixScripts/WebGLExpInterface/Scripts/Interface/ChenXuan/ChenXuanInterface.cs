@@ -1,4 +1,9 @@
 ﻿using System;
+using System.Text;
+using System.Text.RegularExpressions;
+#if UNITY_WEBGL && !UNITY_EDITOR
+using System.Runtime.InteropServices;
+#endif
 using Ex;
 using UnityEngine;
 using WebGLExpInterface.DTO;
@@ -9,7 +14,7 @@ namespace WebGLExpInterface
     {
 #if UNITY_WEBGL && !UNITY_EDITOR
         [DllImport("__Internal")]
-        private static extern string getUrlParams(string name);
+        private static extern string chenxuanGetUrl( );
 #endif
 
 
@@ -19,7 +24,9 @@ namespace WebGLExpInterface
         public static void AddExperiment(this MonoBehaviour mono, string ilabJson, Action failureCallBack,
             Action<DTO_ChenXuan.StatusInfo> successCallBack)
         {
-            mono.StartCoroutine(ExUnityWebRequest.WebRequest(ExUnityWebRequest.UnityWebRequestType.GET, Application.streamingAssetsPath + "/PLAINTXTCONFIG", "", false, false,
+            ilabJson = ExTxtEncoding.CovertUnicode2UTF8(ilabJson);
+            mono.StartCoroutine(ExUnityWebRequest.WebRequest(ExUnityWebRequest.UnityWebRequestType.GET,
+                Application.streamingAssetsPath + "/PLAINTXTCONFIG", "", false, false,
                 () =>
                 {
                     Debug.LogError("未获取到配置文件");
@@ -41,37 +48,33 @@ namespace WebGLExpInterface
                 }), null, null));
         }
 
-        private static void AddExperimentImp(this MonoBehaviour mono, string host, string ilabJson, Action failureCallBack,
+        private static void AddExperimentImp(this MonoBehaviour mono, string host, string ilabJson,
+            Action failureCallBack,
             Action<DTO_ChenXuan.StatusInfo> successCallBack)
         {
-            string token = String.Empty;
+            string url = String.Empty;
 #if UNITY_EDITOR
-            token = "84561605125232068622526788021623?type=1";
+            url = "http://123.60.156.121:8001/cross/unity/?token=18611062038424585053824478057850&type=1";
 #elif UNITY_WEBGL&& !UNITY_EDITOR
-            token = getUrlParams("token");
+            url = chenxuanGetUrl();
 #endif
 
-            if (string.IsNullOrEmpty(token))
+            if (string.IsNullOrEmpty(url))
             {
-                Debug.LogWarning("token不存在");
+                Debug.LogWarning("url不存在");
                 failureCallBack?.Invoke();
                 return;
             }
 
-            DTO_ChenXuan.DTO_AddExperiment addExperiment = new DTO_ChenXuan.DTO_AddExperiment(token, ilabJson);
+            DTO_ChenXuan.DTO_AddExperiment addExperiment = new DTO_ChenXuan.DTO_AddExperiment(ilabJson, url);
             string jsonData = LitJson.JsonMapper.ToJson(addExperiment);
-            mono.StartCoroutine(ExUnityWebRequest.WebRequest(ExUnityWebRequest.UnityWebRequestType.POST, host, jsonData, false, false, () => { }, (result) =>
-            {
-                DTO_ChenXuan.StatusInfo statusInfo = LitJson.JsonMapper.ToObject<DTO_ChenXuan.StatusInfo>(result);
-                successCallBack?.Invoke(statusInfo);
-            }, null, null));
+            jsonData = ExTxtEncoding.CovertUnicode2UTF8(jsonData);
+            mono.StartCoroutine(ExUnityWebRequest.WebRequest(ExUnityWebRequest.UnityWebRequestType.POST, host, jsonData,
+                false, false, () => { }, (result) =>
+                {
+                    DTO_ChenXuan.StatusInfo statusInfo = LitJson.JsonMapper.ToObject<DTO_ChenXuan.StatusInfo>(result);
+                    successCallBack?.Invoke(statusInfo);
+                }, null, null));
         }
-
-
-        #region DTO
-
-      
-
-        #endregion
     }
 }

@@ -8,6 +8,10 @@ namespace WebGLExpInterface.DTO
             public int code;
             public string message;
             public int data;
+            public override string ToString()
+            {
+                return code+"\t"+message+"\t"+data;
+            }
         }
 
         public class DTO_AddExperiment
@@ -52,10 +56,11 @@ namespace WebGLExpInterface.DTO
             /// </summary>
             public string type;
 
-            public DTO_AddExperiment(string accessToken, string contextJson)
+            public DTO_AddExperiment( string contextJson,string remoteUrl)
             {
-                this.accessToken = accessToken;
                 this.contextJson = contextJson;
+                this.remoteUrl  = remoteUrl;
+
             }
         }
     }
