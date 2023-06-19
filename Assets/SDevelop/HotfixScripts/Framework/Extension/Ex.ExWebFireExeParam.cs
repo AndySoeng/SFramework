@@ -22,7 +22,7 @@ namespace Ex
             }
 
             string host, token = "";
-            string[] webParams = commandLineArgs[1].Split("&&");
+            string[] webParams = commandLineArgs[1].Split('&');
             host = webParams[0].Replace("host=", "");
             if (webParams.Length == 2)
                 token = webParams[1].Replace("token=", "");
