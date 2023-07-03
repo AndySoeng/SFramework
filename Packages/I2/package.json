@@ -1,0 +1,22 @@
+{
+  "name": "com.interillusion.i2localization",
+  "version": "2.8.20",
+  "displayName": "I2 Localization",
+  "description": "I2 Localization",
+  "category": "Runtime",
+  "keywords": [
+    ""
+  ],
+  "samples": [
+    {
+      "displayName": "I2 Localization",
+      "description": "",
+      "path": ""
+    }
+  ],
+  "author": {
+    "name": "",
+    "email": "",
+    "url": ""
+  }
+}

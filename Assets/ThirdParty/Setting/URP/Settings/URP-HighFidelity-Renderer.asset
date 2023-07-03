@@ -20,6 +20,21 @@ MonoBehaviour:
   _renderPassEvent: 200
   _sortingCriteria: 0
   depthNormalsShader: {fileID: 0}
+--- !u!114 &-5557489102365308482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 473a86c9e274347dfbdde619584cebe9, type: 3}
+  m_Name: HighlightPlusRenderPassFeature
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  renderPassEvent: 500
+  clearStencil: 0
 --- !u!114 &-1878332245247344467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80,11 +95,10 @@ MonoBehaviour:
       type: 3}
   m_RendererFeatures:
   - {fileID: -1878332245247344467}
-  - {fileID: 792224124232732981}
-  - {fileID: 1157244588959694053}
   - {fileID: 4412275597281471810}
   - {fileID: 4390642376899295362}
-  m_RendererFeatureMap: adc0de57c6d2eee5351163c3a48bfe0ae57c2f83d25b0f10422d164b478d3b3d82f8dbaafab1ee3c
+  - {fileID: -5557489102365308482}
+  m_RendererFeatureMap: adc0de57c6d2eee5422d164b478d3b3d82f8dbaafab1ee3cbe4969321bd5dfb2
   m_UseNativeRenderPass: 0
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}

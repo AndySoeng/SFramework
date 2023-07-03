@@ -20,6 +20,24 @@
       "dependencies": {},
       "hash": "75cb53cb19f11782fbbf02447900578ad9563567"
     },
+    "com.interillusion.i2localization": {
+      "version": "file:I2",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
+    "com.pathologicalgames.poolmanager": {
+      "version": "file:Pool",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
+    "com.sharelib.customwire": {
+      "version": "file:CustomWire",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
     "com.sharelib.google.protobuf": {
       "version": "file:Google.Protobuf",
       "depth": 0,
@@ -38,8 +56,32 @@
       "source": "embedded",
       "dependencies": {}
     },
+    "com.sharelib.rigidbodyfpscontroller": {
+      "version": "file:RigidBodyFPSController",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
+    "com.sharelib.scomponent": {
+      "version": "file:SComponent",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
+    "com.sharelib.sextension": {
+      "version": "file:SExtension",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
     "com.sharelib.standalonefilebrowser": {
       "version": "file:StandaloneFileBrowser",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
+    "com.sharelib.swebglexpapi": {
+      "version": "file:SWebGLExpAPI",
       "depth": 0,
       "source": "embedded",
       "dependencies": {}
@@ -52,6 +94,12 @@
     },
     "com.sharelib.webglsupport": {
       "version": "file:WebGLSupport",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
+    "com.sharelib.zstring": {
+      "version": "file:zstring",
       "depth": 0,
       "source": "embedded",
       "dependencies": {}

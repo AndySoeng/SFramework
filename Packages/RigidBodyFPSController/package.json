@@ -1,0 +1,22 @@
+{
+  "name": "com.sharelib.rigidbodyfpscontroller",
+  "version": "0.1.0",
+  "displayName": "RigidBodyFPSController",
+  "description": "RigidBodyFPSController .",
+  "category": "Runtime",
+  "keywords": [
+    ""
+  ],
+  "samples": [
+    {
+      "displayName": "RigidBodyFPSController",
+      "description": "",
+      "path": ""
+    }
+  ],
+  "author": {
+    "name": "",
+    "email": "",
+    "url": ""
+  }
+}

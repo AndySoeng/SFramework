@@ -1,0 +1,22 @@
+{
+  "name": "com.sharelib.sextension",
+  "version": "0.1.0",
+  "displayName": "SExtension",
+  "description": "SExtension .",
+  "category": "Runtime",
+  "keywords": [
+    ""
+  ],
+  "samples": [
+    {
+      "displayName": "SExtension",
+      "description": "",
+      "path": ""
+    }
+  ],
+  "author": {
+    "name": "",
+    "email": "",
+    "url": ""
+  }
+}

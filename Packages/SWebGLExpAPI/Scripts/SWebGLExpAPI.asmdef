@@ -1,0 +1,17 @@
+{
+    "name": "SWebGLExpAPI",
+    "rootNamespace": "",
+    "references": [
+        "GUID:8b3badd8a4d4b4045ae1979d5ac69770",
+        "GUID:87ef9f341de88ad49acdf597cd4fa560"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

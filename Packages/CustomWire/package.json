@@ -1,0 +1,22 @@
+{
+  "name": "com.sharelib.customwire",
+  "version": "0.1.3",
+  "displayName": "CustomWire",
+  "description": "CustomWire .",
+  "category": "Runtime",
+  "keywords": [
+    ""
+  ],
+  "samples": [
+    {
+      "displayName": "CustomWire",
+      "description": "",
+      "path": ""
+    }
+  ],
+  "author": {
+    "name": "",
+    "email": "",
+    "url": ""
+  }
+}

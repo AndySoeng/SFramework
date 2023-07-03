@@ -1,0 +1,22 @@
+{
+  "name": "com.pathologicalgames.poolmanager",
+  "version": "6.0.0",
+  "displayName": "PoolManager",
+  "description": "PoolManager .",
+  "category": "Runtime",
+  "keywords": [
+    ""
+  ],
+  "samples": [
+    {
+      "displayName": "PoolManager",
+      "description": "",
+      "path": ""
+    }
+  ],
+  "author": {
+    "name": "",
+    "email": "",
+    "url": ""
+  }
+}
