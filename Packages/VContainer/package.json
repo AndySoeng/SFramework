@@ -1,0 +1,22 @@
+{
+  "name": "com.hadashia.vcontainer",
+  "version": "1.13.2",
+  "displayName": "VContainer",
+  "description": "VContainer .",
+  "category": "Runtime",
+  "keywords": [
+    ""
+  ],
+  "samples": [
+    {
+      "displayName": "VContainer",
+      "description": "",
+      "path": ""
+    }
+  ],
+  "author": {
+    "name": "",
+    "email": "",
+    "url": ""
+  }
+}

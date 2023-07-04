@@ -32,6 +32,12 @@
       "source": "embedded",
       "dependencies": {}
     },
+    "com.hadashia.vcontainer": {
+      "version": "file:VContainer",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
     "com.interillusion.i2localization": {
       "version": "file:I2",
       "depth": 0,
@@ -211,6 +217,13 @@
     "com.unity.mathematics": {
       "version": "1.2.6",
       "depth": 1,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.cn"
+    },
+    "com.unity.nuget.mono-cecil": {
+      "version": "1.10.2",
+      "depth": 0,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.cn"

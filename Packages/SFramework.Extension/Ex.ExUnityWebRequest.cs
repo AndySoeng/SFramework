@@ -43,7 +43,8 @@ namespace Ex
 
             unityWeb.downloadHandler = new DownloadHandlerBuffer();
             yield return unityWeb.SendWebRequest();
-            if (unityWeb.isHttpError || unityWeb.isNetworkError)
+
+            if (unityWeb.result == UnityWebRequest.Result.ProtocolError|| unityWeb.result == UnityWebRequest.Result.ConnectionError|| unityWeb.result == UnityWebRequest.Result.DataProcessingError)
             {
                 Debug.Log("failure:" + unityWeb.error);
                 failureCallBack?.Invoke();
@@ -88,13 +89,13 @@ namespace Ex
             unityWeb.downloadHandler = new DownloadHandlerBuffer();
             yield return unityWeb.SendWebRequest();
 
-            if (unityWeb.isHttpError || unityWeb.isNetworkError)
+            if (unityWeb.result == UnityWebRequest.Result.ProtocolError|| unityWeb.result == UnityWebRequest.Result.ConnectionError|| unityWeb.result == UnityWebRequest.Result.DataProcessingError)
             {
-                //Debug.Log("failure:" + unityWeb.error);
+                Debug.Log("failure:" + unityWeb.error);
                 failureCallBack?.Invoke();
                 yield break;
             }
-
+            
             if (unityWeb.isDone)
             {
                 string result = unityWeb.downloadHandler.text;

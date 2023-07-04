@@ -32,8 +32,11 @@ public class CustomWireMenuTool {
         line.transform.parent = wire.transform;
         line.transform.localPosition = Vector3.zero;
         LineRenderer lineComponent = line.AddComponent<LineRenderer>();
-        lineComponent.SetVertexCount(0);
-        lineComponent.SetWidth(0.01f, 0.01f);
+        //lineComponent.SetVertexCount(0);
+        lineComponent.positionCount = 0;
+        //lineComponent.SetWidth(0.01f, 0.01f);
+        lineComponent.startWidth = 0.01f;
+        lineComponent.endWidth = 0.01f;
         lineComponent.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
         lineComponent.receiveShadows = false;
         lineComponent.material = Resources.Load("Material/CustomWire_DefaultMaterial") as Material;

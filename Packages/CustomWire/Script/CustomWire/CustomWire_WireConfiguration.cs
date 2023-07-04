@@ -8,15 +8,20 @@
 using UnityEngine;
 using System;
 
-public partial class CustomWire {
-
+public partial class CustomWire
+{
     //曲线、折线
-    public enum WireType { Curve, Linear }
+    public enum WireType
+    {
+        Curve,
+        Linear
+    }
+
     public WireType wireType = WireType.Curve;
 
     public LineRenderer lineRenderer;
-    public bool closeWire;//true：闭合（首尾相连）  false：非闭合
-    
+    public bool closeWire; //true：闭合（首尾相连）  false：非闭合
+
     /// <summary>
     /// 根据节点设置线段
     /// </summary>
@@ -58,7 +63,7 @@ public partial class CustomWire {
                     break;
             }
         }
-        else//没有节点时不绘制
+        else //没有节点时不绘制
         {
             ClearLineRenderer();
         }
@@ -70,7 +75,8 @@ public partial class CustomWire {
     /// <param name="v3s">线段点的位置</param>
     private void SetLineRenderer(Vector3[] v3s)
     {
-        lineRenderer.SetVertexCount(v3s.Length);
+        //lineRenderer.SetVertexCount(v3s.Length);
+        lineRenderer.positionCount = v3s.Length;
         lineRenderer.SetPositions(v3s);
     }
 
@@ -80,6 +86,7 @@ public partial class CustomWire {
     private void ClearLineRenderer()
     {
         lineRenderer.SetPositions(new Vector3[] { });
-        lineRenderer.SetVertexCount(0);
+        //lineRenderer.SetVertexCount(0);
+        lineRenderer.positionCount = 0;
     }
 }
