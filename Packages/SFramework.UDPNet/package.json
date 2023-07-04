@@ -1,0 +1,22 @@
+{
+  "name": "com.sframework.udpnet",
+  "version": "0.1.0",
+  "displayName": "UDPNet",
+  "description": "UDPNet .",
+  "category": "Runtime",
+  "keywords": [
+    ""
+  ],
+  "samples": [
+    {
+      "displayName": "UDPNet",
+      "description": "",
+      "path": ""
+    }
+  ],
+  "author": {
+    "name": "",
+    "email": "",
+    "url": ""
+  }
+}

@@ -1,0 +1,16 @@
+{
+    "name": "I2.Localization.Examples",
+    "rootNamespace": "",
+    "references": [
+        "GUID:9e0e9dfdec764874084bd06fdd019653"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

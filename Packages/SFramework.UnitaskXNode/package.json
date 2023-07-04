@@ -1,0 +1,22 @@
+{
+  "name": "com.sframework.unitaskxnode",
+  "version": "0.1.0",
+  "displayName": "UnitaskXNode",
+  "description": "UnitaskXNode .",
+  "category": "Runtime",
+  "keywords": [
+    ""
+  ],
+  "samples": [
+    {
+      "displayName": "UnitaskXNode",
+      "description": "",
+      "path": ""
+    }
+  ],
+  "author": {
+    "name": "",
+    "email": "",
+    "url": ""
+  }
+}

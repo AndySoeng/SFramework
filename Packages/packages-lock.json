@@ -20,6 +20,18 @@
       "dependencies": {},
       "hash": "75cb53cb19f11782fbbf02447900578ad9563567"
     },
+    "com.github.siccity.xnode": {
+      "version": "file:xNode",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
+    "com.github.siccity.xnodegroups": {
+      "version": "file:xNodeGroups",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
     "com.interillusion.i2localization": {
       "version": "file:I2",
       "depth": 0,
@@ -28,6 +40,42 @@
     },
     "com.pathologicalgames.poolmanager": {
       "version": "file:Pool",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
+    "com.sframework.component": {
+      "version": "file:SFramework.Component",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
+    "com.sframework.extension": {
+      "version": "file:SFramework.Extension",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
+    "com.sframework.rwcontrol": {
+      "version": "file:SFramework.RWCONTROL",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
+    "com.sframework.udpnet": {
+      "version": "file:SFramework.UDPNet",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
+    "com.sframework.unitaskxnode": {
+      "version": "file:SFramework.UnitaskXNode",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
+    "com.sframework.webglexpapi": {
+      "version": "file:SFramework.WebGLExpAPI",
       "depth": 0,
       "source": "embedded",
       "dependencies": {}
@@ -62,26 +110,8 @@
       "source": "embedded",
       "dependencies": {}
     },
-    "com.sharelib.scomponent": {
-      "version": "file:SComponent",
-      "depth": 0,
-      "source": "embedded",
-      "dependencies": {}
-    },
-    "com.sharelib.sextension": {
-      "version": "file:SExtension",
-      "depth": 0,
-      "source": "embedded",
-      "dependencies": {}
-    },
     "com.sharelib.standalonefilebrowser": {
       "version": "file:StandaloneFileBrowser",
-      "depth": 0,
-      "source": "embedded",
-      "dependencies": {}
-    },
-    "com.sharelib.swebglexpapi": {
-      "version": "file:SWebGLExpAPI",
       "depth": 0,
       "source": "embedded",
       "dependencies": {}
@@ -181,6 +211,13 @@
     "com.unity.mathematics": {
       "version": "1.2.6",
       "depth": 1,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.cn"
+    },
+    "com.unity.nuget.newtonsoft-json": {
+      "version": "3.0.2",
+      "depth": 0,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.cn"

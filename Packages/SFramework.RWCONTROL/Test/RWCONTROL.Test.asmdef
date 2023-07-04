@@ -1,0 +1,16 @@
+{
+    "name": "RWCONTROL.Test",
+    "rootNamespace": "",
+    "references": [
+        "GUID:648713d7fc1a240469728a3aa1641cfa"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

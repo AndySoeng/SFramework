@@ -1,0 +1,22 @@
+{
+  "name": "com.sframework.extension",
+  "version": "0.1.0",
+  "displayName": "Extension",
+  "description": "Extension .",
+  "category": "Runtime",
+  "keywords": [
+    ""
+  ],
+  "samples": [
+    {
+      "displayName": "Extension",
+      "description": "",
+      "path": ""
+    }
+  ],
+  "author": {
+    "name": "",
+    "email": "",
+    "url": ""
+  }
+}

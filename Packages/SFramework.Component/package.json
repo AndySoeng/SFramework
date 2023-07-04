@@ -1,0 +1,22 @@
+{
+  "name": "com.sframework.component",
+  "version": "0.1.0",
+  "displayName": "Component",
+  "description": "Component .",
+  "category": "Runtime",
+  "keywords": [
+    ""
+  ],
+  "samples": [
+    {
+      "displayName": "Component",
+      "description": "",
+      "path": ""
+    }
+  ],
+  "author": {
+    "name": "",
+    "email": "",
+    "url": ""
+  }
+}

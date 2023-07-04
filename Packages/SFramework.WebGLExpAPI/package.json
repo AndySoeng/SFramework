@@ -1,0 +1,22 @@
+{
+  "name": "com.sframework.webglexpapi",
+  "version": "0.1.0",
+  "displayName": "WebGLExpAPI",
+  "description": "WebGLExpAPI .",
+  "category": "Runtime",
+  "keywords": [
+    ""
+  ],
+  "samples": [
+    {
+      "displayName": "WebGLExpAPI",
+      "description": "",
+      "path": ""
+    }
+  ],
+  "author": {
+    "name": "",
+    "email": "",
+    "url": ""
+  }
+}

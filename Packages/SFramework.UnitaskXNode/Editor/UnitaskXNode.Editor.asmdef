@@ -1,0 +1,23 @@
+{
+    "name": "UnitaskXNode.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:4129704b5a1a13841ba16f230bf24a57",
+        "GUID:002c1bbed08fa44d282ef34fd5edb138",
+        "GUID:fb02b04b80650c146891828c7bc58418",
+        "GUID:b8e24fd1eb19b4226afebb2810e3c19b",
+        "GUID:0639f827a36f385439474b832a4a5044",
+        "GUID:41d5a8cb3ec1b544fa029d86123bacde"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

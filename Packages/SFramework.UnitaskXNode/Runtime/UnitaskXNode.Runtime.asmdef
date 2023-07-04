@@ -1,0 +1,22 @@
+{
+    "name": "UnitaskXNode.Runtime",
+    "rootNamespace": "",
+    "references": [
+        "GUID:f51ebe6a0ceec4240a699833d6309b23",
+        "GUID:593a5b492d29ac6448b1ebf7f035ef33",
+        "GUID:029c1c1b674aaae47a6841a0b89ad80e",
+        "GUID:5c01796d064528144a599661eaab93a6",
+        "GUID:dc47925d1a5fa2946bdd37746b2b5d48",
+        "GUID:b8e24fd1eb19b4226afebb2810e3c19b",
+        "GUID:0639f827a36f385439474b832a4a5044"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

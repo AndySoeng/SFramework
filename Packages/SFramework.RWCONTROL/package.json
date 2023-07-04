@@ -1,0 +1,22 @@
+{
+  "name": "com.sframework.rwcontrol",
+  "version": "0.1.0",
+  "displayName": "RWCONTROL",
+  "description": "RWCONTROL .",
+  "category": "Runtime",
+  "keywords": [
+    ""
+  ],
+  "samples": [
+    {
+      "displayName": "RWCONTROL",
+      "description": "",
+      "path": ""
+    }
+  ],
+  "author": {
+    "name": "",
+    "email": "",
+    "url": ""
+  }
+}

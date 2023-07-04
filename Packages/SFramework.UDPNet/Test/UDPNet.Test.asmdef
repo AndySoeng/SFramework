@@ -1,0 +1,16 @@
+{
+    "name": "UDPNet.Test",
+    "rootNamespace": "",
+    "references": [
+        "GUID:9aa83a1e22a53e74ea1307e7d022f48e"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
