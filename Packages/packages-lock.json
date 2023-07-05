@@ -50,42 +50,6 @@
       "source": "embedded",
       "dependencies": {}
     },
-    "com.sframework.component": {
-      "version": "file:SFramework.Component",
-      "depth": 0,
-      "source": "embedded",
-      "dependencies": {}
-    },
-    "com.sframework.extension": {
-      "version": "file:SFramework.Extension",
-      "depth": 0,
-      "source": "embedded",
-      "dependencies": {}
-    },
-    "com.sframework.rwcontrol": {
-      "version": "file:SFramework.RWCONTROL",
-      "depth": 0,
-      "source": "embedded",
-      "dependencies": {}
-    },
-    "com.sframework.udpnet": {
-      "version": "file:SFramework.UDPNet",
-      "depth": 0,
-      "source": "embedded",
-      "dependencies": {}
-    },
-    "com.sframework.unitaskxnode": {
-      "version": "file:SFramework.UnitaskXNode",
-      "depth": 0,
-      "source": "embedded",
-      "dependencies": {}
-    },
-    "com.sframework.webglexpapi": {
-      "version": "file:SFramework.WebGLExpAPI",
-      "depth": 0,
-      "source": "embedded",
-      "dependencies": {}
-    },
     "com.sharelib.customwire": {
       "version": "file:CustomWire",
       "depth": 0,
@@ -110,12 +74,6 @@
       "source": "embedded",
       "dependencies": {}
     },
-    "com.sharelib.rigidbodyfpscontroller": {
-      "version": "file:RigidBodyFPSController",
-      "depth": 0,
-      "source": "embedded",
-      "dependencies": {}
-    },
     "com.sharelib.standalonefilebrowser": {
       "version": "file:StandaloneFileBrowser",
       "depth": 0,
@@ -136,6 +94,12 @@
     },
     "com.sharelib.zstring": {
       "version": "file:zstring",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
+    "com.sunny2019.sframework": {
+      "version": "file:SFramework",
       "depth": 0,
       "source": "embedded",
       "dependencies": {}

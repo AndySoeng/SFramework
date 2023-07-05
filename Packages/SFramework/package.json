@@ -1,0 +1,22 @@
+{
+  "name": "com.sunny2019.sframework",
+  "version": "0.1.0",
+  "displayName": "SFramework",
+  "description": "SFramework .",
+  "category": "Runtime",
+  "keywords": [
+    ""
+  ],
+  "samples": [
+    {
+      "displayName": "SFramework",
+      "description": "",
+      "path": ""
+    }
+  ],
+  "author": {
+    "name": "",
+    "email": "",
+    "url": ""
+  }
+}
