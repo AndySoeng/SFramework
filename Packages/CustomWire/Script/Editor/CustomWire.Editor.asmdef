@@ -1,8 +1,12 @@
 {
-    "name": "LookAroundDetection.Runtime",
+    "name": "CustomWire.Editor",
     "rootNamespace": "",
-    "references": [],
-    "includePlatforms": [],
+    "references": [
+        "GUID:2c782f07859432741bb1b8b9f0da610b"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,

@@ -1,22 +1,17 @@
-﻿using System;
-using Ex;
-using Sirenix.OdinInspector;
+﻿using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 /// <summary>
-/// 用来检测物体指定物体是否环绕了一周
+/// 用来检测物体指定物体是否环顾一周
 /// 例如：检测玩家相机环顾四周
 /// </summary>
 public class LookAroundDetection : MonoBehaviour
 {
     #region Private Fields
-    
-    [InlineButton("ResetLookAround", "重置环顾")] 
-    [InlineButton("StartLookAround", "开始环顾")]
-    [SerializeField]
+
+    [InlineButton("CancelLookAround", "取消环顾")] [InlineButton("ResetLookAround", "重置环顾")] [InlineButton("StartLookAround", "开始环顾")] [SerializeField]
     private Transform detectionTarget;
 
     /// <summary>
@@ -54,21 +49,18 @@ public class LookAroundDetection : MonoBehaviour
 
     #region Public Fields
 
-    [ToggleGroup("needUI")]
-    public bool needUI = true;
+    [ToggleGroup("needUI")] public bool needUI = true;
 
-    [ToggleGroup("needUI")] 
-    public GameObject uiPanel;
+    [ToggleGroup("needUI")] public GameObject uiPanel;
 
-    [ToggleGroup("needUI")] 
-    public Image progressSliderL, progressSliderR;
+    [ToggleGroup("needUI")] public Image progressSliderL, progressSliderR;
 
-    
+
     /// <summary>
     /// 向右环视的进度值
     /// </summary>
-    
-    public float ProgressR { private set; get; }= 0f;
+
+    public float ProgressR { private set; get; } = 0f;
 
     /// <summary>
     /// 向左环视的进度值
@@ -101,7 +93,6 @@ public class LookAroundDetection : MonoBehaviour
             return;
         SetProgressValue();
         SetUIProgressToUI(ProgressL, ProgressR);
-        
     }
 
 
@@ -286,13 +277,13 @@ public class LookAroundDetection : MonoBehaviour
             else
                 Debug.LogError("必须指定一个非空的环顾检测物");
         }
-        
+
         ResetLookAround();
     }
 
 
     /// <summary>
-    /// 重置参数
+    /// 重置环顾
     /// </summary>
     public void ResetLookAround()
     {
@@ -303,11 +294,20 @@ public class LookAroundDetection : MonoBehaviour
         _hasLookedAroundR = false;
         _hasLookedAroundL = false;
 
-
         if (uiPanel != null)
         {
             uiPanel.SetActive(needUI);
         }
+
         SetUIProgressToUI(ProgressL, ProgressR);
+    }
+
+    /// <summary>
+    /// 取消环顾
+    /// </summary>
+    public void CancelLookAround()
+    {
+        ResetLookAround();
+        detectionTarget = null;
     }
 }

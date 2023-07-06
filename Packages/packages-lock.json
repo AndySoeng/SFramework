@@ -74,6 +74,12 @@
       "source": "embedded",
       "dependencies": {}
     },
+    "com.sharelib.rigidbodyfpscontroller": {
+      "version": "file:RigidBodyFPSController",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
     "com.sharelib.standalonefilebrowser": {
       "version": "file:StandaloneFileBrowser",
       "depth": 0,

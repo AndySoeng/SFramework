@@ -1,4 +1,4 @@
-﻿Shader "CustomImageEffect/ChamferMask"
+﻿Shader "Custom/ImageEffect/ChamferMask"
 {
     Properties
     {
