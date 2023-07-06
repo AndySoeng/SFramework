@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 /// <summary>
-/// 注视组件，通过EventSystem来进行事件的触发
+/// 注视组件，通过EventSystem来进行事件的触发，注意触发的物体和UI必须有EventTrigger组件,触发3D物体相机必须有PhysicsRaycaster组件
 /// 目前已包含事件：
 /// 注视进入 ExecuteEvents.pointerEnterHandler
 /// 注视退出 ExecuteEvents.pointerExitHandler
