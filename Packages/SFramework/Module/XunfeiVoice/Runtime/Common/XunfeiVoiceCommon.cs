@@ -12,11 +12,11 @@ namespace XunfeiVoice.Runtime.Common
 
         public static readonly string HEADERS = "host date request-line";
 
-        public static readonly string APPID = "f1ffa0c7";
+        public static readonly string APPID = "";
 
-        public static readonly string APISECRET = "ZTQzZWJkNzk1YzU2Nzc5NDgzOWMxNGVm";
+        public static readonly string APISECRET = "";
 
-        public static readonly string APIKEY = "a2a6a3af40fac20f156a97bc1ec43530";
+        public static readonly string APIKEY = "";
 
         #endregion
     }
