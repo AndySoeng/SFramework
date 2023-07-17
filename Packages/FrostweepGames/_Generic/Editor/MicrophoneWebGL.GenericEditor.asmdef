@@ -1,0 +1,18 @@
+{
+    "name": "MicrophoneWebGL.GenericEditor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:214fe304df2cc6949b5cb0d7dd249c6c"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

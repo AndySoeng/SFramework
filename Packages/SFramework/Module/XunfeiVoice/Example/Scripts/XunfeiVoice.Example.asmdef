@@ -1,0 +1,18 @@
+{
+    "name": "XunfeiVoice.Example",
+    "rootNamespace": "",
+    "references": [
+        "GUID:b50b2c9dd22f0c14fa1ed71ffba60c01",
+        "GUID:8b3badd8a4d4b4045ae1979d5ac69770",
+        "GUID:214fe304df2cc6949b5cb0d7dd249c6c"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -26,8 +26,8 @@ namespace SFramework
         private async void OnMainSceneComplete()
         {
             Debug.Log(I2.Loc.LocalizationManager.GetTranslation("Common/Test"));
-            await ModalWindowPanelScreen.OpenModalWindowNoTabs(I2.Loc.LocalizationManager.GetTranslation("prompt"),
-                I2.Loc.LocalizationManager.GetTranslation("sceneloaded"), true, () => { }, false);
+            // await ModalWindowPanelScreen.OpenModalWindowNoTabs(I2.Loc.LocalizationManager.GetTranslation("prompt"),
+            //     I2.Loc.LocalizationManager.GetTranslation("sceneloaded"), true, () => { }, false);
         }
     }
 }

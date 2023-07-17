@@ -1,0 +1,22 @@
+{
+  "name": "com.sharelib.besthttp",
+  "version": "2.8.1",
+  "displayName": "Best HTTP",
+  "description": "Best HTTP .",
+  "category": "Runtime",
+  "keywords": [
+    ""
+  ],
+  "samples": [
+    {
+      "displayName": "Best HTTP",
+      "description": "",
+      "path": ""
+    }
+  ],
+  "author": {
+    "name": "",
+    "email": "",
+    "url": ""
+  }
+}

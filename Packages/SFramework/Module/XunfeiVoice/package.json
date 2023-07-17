@@ -1,0 +1,22 @@
+{
+  "name": "com.sframework.xunfeivoice",
+  "version": "0.1.0",
+  "displayName": "XunfeiVoice",
+  "description": "XunfeiVoice .",
+  "category": "Runtime",
+  "keywords": [
+    ""
+  ],
+  "samples": [
+    {
+      "displayName": "XunfeiVoice",
+      "description": "",
+      "path": ""
+    }
+  ],
+  "author": {
+    "name": "",
+    "email": "",
+    "url": ""
+  }
+}

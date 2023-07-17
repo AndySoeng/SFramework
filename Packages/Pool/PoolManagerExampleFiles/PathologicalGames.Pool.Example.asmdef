@@ -1,5 +1,6 @@
 {
-    "name": "NewAssembly",
+    "name": "PathologicalGames.Pool.Example",
+    "rootNamespace": "",
     "references": [
         "GUID:7578388fd37e6974e8b5c116347df44b"
     ],

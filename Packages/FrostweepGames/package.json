@@ -1,0 +1,22 @@
+{
+  "name": "com.frostweepgames.microphonewebgl",
+  "version": "3.0.1",
+  "displayName": "MicrophoneWebGL",
+  "description": "MicrophoneWebGL .",
+  "category": "Runtime",
+  "keywords": [
+    ""
+  ],
+  "samples": [
+    {
+      "displayName": "MicrophoneWebGL",
+      "description": "",
+      "path": ""
+    }
+  ],
+  "author": {
+    "name": "",
+    "email": "",
+    "url": ""
+  }
+}

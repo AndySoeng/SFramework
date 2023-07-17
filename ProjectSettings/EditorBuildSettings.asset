@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: "Packages/com.sunny2019.sframework/Module/XunfeiVoice/Example/\u8BED\u97F3\u542C\u5199\uFF08\u6D41\u5F0F\u7248\uFF09.unity"
+    guid: 2e2bd5b740f8808459e3ad569eb727d4
+  - enabled: 1
+    path: "Packages/com.sunny2019.sframework/Module/XunfeiVoice/Example/\u8BED\u97F3\u5408\u6210\uFF08\u6D41\u5F0F\u7248\uFF09.unity"
+    guid: 533cc0b5d831a03468ffdc40ad638b14
+  - enabled: 0
     path: Assets/SDevelop/Scenes/Entrance.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects:

@@ -1,0 +1,17 @@
+{
+    "name": "XunfeiVoice.Runtime",
+    "rootNamespace": "",
+    "references": [
+        "GUID:9069ac25d95ca17448a247f3bb1c769f",
+        "GUID:8b3badd8a4d4b4045ae1979d5ac69770"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

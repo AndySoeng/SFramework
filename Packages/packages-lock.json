@@ -20,6 +20,12 @@
       "dependencies": {},
       "hash": "75cb53cb19f11782fbbf02447900578ad9563567"
     },
+    "com.frostweepgames.microphonewebgl": {
+      "version": "file:FrostweepGames",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
     "com.github.siccity.xnode": {
       "version": "file:xNode",
       "depth": 0,
@@ -46,6 +52,12 @@
     },
     "com.pathologicalgames.poolmanager": {
       "version": "file:Pool",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
+    "com.sharelib.besthttp": {
+      "version": "file:Best HTTP",
       "depth": 0,
       "source": "embedded",
       "dependencies": {}
