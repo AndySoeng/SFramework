@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace XunfeiVoice.Runtime
+namespace Xunfei.Runtime
 {
     public class SpeechDictationStreaming_Response
     {

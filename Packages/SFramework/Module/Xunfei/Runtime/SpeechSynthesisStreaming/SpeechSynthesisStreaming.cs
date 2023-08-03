@@ -4,9 +4,9 @@ using BestHTTP.WebSocket;
 using Ex;
 using Newtonsoft.Json;
 using UnityEngine;
-using XunfeiVoice.Runtime.Common;
+using Xunfei.Runtime.Common;
 
-namespace XunfeiVoice.Runtime
+namespace Xunfei.Runtime
 {
     public enum VCNName
     {
@@ -63,11 +63,11 @@ namespace XunfeiVoice.Runtime
         private void OnConnectButton()
         {
             // Create the WebSocket instance
-            this.webSocket = new WebSocket(new Uri(ExXunFei.AssembleAuthUrl(XunfeiVoiceCommon.HOSTURL_SpeechSynthesisStreaming,
-                XunfeiVoiceCommon.APISECRET,
-                XunfeiVoiceCommon.APIKEY,
-                XunfeiVoiceCommon.ALGORITHM,
-                XunfeiVoiceCommon.HEADERS)));
+            this.webSocket = new WebSocket(new Uri(ExXunFei.AssembleAuthUrl(XunfeiCommon.HOSTURL_SpeechSynthesisStreaming,
+                XunfeiCommon.APISECRET,
+                XunfeiCommon.APIKEY,
+                XunfeiCommon.ALGORITHM,
+                XunfeiCommon.HEADERS)));
 
 #if !UNITY_WEBGL || UNITY_EDITOR
             this.webSocket.StartPingThread = true;
@@ -101,7 +101,7 @@ namespace XunfeiVoice.Runtime
             {
                 common = new RequestCommon()
                 {
-                    app_id = XunfeiVoiceCommon.APPID,
+                    app_id = XunfeiCommon.APPID,
                 },
                 business = new SpeechSynthesisStreaming_RequestBusiness()
                 {

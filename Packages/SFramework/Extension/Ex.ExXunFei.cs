@@ -1,5 +1,6 @@
 
 using System;
+using System.Text;
 
 namespace Ex
 {
@@ -16,7 +17,7 @@ namespace Ex
         public static string AssembleAuthUrl( string hostUrl,string APISecret,string APIKey,string algorithm="hmac-sha256",string headers="host date request-line")
         {
             Uri url = new Uri(hostUrl);
-            string date = DateTime.Now.ToString("R");
+            string date = DateTime.UtcNow.ToString("R");
             string[] signString = new[] { "host: " + url.Host, "date: " + date, "GET " + url.LocalPath + " HTTP/1.1" };
             string sgin = string.Join("\n", signString);
             string sha = ExCrypto_HmacSHA256Base64.HmacWithShaTobase64(sgin, APISecret);
@@ -28,6 +29,7 @@ namespace Ex
                              $"&host={url.Host}";
             return callUrl;
         }
-
+        
+        
     }
 }

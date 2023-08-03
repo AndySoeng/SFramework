@@ -3,9 +3,9 @@ using FrostweepGames.Plugins.Native;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using XunfeiVoice.Runtime;
+using Xunfei.Runtime;
 
-namespace XunfeiVoice.Example
+namespace Xunfei.Example
 {
     public class SpeechDictationStreaming_Test : MonoBehaviour
     {

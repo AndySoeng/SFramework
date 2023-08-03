@@ -1,12 +1,14 @@
-namespace XunfeiVoice.Runtime.Common
+namespace Xunfei.Runtime.Common
 {
-    public class XunfeiVoiceCommon
+    public class XunfeiCommon
     {
         #region 接口鉴权参数
 
         public static readonly string HOSTURL_SpeechDictationStreaming = "wss://iat-api.xfyun.cn/v2/iat";
 
         public static readonly string HOSTURL_SpeechSynthesisStreaming = "wss://tts-api.xfyun.cn/v2/tts";
+        
+        public static readonly string HOSTURL_SparkChat = "wss://spark-api.xf-yun.com/v1.1/chat";
 
         public static readonly string ALGORITHM = "hmac-sha256";
 

@@ -1,4 +1,4 @@
-﻿namespace XunfeiVoice.Runtime
+﻿namespace Xunfei.Runtime
 {
     public class SpeechSynthesisStreaming_Response
     {

@@ -5,9 +5,9 @@ using BestHTTP.WebSocket;
 using Ex;
 using Newtonsoft.Json;
 using UnityEngine;
-using XunfeiVoice.Runtime.Common;
+using Xunfei.Runtime.Common;
 
-namespace XunfeiVoice.Runtime
+namespace Xunfei.Runtime
 {
     public enum StreamingStatus
     {
@@ -65,11 +65,11 @@ namespace XunfeiVoice.Runtime
         private void OnConnectButton()
         {
             // Create the WebSocket instance
-            this.webSocket = new WebSocket(new Uri(ExXunFei.AssembleAuthUrl(XunfeiVoiceCommon.HOSTURL_SpeechDictationStreaming,
-                XunfeiVoiceCommon.APISECRET,
-                XunfeiVoiceCommon.APIKEY,
-                XunfeiVoiceCommon.ALGORITHM,
-                XunfeiVoiceCommon.HEADERS)));
+            this.webSocket = new WebSocket(new Uri(ExXunFei.AssembleAuthUrl(XunfeiCommon.HOSTURL_SpeechDictationStreaming,
+                XunfeiCommon.APISECRET,
+                XunfeiCommon.APIKEY,
+                XunfeiCommon.ALGORITHM,
+                XunfeiCommon.HEADERS)));
 
 #if !UNITY_WEBGL || UNITY_EDITOR
             this.webSocket.StartPingThread = true;
@@ -121,7 +121,7 @@ namespace XunfeiVoice.Runtime
                         SpeechDictationStreaming_Request frame = new SpeechDictationStreaming_Request()
                         {
                             //第一帧必须发送
-                            common = new RequestCommon() { app_id = XunfeiVoiceCommon.APPID },
+                            common = new RequestCommon() { app_id = XunfeiCommon.APPID },
                             //第一帧必须发送
                             business = new SpeechDictationStreaming_RequestBusiness()
                             {

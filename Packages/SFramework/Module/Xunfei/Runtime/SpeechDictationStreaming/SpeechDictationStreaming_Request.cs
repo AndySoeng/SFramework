@@ -1,6 +1,6 @@
-﻿using XunfeiVoice.Runtime.Common;
+﻿using Xunfei.Runtime.Common;
 
-namespace XunfeiVoice.Runtime
+namespace Xunfei.Runtime
 {
     public class SpeechDictationStreaming_Request
     {
