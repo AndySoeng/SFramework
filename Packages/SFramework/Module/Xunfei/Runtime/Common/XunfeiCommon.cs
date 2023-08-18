@@ -8,7 +8,7 @@ namespace Xunfei.Runtime.Common
 
         public static readonly string HOSTURL_SpeechSynthesisStreaming = "wss://tts-api.xfyun.cn/v2/tts";
         
-        public static readonly string HOSTURL_SparkChat = "wss://spark-api.xf-yun.com/v1.1/chat";
+        public static readonly string HOSTURL_SparkChat = "wss://spark-api.xf-yun.com/v2.1/chat";
 
         public static readonly string ALGORITHM = "hmac-sha256";
 

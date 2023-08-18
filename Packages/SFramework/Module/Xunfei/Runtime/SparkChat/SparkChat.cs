@@ -96,9 +96,9 @@ namespace Xunfei.Runtime
             {
                 chat = new SparkChat_Dto.Chat()
                 {
-                    domain = "general", //模型领域，默认为星火通用大模型
+                    domain = "generalv2", //模型领域，默认为星火通用大模型
                     temperature = 0.5, //温度采样阈值，用于控制生成内容的随机性和多样性，值越大多样性越高；范围（0，1）
-                    max_tokens = 1024, //生成内容的最大长度，范围（0，4096）
+                    max_tokens = 2048, //生成内容的最大长度，范围（0，4096）
                 }
             };
             request.payload = new SparkChat_Dto.Payload()
