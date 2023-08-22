@@ -1,0 +1,22 @@
+{
+  "name": "com.sframework.fovlasergen",
+  "version": "0.1.0",
+  "displayName": "FovLaserGen",
+  "description": "FovLaserGen .",
+  "category": "Runtime",
+  "keywords": [
+    ""
+  ],
+  "samples": [
+    {
+      "displayName": "FovLaserGen",
+      "description": "",
+      "path": ""
+    }
+  ],
+  "author": {
+    "name": "",
+    "email": "",
+    "url": ""
+  }
+}

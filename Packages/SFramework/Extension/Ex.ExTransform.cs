@@ -75,5 +75,32 @@ namespace Ex
             return trans.position+ trans.TransformDirection(Vector3.forward) * distance;
         }
         
+        
+        
+        /// <summary>
+        /// 距离trans正方向dis距离的一个点，绕一定y\z角度旋转后的位置
+        /// </summary>
+        /// <param name="trans"></param>
+        /// <param name="dis"></param>
+        /// <param name="angleUp"></param>
+        /// <param name="angleRight"></param>
+        /// <returns></returns>
+        public  static Vector3  GenFovPos(this Transform trans, float dis, float angleUp, float angleRight)
+        {
+            Vector3 originalPoint = trans.position + trans.forward * dis;
+            // 计算绕物体的Y轴60度的旋转
+            Quaternion rotationAroundLocalY = Quaternion.AngleAxis(angleUp, trans.up);
+
+            // 计算绕物体的Z轴30度的旋转
+            Quaternion rotationAroundLocalX = Quaternion.AngleAxis(angleRight, trans.right);
+
+            // 应用旋转
+            Vector3 pos= trans.position + rotationAroundLocalY * rotationAroundLocalX * (originalPoint - trans.position);
+            // GameObject a = new GameObject();
+            // a.transform.SetParent(trans);
+            // a.transform.position = pos;
+
+            return pos;
+        }
     }
 }
