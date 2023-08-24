@@ -12,7 +12,6 @@ namespace SFramework.UI
 
         protected override void OnPopulateMesh(VertexHelper vh)
         {
-            Debug.Log("VAR");
 #if UNITY_EDITOR
             if (!EditorApplication.isPlaying) return;
 #endif

@@ -65,6 +65,10 @@ MonoBehaviour:
     m_Address: UIDemoPanel
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 61d666aad21b11942939c3b97f83b4d0
+    m_Address: UIRectMaskPanel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: f764d9e74e1e5504c9a86fa4549fc1a1, type: 2}
   m_SchemaSet:
