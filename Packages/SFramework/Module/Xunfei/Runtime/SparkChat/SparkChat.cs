@@ -48,11 +48,7 @@ namespace Xunfei.Runtime
                 XunfeiCommon.APIKEY,
                 XunfeiCommon.ALGORITHM,
                 XunfeiCommon.HEADERS)));
-
-#if !UNITY_WEBGL || UNITY_EDITOR
-            this.webSocket.StartPingThread = true;
-#endif
-
+            
             // Subscribe to the WS events
             this.webSocket.OnOpen += OnOpen;
             this.webSocket.OnMessage += OnMessageReceived;
@@ -96,7 +92,7 @@ namespace Xunfei.Runtime
             {
                 chat = new SparkChat_Dto.Chat()
                 {
-                    domain = "generalv2", //模型领域，默认为星火通用大模型
+                    domain = "generalv3", //模型领域，默认为星火通用大模型
                     temperature = 0.5, //温度采样阈值，用于控制生成内容的随机性和多样性，值越大多样性越高；范围（0，1）
                     max_tokens = 2048, //生成内容的最大长度，范围（0，4096）
                 }
