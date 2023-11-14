@@ -8,6 +8,8 @@ namespace Ex
     {
         public static Vector2 Nevigate(ScrollRect scrollRect, RectTransform viewport, RectTransform content, RectTransform item)
         {
+            //先刷新一下布局，因为动态生成的Item如果立即调用Nevigate会造成NormalizedPos计算错误
+            LayoutRebuilder.ForceRebuildLayoutImmediate(content);
             // InverseTransformPoint: Transforms position from world space to local space, 和TransformPoint左右相反
             // 这步的意义是把 item、viewport的localPosition转换到同一个父节点下，才能计算出需要移动的差值
             // 看图1
