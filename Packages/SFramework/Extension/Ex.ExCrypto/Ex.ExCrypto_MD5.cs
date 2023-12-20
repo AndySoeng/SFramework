@@ -46,6 +46,21 @@ namespace Ex
             var s = ret.ToString();
             return s;
         }
+        
+        /// <summary>
+        /// MD5加密
+        /// </summary>
+        /// <param name="pToEncrypt">要加密的string字符串</param>
+        /// <returns></returns>
+        public static string Md5Encrypt(string pToEncrypt)
+        {
+            var md5Hash = MD5.Create();
+            byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(pToEncrypt));
+            StringBuilder builder = new StringBuilder();
+            for (int i = 0; i < data.Length; i++)
+                builder.Append(data[i].ToString("x2")); // 将每个byte转换为十六进制并添加到StringBuilder对象中
+            return builder.ToString();
+        }
 
         /// <summary>
         ///  Md5解密
