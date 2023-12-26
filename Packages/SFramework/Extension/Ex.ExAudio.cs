@@ -1,11 +1,12 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
+using UnityEngine.Events;
 
 
 namespace Ex
 {
     public static class ExAudio
     {
-            
         /// <summary>
         /// 截取音频片段音效并播放
         /// </summary>
@@ -33,6 +34,43 @@ namespace Ex
             segment.SetData(data, 0);
 
             return segment;
+        }
+
+
+        public static IEnumerator GetCurrentVolumeData(AudioClip recordingClip, UnityAction<float[]> OnGetVolumeData)
+        {
+            float[] volumeData = new float[256];
+
+            int preOffset = 0;
+            int offset = 0;
+            while (true)
+            {
+#if UNITY_WEBGL && !UNITY_EDITOR
+                offset = FrostweepGames.Plugins.Native.CustomMicrophone.GetPosition(FrostweepGames.Plugins.Native.CustomMicrophone.devices[0]) - 256 + 1;
+#else
+                offset = Microphone.GetPosition(Microphone.devices[0]) - 256 + 1;
+#endif
+
+                //获取的offset超过总采样数则退出循环
+                //Debug.Log(offset   +"\t"+recordingClip.frequency * recordingClip.length);
+                if (offset >= recordingClip.frequency * recordingClip.length)
+                {
+                    yield break;
+                }
+
+                if (preOffset != offset) //若offset相同，则获取到的数据时相同的，所以直接跳过输出
+                {
+                    if (offset > 0)
+                    {
+                        recordingClip.GetData(volumeData, offset);
+                    }
+
+                    OnGetVolumeData?.Invoke(volumeData);
+                    preOffset = offset;
+                }
+
+                yield return new WaitForEndOfFrame();
+            }
         }
     }
 }
