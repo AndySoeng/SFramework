@@ -167,5 +167,60 @@ namespace WebGLExpInterface.DTO
                 this.remarks = remarks;
             }
         }
+        
+        public class AccessTokenInfo
+        {
+            /// <summary>
+            /// 
+            /// </summary>
+            public int code { get; set; }
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public string  msg { get; set; }
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public string access_token { get; set; }
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public long create_time { get; set; }
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public string create_time_display { get; set; }
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public long expires_time { get; set; }
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public string expires_time_display { get; set; }
+
+            /// <summary>
+            /// 用户名
+            /// </summary>
+            public string un { get; set; }
+
+            /// <summary>
+            /// 用户姓名
+            /// </summary>
+            public string dis { get; set; }
+        }
+
+        public class DataUploadRespon
+        {
+            public int code { get; set; }
+            public string id { get; set; }
+            public string msg { get; set; }
+        }
     }
 }

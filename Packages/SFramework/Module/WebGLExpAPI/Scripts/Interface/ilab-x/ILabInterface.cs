@@ -9,9 +9,9 @@ using WebGLExpInterface.DTO;
 namespace WebGLExpInterface
 {
     /// <summary>
-    /// 江苏一鼎堂软件科技有限公司接口2.0
+    /// 《国家虚拟仿真实验教学课程技术接口规范（2022版）》（简称2.1接口）
     /// </summary>
-    public static class YDTInterface
+    public static class ILabInterface
     {
         [DllImport("__Internal")]
         private static extern string getUrlParams(string name);
@@ -19,7 +19,7 @@ namespace WebGLExpInterface
         #region 固定参数(需配置为对应实验)
         private const int APPID = 0;
         private const string SECRET = "";
-        private const string HOST = "";
+        private const string HOST = "http://www.ilab-x.com";
         #endregion
 
         #region 初始化参数
@@ -53,7 +53,7 @@ namespace WebGLExpInterface
             }), null, null));
         }
 
-        public static void DataUpload(this MonoBehaviour mono, DTO_YDT.DTO_YDTILab dtoYdtiLab, UnityAction failureCallBack, UnityAction successCallBack)
+        public static void DataUpload(this MonoBehaviour mono, DTO_ILab dtoILab, UnityAction failureCallBack, UnityAction successCallBack)
         {
             if (string.IsNullOrEmpty(access_Token))
             {
@@ -62,10 +62,10 @@ namespace WebGLExpInterface
                 return;
             }
 
-            dtoYdtiLab.appid = APPID;
-            dtoYdtiLab.username = username;
+            dtoILab.appid = APPID.ToString();
+            dtoILab.username = username;
             string uploadUrl = $"{HOST}/open/api/v2/data_upload?access_token={UnityWebRequest.EscapeURL(access_Token)}";
-            mono.StartCoroutine(ExUnityWebRequest.WebRequest(ExUnityWebRequest.UnityWebRequestType.POST, uploadUrl, JsonMapper.ToJson(dtoYdtiLab), false, false,
+            mono.StartCoroutine(ExUnityWebRequest.WebRequest(ExUnityWebRequest.UnityWebRequestType.POST, uploadUrl, JsonMapper.ToJson(dtoILab), false, false,
                 () => { failureCallBack?.Invoke(); }, (arg0 =>
                 {
                     DTO_ILab.DataUploadRespon dataUploadRespon = JsonMapper.ToObject<DTO_ILab.DataUploadRespon>(arg0);
