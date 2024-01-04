@@ -34,7 +34,7 @@ namespace Xunfei.Example
             });
             btn_To语音听写.onClick.AddListener(() =>
             {
-                SceneManager.LoadScene("语音听写（流式版）");
+                SceneManager.LoadScene("语音听写（流式版）SendAllOnce");
             });
         }
     }

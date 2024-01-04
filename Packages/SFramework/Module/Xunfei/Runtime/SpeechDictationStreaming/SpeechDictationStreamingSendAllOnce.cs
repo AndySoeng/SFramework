@@ -17,7 +17,9 @@ namespace Xunfei.Runtime
     }
 
     /// <summary>
-    /// 语音听写流式接口，用于1分钟内的即时语音转文字技术，支持实时返回识别结果，达到一边上传音频一边获得识别文本的效果。
+    /// 语音听写流式接口(一次发送全部的音频数据)
+    ///
+    /// 用于1分钟内的即时语音转文字技术，支持实时返回识别结果，达到一边上传音频一边获得识别文本的效果。
     ///
     /// 语音听写流式 WebAPI 接口调用示例 接口文档（必看）：https://doc.xfyun.cn/rest_api/语音听写（流式版）.html
     /// webapi 听写服务参考帖子（必看）：http://bbs.xfyun.cn/forum.php?mod=viewthread&tid=38947&extra=
@@ -27,78 +29,46 @@ namespace Xunfei.Runtime
     /// 语音听写流式WebAPI 服务，方言或小语种试用方法：登陆开放平台https://www.xfyun.cn/后，在控制台--语音听写（流式）--方言/语种处添加
     /// 添加后会显示该方言/语种的参数值
     /// </summary>
-    public class SpeechDictationStreaming
+    public static class SpeechDictationStreamingSendAllOnce
     {
-        /// <summary>
-        /// Saved WebSocket instance
+        /// <summary> 
+        /// !!!!勿用裁剪后的音频进行语音听写,注意麦克风录取时为16000采样率!!!!
         /// </summary>
-        WebSocket webSocket;
-
-        SpeechDictationStreaming_Decoder decoder = new SpeechDictationStreaming_Decoder();
-
-        // 开始时间
-        private DateTime dateBegin = DateTime.Now;
-
-        // 结束时间
-        private DateTime dateEnd = DateTime.Now;
-
-        private event Action<string> OnIntermediateResult;
-        private event Action<string> OnLastResult;
-
-        private MonoBehaviour mono;
-        private byte[] audioData;
-
-
-        // Start is called before the first frame update
-        public SpeechDictationStreaming(MonoBehaviour mono, byte[] audioData, Action<string> intermediateResult = null, Action<string> lastResult = null)
+        /// <param name="mono"></param>
+        /// <param name="clip"></param>
+        /// <param name="OnIntermediateResult"></param>
+        /// <param name="OnLastResult"></param> 
+        public static void Dictation(MonoBehaviour mono, AudioClip clip, Action<string> OnIntermediateResult = null, Action<string> OnLastResult = null)
         {
-            this.mono = mono;
-            this.audioData = audioData;
-            if (intermediateResult != null)
-                OnIntermediateResult += intermediateResult;
-            if (lastResult != null)
-                OnLastResult += lastResult;
-            OnConnectButton();
-        }
+            byte[] clipData = ExAudioClip.ClipToBytes(clip);
 
+            SpeechDictationStreaming_Decoder decoder = new SpeechDictationStreaming_Decoder();
+            DateTime dateBegin = DateTime.Now;
 
-        private void OnConnectButton()
-        {
             // Create the WebSocket instance
-            this.webSocket = new WebSocket(new Uri(ExXunFei.AssembleAuthUrl(XunfeiCommon.HOSTURL_SpeechDictationStreaming,
-                XunfeiCommon.APISECRET,
-                XunfeiCommon.APIKEY,
-                XunfeiCommon.ALGORITHM,
-                XunfeiCommon.HEADERS)));
+            WebSocket webSocket = new WebSocket(new Uri(ExXunFei.AssembleAuthUrl(XunfeiCommon.HOSTURL_SpeechDictationStreaming, XunfeiCommon.APISECRET, XunfeiCommon.APIKEY,
+                XunfeiCommon.ALGORITHM, XunfeiCommon.HEADERS)));
 
 #if !UNITY_WEBGL || UNITY_EDITOR
-            this.webSocket.StartPingThread = true;
+            webSocket.StartPingThread = true;
 #endif
 
             // Subscribe to the WS events
-            this.webSocket.OnOpen += OnOpen;
-            this.webSocket.OnMessage += OnMessageReceived;
-            this.webSocket.OnClosed += OnClosed;
-            this.webSocket.OnError += OnError;
+            webSocket.OnOpen += (socket => { mono.StartCoroutine(StartSendAudioData(socket, clipData)); });
+            webSocket.OnMessage += ((socket, message) => { OnMessageReceived(socket, message, decoder, dateBegin, OnIntermediateResult, OnLastResult); });
+            webSocket.OnClosed += ((socket, code, message) => { Debug.Log(string.Format("WebSocket closed! Code: {0} Message: {1}", code, message)); });
+            webSocket.OnError += ((socket, reason) => { Debug.Log(string.Format("An error occured: <color=red>{0}</color>", reason)); });
 
             // Start connecting to the server
-            this.webSocket.Open();
+            webSocket.Open();
 
             //Debug.Log("Connecting...");
         }
 
 
-        /// <summary>
-        /// Called when the web socket is open, and we are ready to send and receive data
-        /// </summary>
-        void OnOpen(WebSocket ws)
+        private static IEnumerator StartSendAudioData(WebSocket webSocket, byte[] audioData)
         {
-            //Debug.Log("WebSocket Open!");
-            mono.StartCoroutine(StartSendAudioData());
-        }
-
-        private IEnumerator StartSendAudioData()
-        {
+            Debug.Log(audioData.Length);
             //连接成功，开始发送数据
             int frameSize = 1280; //每一帧音频的大小,建议每 40ms 发送 122B
             int intervel = 40;
@@ -138,7 +108,6 @@ namespace Xunfei.Runtime
                                 format = "audio/L16;rate=16000",
                                 encoding = "raw",
                                 audio = Convert.ToBase64String(ExArray.CopyOf(buffer, len)),
-
                             }
                         };
                         webSocket?.Send(JsonConvert.SerializeObject(frame));
@@ -179,22 +148,15 @@ namespace Xunfei.Runtime
                 }
                 else
                 {
-                    yield return new WaitForSeconds(intervel / 1000f); //模拟音频采样延时
+                    //yield return new WaitForSeconds(intervel / 1000f); //模拟音频采样延时
+                    yield return new WaitForEndOfFrame();
                 }
             }
         }
 
-        /// <summary>
-        /// Called when we received a text message from the server
-        /// </summary>
-        void OnMessageReceived(WebSocket ws, string message)
-        {
-            //Debug.Log(string.Format("Message received: <color=yellow>{0}</color>", message));
-            HandleResponse(message);
-        }
 
-
-        private void HandleResponse(string message)
+        private static void OnMessageReceived(WebSocket webSocket, string message, SpeechDictationStreaming_Decoder decoder, DateTime dateBegin,
+            Action<string> OnIntermediateResult = null, Action<string> OnLastResult = null)
         {
             SpeechDictationStreaming_Response resp = JsonConvert.DeserializeObject<SpeechDictationStreaming_Response>(message);
 
@@ -212,18 +174,18 @@ namespace Xunfei.Runtime
                 SpeechDictationStreaming_Error.LogErrorByCode(resp.code);
                 return;
             }
-            
+
             //Debug.Log("code=0,正常");
-            
+
             if (resp.data == null)
             {
                 Debug.LogError("回复数据为NULL。");
                 return;
             }
-            
+
             //Debug.Log("回复数据不为NULL,正常");
             //Debug.Log("此次status:"+resp.data.status);
-            
+
             if (resp.data.status == 0 || resp.data.status == 1)
                 if (resp.data.result != null)
                 {
@@ -243,37 +205,15 @@ namespace Xunfei.Runtime
 
             if (resp.data.status == 2)
             {
-                dateEnd = DateTime.Now;
                 webSocket.Close(1000, "");
                 Debug.Log("Session end .本次识别sid：" + resp.sid +
                           "\n最终识别结果：" + decoder.ToString() +
                           "\n开始时间：" + dateBegin.ToString("R") +
-                          "\n结束时间：" + dateEnd.ToString("R") +
-                          "\n耗时:" + new TimeSpan(dateEnd.Ticks - dateBegin.Ticks).TotalMilliseconds + "ms");
+                          "\n结束时间：" + DateTime.Now.ToString("R") +
+                          "\n耗时:" + new TimeSpan(DateTime.Now.Ticks - dateBegin.Ticks).TotalMilliseconds + "ms");
                 OnLastResult?.Invoke(decoder.ToString());
                 decoder.Discard();
             }
-        }
-
-
-        /// <summary>
-        /// Called when the web socket closed
-        /// </summary>
-        void OnClosed(WebSocket ws, UInt16 code, string message)
-        {
-            Debug.Log(string.Format("WebSocket closed! Code: {0} Message: {1}", code, message));
-
-            webSocket = null;
-        }
-
-        /// <summary>
-        /// Called when an error occured on client side
-        /// </summary>
-        void OnError(WebSocket ws, string error)
-        {
-            Debug.Log(string.Format("An error occured: <color=red>{0}</color>", error));
-
-            webSocket = null;
         }
     }
 }

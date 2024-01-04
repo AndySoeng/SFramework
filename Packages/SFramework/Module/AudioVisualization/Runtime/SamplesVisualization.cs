@@ -25,7 +25,7 @@ public class SamplesVisualization : MonoBehaviour
 
                 float yScale = Mathf.Clamp(samples[i] * 100, 0, YMaxScale);
                 //确保参数小于1f时有0.2的增量，保证没有yScale为0的情况
-                yScale = yScale > 1f ? yScale : (yScale + 0.2f);
+                yScale = yScale > 1f ? yScale : (yScale + 0.1f);
                 sampleObjs[ii].gameObject.transform.DOScale(new Vector3(1.0f, yScale, 1f), 0.5f);
                 //hue乘系数后+100可保证当参数为0是显示的是绿色
                 float hue = Mathf.Clamp(samples[i] * 360f * colorMultiplyer + 100, 0, 360f) / 360f;
