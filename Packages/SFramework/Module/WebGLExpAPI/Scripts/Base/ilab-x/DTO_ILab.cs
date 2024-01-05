@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using Ex;
+using UnityEngine;
 
 namespace WebGLExpInterface.DTO
 {
@@ -58,7 +60,7 @@ namespace WebGLExpInterface.DTO
         public Step[] steps;
 
 
-        public DTO_ILab(int score, long startTime, long endTime, string username = "", string title = "", int status = 1, string appid = "", string originId = "")
+        public DTO_ILab(int score, long startTime, long endTime, string username = "", string title = "", int status = 1, string appid = "")
         {
             this.username = username;
             this.title = string.IsNullOrEmpty(title) ? Application.productName : title;
@@ -68,7 +70,7 @@ namespace WebGLExpInterface.DTO
             this.endTime = endTime;
             this.timeUsed = (int)((endTime - startTime) / 1000);
             this.appid = appid;
-            this.originId = originId;
+            this.originId = DateTime.Now.GetTimeStamp(false).ToString();
         }
 
 
