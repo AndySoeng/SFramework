@@ -7,6 +7,9 @@ using WebGLExpInterface.DTO;
 
 namespace WebGLExpInterface
 {
+    /// <summary>
+    /// 旧版根据键值对进行成绩传输接口
+    /// </summary>
     public static class SimtopPlatformizationInterface
     {
 #if UNITY_WEBGL && !UNITY_EDITOR
