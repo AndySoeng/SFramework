@@ -1,0 +1,22 @@
+{
+  "name": "com.sframework.androidscan3503m",
+  "version": "0.1.0",
+  "displayName": "AndroidScan3503M",
+  "description": "AndroidScan3503M .",
+  "category": "Runtime",
+  "keywords": [
+    ""
+  ],
+  "samples": [
+    {
+      "displayName": "AndroidScan3503M",
+      "description": "",
+      "path": ""
+    }
+  ],
+  "author": {
+    "name": "",
+    "email": "",
+    "url": ""
+  }
+}

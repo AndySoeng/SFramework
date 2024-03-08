@@ -1,0 +1,20 @@
+{
+    "name": "AndroidScan3503M.Test",
+    "rootNamespace": "",
+    "references": [
+        "GUID:6d28847fa51ee2d4cadd912257a39b17",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f"
+    ],
+    "includePlatforms": [
+        "Android",
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
