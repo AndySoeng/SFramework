@@ -43,7 +43,7 @@ namespace Ex
             }
             else
             {
-                jsonData = requestUrl;
+                jsonData = (string)Convert.ChangeType(requestDtoData, typeof(string));
             }
 
 
