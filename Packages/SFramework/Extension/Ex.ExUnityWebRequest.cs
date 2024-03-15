@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Text;
+using LitJson;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Networking;
@@ -14,6 +15,91 @@ namespace Ex
         {
             POST,
             GET
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="requestType">请求类型</param>
+        /// <param name="requestUrl">请求链接</param>
+        /// <param name="requestDtoData">请求的数据</param>
+        /// <param name="requestFailure">请求失败事件</param>
+        /// <param name="requestSuccess">请求成功事件</param>
+        /// <param name="otherHeaderName">请求头数组</param>
+        /// <param name="otherHeaderValue">请求头值数组</param>
+        /// <param name="sendBase64">发送时是否进行Base64转码</param>
+        /// <param name="getBase64">接收时是否进行Base64转码</param>
+        /// <typeparam name="T">请求数据的类型</typeparam>
+        /// <typeparam name="U">响应数据的类型</typeparam>
+        /// <returns></returns>
+        public static IEnumerator WebRequest<T, U>(UnityWebRequestType requestType, string requestUrl, T requestDtoData,
+            UnityAction requestFailure, UnityAction<U> requestSuccess, string[] otherHeaderName = null,
+            string[] otherHeaderValue = null, bool sendBase64 = false, bool getBase64 = false)
+        {
+            string jsonData = String.Empty;
+            if (typeof(string) != typeof(T))
+            {
+                jsonData = JsonMapper.ToJson(requestDtoData);
+            }
+            else
+            {
+                jsonData = requestUrl;
+            }
+
+
+            Debug.Log(requestType.ToString() + "\n" + requestUrl + "\n" + jsonData);
+            if (sendBase64)
+            {
+                jsonData = Convert.ToBase64String(Encoding.UTF8.GetBytes(jsonData));
+            }
+
+            byte[] body = Encoding.UTF8.GetBytes(jsonData);
+
+            using UnityWebRequest unityWeb = new UnityWebRequest(@requestUrl, requestType.ToString());
+
+            unityWeb.uploadHandler = new UploadHandlerRaw(body);
+            unityWeb.SetRequestHeader("Content-Type", "application/json;charset=utf-8");
+            //unityWeb.SetRequestHeader("Authorization", "Bearer " + token);
+            if (otherHeaderName != null)
+            {
+                for (int i = 0; i < otherHeaderName.Length; i++)
+                {
+                    unityWeb.SetRequestHeader(otherHeaderName[i], otherHeaderValue[i]);
+                }
+            }
+
+            unityWeb.downloadHandler = new DownloadHandlerBuffer();
+            yield return unityWeb.SendWebRequest();
+
+            if (unityWeb.result == UnityWebRequest.Result.ProtocolError || unityWeb.result == UnityWebRequest.Result.ConnectionError ||
+                unityWeb.result == UnityWebRequest.Result.DataProcessingError)
+            {
+                Debug.Log("failure:" + unityWeb.error);
+                requestFailure?.Invoke();
+                yield break;
+            }
+
+            if (unityWeb.isDone)
+            {
+                string responseStr = unityWeb.downloadHandler.text;
+                if (getBase64)
+                {
+                    byte[] c = Convert.FromBase64String(responseStr);
+                    responseStr = Encoding.UTF8.GetString(c);
+                }
+
+                Debug.Log("success:" + responseStr);
+
+                if (typeof(string) != typeof(U))
+                {
+                    U result = JsonMapper.ToObject<U>(responseStr);
+                    requestSuccess?.Invoke(result);
+                }
+                else
+                {
+                    requestSuccess?.Invoke((U)Convert.ChangeType(responseStr, typeof(U)));
+                }
+            }
         }
 
         public static IEnumerator WebRequest(UnityWebRequestType type, string url, string jsonData, bool sendBase64,
@@ -68,6 +154,7 @@ namespace Ex
                     byte[] c = Convert.FromBase64String(result);
                     result = Encoding.UTF8.GetString(c);
                 }
+
                 successCallBack?.Invoke(result);
             }
         }
@@ -114,6 +201,7 @@ namespace Ex
                     byte[] c = Convert.FromBase64String(result);
                     result = Encoding.UTF8.GetString(c);
                 }
+
                 successCallBack?.Invoke(result);
             }
         }
