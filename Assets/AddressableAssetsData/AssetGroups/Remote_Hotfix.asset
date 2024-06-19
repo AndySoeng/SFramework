@@ -17,34 +17,6 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: fac5d93249474444b986e68c10d3fc9f
   m_SerializeEntries:
-  - m_GUID: eb92b18bb94199542a16667f53c5c4d8
-    m_Address: Assets/SDevelop/Dll/mscorlib.dll.bytes
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 66f43607d6fc40443823b1468ba481d5
-    m_Address: Assets/SDevelop/Dll/LitJson.dll.bytes
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 837ab57d8fb8caa44926816d99ad6bb3
-    m_Address: Assets/SDevelop/Dll/Hotfix.Develop.dll.bytes
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 3b3a46e2576511846bf7a77c6e52a2ed
-    m_Address: Assets/SDevelop/Dll/Google.Protobuf.dll.bytes
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 8c13e8aaeaa17ce43a80fedf9b9f7122
-    m_Address: Assets/SDevelop/Dll/System.Core.dll.bytes
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 34d0d02bad345a5429c0019b225b5d55
-    m_Address: Assets/SDevelop/Dll/UniTask.dll.bytes
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: f050ca298cf459149b2ec31aa7b0cd86
-    m_Address: Assets/SDevelop/Dll/System.dll.bytes
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: 71d9b8e428a0b9f4e81fcb2e9d426155
     m_Address: Assets/SDevelop/Localization/Remote I2Languages.asset
     m_ReadOnly: 0
