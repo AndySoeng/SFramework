@@ -52,21 +52,37 @@ namespace Ex
         }
 
         /// <summary>
+        /// 获取时间戳对应的DateTime
+        /// </summary>
+        /// <param name="timestamp"></param>
+        /// <returns></returns>
+        public static DateTime GetDateTime(long timestamp)
+        {
+            // 10位
+            if (timestamp < 10000000000) timestamp *= 1000;
+            DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+            dtDateTime = dtDateTime.AddMilliseconds(timestamp).ToLocalTime();
+            return dtDateTime;
+        }
+
+
+        /// <summary>
         /// 获取时间差值，00：00：00格式时间，最高位为小时，最低位为秒
         /// </summary>
         /// <param name="start">起始时间</param>
         /// <param name="end">结束时间</param>
         /// <returns></returns>
-        public static string GetTimeOffset(DateTime start,DateTime end)
+        public static string GetTimeOffset(DateTime start, DateTime end)
         {
             long offset = end.GetTimeStamp(true) - start.GetTimeStamp(true);
-            if (offset<=0)
+            if (offset <= 0)
             {
                 return "00:00:00";
             }
-            return  GetTime(offset);
+
+            return GetTime(offset);
         }
-        
+
         /// <summary>
         /// 获取当前的时间戳
         /// </summary>
@@ -75,13 +91,13 @@ namespace Ex
         {
             return new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds();
         }
-        
+
         /// <summary>
         /// 获取当前的时间,
         /// 格式：yyyy-MM-dd HH:mm:ss , yyyy/MM/dd HH:mm:ss
         /// </summary>
         /// <returns></returns>
-        public static string CurrentTime(string format="yyyy-MM-dd HH:mm:ss")
+        public static string CurrentTime(string format = "yyyy-MM-dd HH:mm:ss")
         {
             return DateTime.Now.ToString(format, DateTimeFormatInfo.InvariantInfo);
         }
